@@ -4,15 +4,17 @@
  - coachee can edit
      - First name
      - Last name
-     - email (disabled)
+     - email
+        - alert, your email address is used to sign-in (profile-information.message.change-email)
      - role (disabled)
      - picture (url) 
      
 - admin can edit
      - First name
      - Last name
-     - email (disabled)
-     - role (coachee, coach, administrator)
+     - email
+        - alert, your email address is used to sign-in (profile-information.message.change-email)
+     - role (dropdown: coachee, coach, administrator)
      - picture (url) 
      
  - in scope
