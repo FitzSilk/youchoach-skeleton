@@ -2,11 +2,14 @@ package com.switchfully.youcoach.domain.users;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.UUID;
 
-@Component
+@Entity
 public class User {
 
+    @Id
     private UUID id;
     private String firstName;
     private String lastName;
