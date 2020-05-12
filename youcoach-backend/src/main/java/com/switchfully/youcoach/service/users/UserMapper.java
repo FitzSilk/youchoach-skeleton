@@ -19,7 +19,7 @@ public class UserMapper {
                 .withFirstName(user.getFirstName())
                 .withLastName(user.getLastName())
                 .withEmail(user.getEmail())
-                .withSecuredId(user.getSecuredId())
+                .withSecuredId(user.getSecuredUser())
                 .build();
     }
 
@@ -33,7 +33,7 @@ public class UserMapper {
                 .withFirstName(userDto.getFirstName())
                 .withLastName(userDto.getLastName())
                 .withEmail(userDto.getEmail())
-                .withSecuredId(userDto.getSecuredId())
+                .withSecuredUser(userDto.getSecuredUser())
                 .build();
     }
 
@@ -43,7 +43,7 @@ public class UserMapper {
                 .withFirstName(userDto.getFirstName())
                 .withLastName(userDto.getLastName())
                 .withEmail(userDto.getEmail())
-                .withSecuredId(userDto.getSecuredId())
+                .withSecuredUser(userDto.getSecuredUser())
                 .build();
     }
 }

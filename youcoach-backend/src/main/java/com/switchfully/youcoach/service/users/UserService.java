@@ -27,19 +27,20 @@ public class UserService {
         this.securedUserRepository = securedUserRepository;
     }
 
-    public UserDto addUser(CreateUserDto createUserDto) {
-        List<Role> rolesList = new ArrayList<>();
-        rolesList.add(Role.STUDENT);
-        SecuredUser newSecuredUser = new SecuredUser(createUserDto.getEmail(), createUserDto.getPassword(), rolesList);
-        Long securedId = securedUserRepository.save(newSecuredUser);
-        UserDto userDto = userDtoBuilder()
-                .withId(createUserDto.getId())
-                .withFirstName(createUserDto.getFirstName())
-                .withLastName(createUserDto.getLastName())
-                .withEmail(createUserDto.getEmail())
-                .withSecuredId(securedId)
-                .build();
-        return userMapper.toDto(userRepository.save(userMapper.createUser(userDto)));
+    public UserDto addUser(UserDto userDto) {
+//        List<Role> rolesList = new ArrayList<>();
+//        rolesList.add(Role.STUDENT);
+        //SecuredUser newSecuredUser = new SecuredUser(userDto.getEmail(), userDto.getPassword(), rolesList);
+        securedUserRepository.save(userDto.getSecuredUser());
+//        UserDto userDto = userDtoBuilder()
+//                .withId(userDto.getId())
+//                .withFirstName(userDto.getFirstName())
+//                .withLastName(userDto.getLastName())
+//                .withEmail(userDto.getEmail())
+//                .withSecuredId(securedId)
+//                .build();
+        //return userMapper.toDto(userRepository.save(userMapper.createUser(userDto)));
+        return userDto;
     }
 
     public UserDto getUserById(UUID id) {

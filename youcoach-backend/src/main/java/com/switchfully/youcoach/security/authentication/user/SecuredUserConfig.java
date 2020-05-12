@@ -21,7 +21,7 @@ public class SecuredUserConfig {
     }
 
     @Bean
-    SecuredUserRepository securedUserRepository() {
+    SecuredUserRepository securedUserRepositoryRenamed() {
         return new SecuredUserRepositoryFromJson(loadUsers());
     }
 

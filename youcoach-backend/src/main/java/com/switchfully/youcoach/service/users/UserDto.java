@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.service.users;
 
+import com.switchfully.youcoach.security.authentication.user.SecuredUser;
+
 import java.util.UUID;
 
 public class UserDto {
@@ -8,7 +10,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String email;
-    private Long securedId;
+    private SecuredUser securedUser;
 
     public UserDto() {
     }
@@ -18,7 +20,7 @@ public class UserDto {
         this.firstName = userDtoBuilder.getFirstName();
         this.lastName = userDtoBuilder.getLastName();
         this.email = userDtoBuilder.getEmail();
-        this.securedId = userDtoBuilder.getSecuredId();
+        this.securedUser = userDtoBuilder.getSecuredUser();
     }
 
     public UUID getId() {
@@ -37,8 +39,8 @@ public class UserDto {
         return email;
     }
 
-    public Long getSecuredId() {
-        return securedId;
+    public SecuredUser getSecuredUser() {
+        return securedUser;
     }
 
     public void setId(UUID id) {
@@ -57,8 +59,8 @@ public class UserDto {
         this.email = email;
     }
 
-    public void setSecuredId(Long securedId) {
-        this.securedId = securedId;
+    public void setSecuredUser(SecuredUser securedUser) {
+        this.securedUser = securedUser;
     }
 
     public static class UserDtoBuilder {
@@ -66,7 +68,7 @@ public class UserDto {
         private String firstName;
         private String lastName;
         private String email;
-        private Long securedId;
+        private SecuredUser securedUser;
 
         protected UserDtoBuilder() {
         }
@@ -99,8 +101,8 @@ public class UserDto {
             return this;
         }
 
-        public UserDtoBuilder withSecuredId(Long securedId) {
-            this.securedId = securedId;
+        public UserDtoBuilder withSecuredId(SecuredUser securedUser) {
+            this.securedUser = securedUser;
             return this;
         }
 
@@ -120,8 +122,8 @@ public class UserDto {
             return email;
         }
 
-        public Long getSecuredId() {
-            return securedId;
+        public SecuredUser getSecuredUser() {
+            return securedUser;
         }
     }
 }
