@@ -7,6 +7,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/hello-world">Hello world</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register" translate>register.title</a>
+      </li>
     </ul>
     <div class="mr-2">
       <div class="nav-item" *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in</div>
