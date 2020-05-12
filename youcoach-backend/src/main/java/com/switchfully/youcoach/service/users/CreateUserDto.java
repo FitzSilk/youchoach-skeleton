@@ -2,23 +2,25 @@ package com.switchfully.youcoach.service.users;
 
 import java.util.UUID;
 
-public class UserDto {
+public class CreateUserDto {
 
     private UUID id;
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private Long securedId;
 
-    public UserDto() {
+    public CreateUserDto() {
     }
 
-    public UserDto(UserDtoBuilder userDtoBuilder) {
-        this.id = userDtoBuilder.getId();
-        this.firstName = userDtoBuilder.getFirstName();
-        this.lastName = userDtoBuilder.getLastName();
-        this.email = userDtoBuilder.getEmail();
-        this.securedId = userDtoBuilder.getSecuredId();
+    public CreateUserDto(CreateUserDtoBuilder createUserDtoBuilder) {
+        this.id = createUserDtoBuilder.getId();
+        this.firstName = createUserDtoBuilder.getFirstName();
+        this.lastName = createUserDtoBuilder.getLastName();
+        this.email = createUserDtoBuilder.getEmail();
+        this.securedId = createUserDtoBuilder.getSecuredId();
+        this.password = createUserDtoBuilder.getPassword();
     }
 
     public UUID getId() {
@@ -41,6 +43,10 @@ public class UserDto {
         return securedId;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setId(UUID id) {
         this.id = id;
     }
@@ -61,46 +67,52 @@ public class UserDto {
         this.securedId = securedId;
     }
 
-    public static class UserDtoBuilder {
+    public static class CreateUserDtoBuilder {
         private UUID id;
         private String firstName;
         private String lastName;
         private String email;
+        private String password;
         private Long securedId;
 
-        protected UserDtoBuilder() {
+        protected CreateUserDtoBuilder() {
         }
 
-        public static UserDtoBuilder userDtoBuilder() {
-            return new UserDtoBuilder();
+        public static CreateUserDtoBuilder userDtoBuilder() {
+            return new CreateUserDtoBuilder();
         }
 
-        public UserDto build() {
-            return new UserDto(this);
+        public CreateUserDto build() {
+            return new CreateUserDto(this);
         }
 
-        public UserDtoBuilder withId(UUID id) {
+        public CreateUserDtoBuilder withId(UUID id) {
             this.id = id;
             return this;
         }
 
-        public UserDtoBuilder withFirstName(String firstName) {
+        public CreateUserDtoBuilder withFirstName(String firstName) {
             this.firstName = firstName;
             return this;
         }
 
-        public UserDtoBuilder withLastName(String lastName) {
+        public CreateUserDtoBuilder withLastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-        public UserDtoBuilder withEmail(String email) {
+        public CreateUserDtoBuilder withEmail(String email) {
             this.email = email;
             return this;
         }
 
-        public UserDtoBuilder withSecuredId(Long securedId) {
+        public CreateUserDtoBuilder withSecuredId(Long securedId) {
             this.securedId = securedId;
+            return this;
+        }
+
+        public CreateUserDtoBuilder withPassword(String password) {
+            this.password = password;
             return this;
         }
 
@@ -122,6 +134,10 @@ public class UserDto {
 
         public Long getSecuredId() {
             return securedId;
+        }
+
+        public String getPassword() {
+            return password;
         }
     }
 }
