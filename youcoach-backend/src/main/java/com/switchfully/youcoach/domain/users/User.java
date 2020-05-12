@@ -19,19 +19,13 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email) {
-        this.id = UUID.randomUUID();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public User(UserBuilder userBuilder) {
+        this.id = userBuilder.getId();
+        this.firstName = userBuilder.getFirstName();
+        this.lastName = userBuilder.getLastName();
+        this.email = userBuilder.getEmail();
     }
 
-    public User(UUID id, String firstName, String lastName, String email) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
 
     public UUID getId() {
         return id;
@@ -47,5 +41,60 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public static class UserBuilder {
+
+        private UUID id;
+        private String firstName;
+        private String lastName;
+        private String email;
+
+        protected UserBuilder() {
+        }
+
+        public static UserBuilder userBuilder() {
+            return new UserBuilder();
+        }
+
+        public User build() {
+            return new User(this);
+        }
+
+        public UserBuilder withId(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public UserBuilder withFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public UserBuilder withLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public UserBuilder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UUID getId() {
+            return id;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public String getEmail() {
+            return email;
+        }
     }
 }

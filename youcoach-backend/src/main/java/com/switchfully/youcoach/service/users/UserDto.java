@@ -12,17 +12,11 @@ public class UserDto {
     public UserDto() {
     }
 
-    public UserDto(String firstName, String lastName, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-    }
-
-    public UserDto(UUID id, String firstName, String lastName, String email) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public UserDto(UserDtoBuilder userDtoBuilder) {
+        this.id = userDtoBuilder.getId();
+        this.firstName = userDtoBuilder.getFirstName();
+        this.lastName = userDtoBuilder.getLastName();
+        this.email = userDtoBuilder.getEmail();
     }
 
     public UUID getId() {
@@ -55,5 +49,59 @@ public class UserDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public static class UserDtoBuilder {
+        private UUID id;
+        private String firstName;
+        private String lastName;
+        private String email;
+
+        protected UserDtoBuilder() {
+        }
+
+        public static UserDtoBuilder userDtoBuilder() {
+            return new UserDtoBuilder();
+        }
+
+        public UserDto build() {
+            return new UserDto(this);
+        }
+
+        public UserDtoBuilder withId(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public UserDtoBuilder withFirstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public UserDtoBuilder withLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public UserDtoBuilder withEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public UUID getId() {
+            return id;
+        }
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public String getEmail() {
+            return email;
+        }
     }
 }
