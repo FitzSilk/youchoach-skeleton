@@ -13,4 +13,11 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     public SecuredUser findByUsername(String username) {
         return securedUsers.stream().filter(user -> user.getUsername().equals(username)).findFirst().orElse(null);
     }
+
+    @Override
+    public Long save(SecuredUser securedUser) {
+        securedUser.setId(3L);
+        securedUsers.add(securedUser);
+        return securedUser.getId();
+    }
 }

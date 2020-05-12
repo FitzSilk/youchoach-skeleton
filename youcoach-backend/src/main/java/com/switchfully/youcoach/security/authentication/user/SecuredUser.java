@@ -19,6 +19,12 @@ public class SecuredUser {
         this.roles = roles;
     }
 
+    public SecuredUser(String username, String password, List<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public SecuredUser() {
 
     }

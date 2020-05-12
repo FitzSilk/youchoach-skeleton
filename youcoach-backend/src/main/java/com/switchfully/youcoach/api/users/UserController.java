@@ -1,15 +1,15 @@
 package com.switchfully.youcoach.api.users;
 
+import com.switchfully.youcoach.service.users.CreateUserDto;
 import com.switchfully.youcoach.service.users.UserDto;
 import com.switchfully.youcoach.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@Controller
+@RestController
 @RequestMapping(path = UserController.USER_RESOURCE_PATH)
 public class UserController {
 
@@ -23,8 +23,8 @@ public class UserController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto register(@RequestBody UserDto userDto) {
-        return userService.addUser(userDto);
+    public UserDto register(@RequestBody CreateUserDto createUserDto) {
+        return userService.addUser(createUserDto);
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")

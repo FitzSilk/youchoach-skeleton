@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.UUID;
 
 @Entity
@@ -14,7 +15,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-
+    private Long securedId;
 
     public User() {
     }
@@ -24,6 +25,7 @@ public class User {
         this.firstName = userBuilder.getFirstName();
         this.lastName = userBuilder.getLastName();
         this.email = userBuilder.getEmail();
+        this.securedId = userBuilder.getSecuredId();
     }
 
 
@@ -43,12 +45,17 @@ public class User {
         return email;
     }
 
+    public Long getSecuredId() {
+        return securedId;
+    }
+
     public static class UserBuilder {
 
         private UUID id;
         private String firstName;
         private String lastName;
         private String email;
+        private Long securedId;
 
         protected UserBuilder() {
         }
@@ -81,6 +88,11 @@ public class User {
             return this;
         }
 
+        public UserBuilder withSecuredId(Long securedId) {
+            this.securedId = securedId;
+            return this;
+        }
+
         public UUID getId() {
             return id;
         }
@@ -95,6 +107,10 @@ public class User {
 
         public String getEmail() {
             return email;
+        }
+
+        public Long getSecuredId() {
+            return securedId;
         }
     }
 }
