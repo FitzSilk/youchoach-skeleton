@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -31,5 +32,11 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUserById(@PathVariable UUID id) {
         return userService.getUserById(id);
+    }
+
+    @GetMapping(produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto> getAllUsers() {
+        return userService.getAllUsers();
     }
 }

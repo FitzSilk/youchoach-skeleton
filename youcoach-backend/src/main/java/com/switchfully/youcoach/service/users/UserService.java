@@ -47,4 +47,7 @@ public class UserService {
                 () -> new IllegalArgumentException("The id " + id + " is not a valid id in our system. Try again?")));
     }
 
+    public List<UserDto> getAllUsers() {
+        return userMapper.toDto(userRepository.findAll());
+    }
 }

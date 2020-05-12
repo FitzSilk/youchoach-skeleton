@@ -1,6 +1,9 @@
 package com.switchfully.youcoach.security.authentication.user;
 
 import java.util.List;
+import java.util.Random;
+
+import static java.lang.Math.abs;
 
 public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     private List<SecuredUser> securedUsers;
@@ -16,7 +19,7 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
 
     @Override
     public Long save(SecuredUser securedUser) {
-        securedUser.setId(3L);
+        securedUser.setId(abs(new Random().nextLong()));
         securedUsers.add(securedUser);
         return securedUser.getId();
     }
