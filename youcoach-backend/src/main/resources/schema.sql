@@ -1,5 +1,15 @@
 begin;
 
+-- UNCOMMENT THESE LINES TO RESET THIS DB
+-- **************************************
+
+-- set schema 'youcoach';
+-- drop table if exists secured_users, users cascade;
+-- drop schema youcoach;
+
+-- END UNCOMMENT
+-- ***************************************
+
 create schema if not exists youcoach;
 
 set schema 'youcoach';
