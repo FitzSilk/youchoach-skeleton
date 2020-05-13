@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {UserService} from '../services/user.service';
-import {Router} from '@angular/router';
 import {User} from '../classes/user';
 import {SecuredUser} from '../classes/secureduser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -19,11 +19,11 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = this.formBuilder.group({
-      firstName: '',
-      lastName: '',
-      email: '',
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
       securedUser: this.formBuilder.group({
-        password: ['', Validators.required],
+        password: ['', Validators.required, Validators.minLength(8)],
         confirmPassword: ['', Validators.required]
       })
     });
@@ -37,7 +37,7 @@ export class RegistrationComponent implements OnInit {
     const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
     this.success = false;
     this.error = false;
-    this.userService.saveUser(newUser).subscribe(user => this.users.push(user));
+    this.userService.saveUser(newUser).subscribe(user => this.router.navigate(['/home']));
     this.registerForm.reset();
   }
 
