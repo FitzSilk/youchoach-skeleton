@@ -27,6 +27,7 @@ create table if not exists users(
                                     lastname varchar(50),
                                     email varchar(50),
                                     secured_id uuid,
+                                    photo varchar,
                                     foreign key (secured_id) references secured_users(su_id)
 );
 
