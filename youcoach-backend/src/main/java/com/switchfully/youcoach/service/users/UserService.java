@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.service.users;
 
+import com.switchfully.youcoach.domain.users.User;
 import com.switchfully.youcoach.domain.users.UserRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
@@ -25,10 +26,10 @@ public class UserService {
         this.securedUserRepository = securedUserRepository;
     }
 
-    public UserDto addUser(UserDto userDto) throws IllegalArgumentException{
+    public UserDto addUser(UserDto userDto) throws IllegalArgumentException {
         PasswordValidation.checkString(userDto.getSecuredUser().getPassword());
         EmailValidation.validateEmail(userDto.getEmail());
-        SecuredUser securedUser= new SecuredUser(userDto.getSecuredUser().getUsername(),userDto.getSecuredUser().getPassword(),userDto.getSecuredUser().getRoles());
+        SecuredUser securedUser = new SecuredUser(userDto.getSecuredUser().getUsername(), userDto.getSecuredUser().getPassword(), userDto.getSecuredUser().getRoles());
         securedUserRepository.save(securedUser);
         userDto.setSecuredUser(securedUser);
         return userMapper.toDto(userRepository.save(userMapper.createUser(userDto)));
@@ -43,4 +44,6 @@ public class UserService {
     public List<UserDto> getAllUsers() {
         return userMapper.toDto(userRepository.findAll());
     }
+
 }
+

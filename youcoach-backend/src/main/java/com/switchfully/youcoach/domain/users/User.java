@@ -27,6 +27,10 @@ public class User {
     @JoinColumn(name = "secured_id")
     private SecuredUser securedUser;
 
+    @Column (name="photo")
+    private String pictureUrl;
+
+
     public User() {
     }
 
