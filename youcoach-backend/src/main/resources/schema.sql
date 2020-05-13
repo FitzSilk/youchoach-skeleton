@@ -30,6 +30,12 @@ create table if not exists users(
                                     foreign key (secured_id) references secured_users(su_id)
 );
 
+create table if not exists profiles(
+p_id uuid primary key,
+user_id uuid,
+photo varchar,
+foreign key (user_id) references users(u_id)
+);
 --- insert some secured users for login
 insert into secured_users (username, password, coach) values ('student','$2y$12$ZSWZWelm2qwDkpclH4/FR.EgTg4H297cvNFI0Li61//H4c7nT6Vva',false);
 insert into secured_users (username, password, coach) values ('coach','$2y$12$LGjbl1dKNu2vLz5ZwrLOkO5nOg2VzXmvp0asq89isoZ6CChDuqXG6',true);
