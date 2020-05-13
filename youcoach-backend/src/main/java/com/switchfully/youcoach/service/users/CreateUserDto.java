@@ -1,5 +1,7 @@
 package com.switchfully.youcoach.service.users;
 
+import com.switchfully.youcoach.security.authentication.user.SecuredUser;
+
 import java.util.UUID;
 
 public class CreateUserDto {
@@ -9,7 +11,7 @@ public class CreateUserDto {
     private String lastName;
     private String email;
     private String password;
-    private Long securedId;
+    private SecuredUser securedId;
 
     public CreateUserDto() {
     }
@@ -39,7 +41,7 @@ public class CreateUserDto {
         return email;
     }
 
-    public Long getSecuredId() {
+    public SecuredUser getSecuredId() {
         return securedId;
     }
 
@@ -63,7 +65,7 @@ public class CreateUserDto {
         this.email = email;
     }
 
-    public void setSecuredId(Long securedId) {
+    public void setSecuredId(SecuredUser securedId) {
         this.securedId = securedId;
     }
 
@@ -73,7 +75,7 @@ public class CreateUserDto {
         private String lastName;
         private String email;
         private String password;
-        private Long securedId;
+        private SecuredUser securedId;
 
         protected CreateUserDtoBuilder() {
         }
@@ -106,7 +108,7 @@ public class CreateUserDto {
             return this;
         }
 
-        public CreateUserDtoBuilder withSecuredId(Long securedId) {
+        public CreateUserDtoBuilder withSecuredId(SecuredUser securedId) {
             this.securedId = securedId;
             return this;
         }
@@ -132,7 +134,7 @@ public class CreateUserDto {
             return email;
         }
 
-        public Long getSecuredId() {
+        public SecuredUser getSecuredId() {
             return securedId;
         }
 

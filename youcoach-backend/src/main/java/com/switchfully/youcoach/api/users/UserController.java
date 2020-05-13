@@ -24,8 +24,8 @@ public class UserController {
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto register(@RequestBody CreateUserDto createUserDto) {
-        return userService.addUser(createUserDto);
+    public UserDto register(@RequestBody UserDto userDto) {
+        return userService.addUser(userDto);
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")

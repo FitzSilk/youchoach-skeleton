@@ -1,25 +1,39 @@
 package com.switchfully.youcoach.security.authentication.user;
 
 import com.switchfully.youcoach.security.authorization.Role;
+import org.hibernate.annotations.CollectionType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="secured_users")
 public class SecuredUser {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="su_id")
     private Long id;
-    private String username;
-    private String password;
-    private List<Role> roles;
 
-    public SecuredUser(Long id, String username, String password, List<Role> roles) {
+    @Column
+    private String username;
+
+    @Column
+    private String password;
+
+    //private List<Role> roles;  // TO BE CLARIFIED
+    @Column(name="coach")
+    private Role roles;
+
+    public SecuredUser(Long id, String username, String password, Role roles) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.roles = roles;
     }
 
-    public SecuredUser(String username, String password, List<Role> roles) {
+    public SecuredUser(String username, String password, Role roles) {
         this.username = username;
         this.password = password;
         this.roles = roles;
@@ -53,11 +67,11 @@ public class SecuredUser {
         this.id = id;
     }
 
-    public List<Role> getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 

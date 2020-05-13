@@ -1,21 +1,31 @@
 package com.switchfully.youcoach.domain.users;
 
-import org.springframework.stereotype.Component;
+import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="u_id")
     private UUID id;
+
+    @Column(name = "firstname")
     private String firstName;
+
+    @Column(name = "lastname")
     private String lastName;
+
+    @Column
     private String email;
-    private Long securedId;
+
+    @OneToOne
+    @JoinColumn(name = "secured_id")
+    private SecuredUser securedUser;
 
     public User() {
     }
@@ -25,7 +35,7 @@ public class User {
         this.firstName = userBuilder.getFirstName();
         this.lastName = userBuilder.getLastName();
         this.email = userBuilder.getEmail();
-        this.securedId = userBuilder.getSecuredId();
+        this.securedUser = userBuilder.getSecuredUser();
     }
 
 
@@ -45,8 +55,8 @@ public class User {
         return email;
     }
 
-    public Long getSecuredId() {
-        return securedId;
+    public SecuredUser getSecuredUser() {
+        return securedUser;
     }
 
     public static class UserBuilder {
@@ -55,7 +65,7 @@ public class User {
         private String firstName;
         private String lastName;
         private String email;
-        private Long securedId;
+        private SecuredUser securedUser;
 
         protected UserBuilder() {
         }
@@ -88,8 +98,13 @@ public class User {
             return this;
         }
 
-        public UserBuilder withSecuredId(Long securedId) {
-            this.securedId = securedId;
+//        public UserBuilder withSecuredId(SecuredUser securedId) {
+//            this.securedId = securedId;
+//            return this;
+//        }
+
+        public UserBuilder withSecuredUser(SecuredUser securedUser) {
+            this.securedUser = securedUser;
             return this;
         }
 
@@ -109,8 +124,8 @@ public class User {
             return email;
         }
 
-        public Long getSecuredId() {
-            return securedId;
+        public SecuredUser getSecuredUser() {
+            return securedUser;
         }
     }
 }
