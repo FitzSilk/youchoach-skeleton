@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 public interface SecuredUserRepository extends CrudRepository<SecuredUser, Long> {
     SecuredUser findByUsername(String username);
 
-    //Long save(SecuredUser securedUser);
 }

@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 import static com.switchfully.youcoach.service.users.UserDto.UserDtoBuilder.userDtoBuilder;
+import static java.lang.StrictMath.abs;
 
 @Service
 public class UserService {
@@ -28,19 +30,12 @@ public class UserService {
     }
 
     public UserDto addUser(UserDto userDto) {
-//        List<Role> rolesList = new ArrayList<>();
-//        rolesList.add(Role.STUDENT);
-        //SecuredUser newSecuredUser = new SecuredUser(userDto.getEmail(), userDto.getPassword(), rolesList);
-        securedUserRepository.save(userDto.getSecuredUser());
-//        UserDto userDto = userDtoBuilder()
-//                .withId(userDto.getId())
-//                .withFirstName(userDto.getFirstName())
-//                .withLastName(userDto.getLastName())
-//                .withEmail(userDto.getEmail())
-//                .withSecuredId(securedId)
-//                .build();
-        //return userMapper.toDto(userRepository.save(userMapper.createUser(userDto)));
-        return userDto;
+        SecuredUser securedUser= new SecuredUser(abs(new Random().nextLong()),userDto.getSecuredUser().getUsername(),userDto.getSecuredUser().getPassword(),userDto.getSecuredUser().getRoles());
+        securedUserRepository.save(securedUser);
+        userDto.setSecuredUser(securedUser);
+
+        return userMapper.toDto(userRepository.save(userMapper.createUser(userDto)));
+
     }
 
     public UserDto getUserById(UUID id) {
