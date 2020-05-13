@@ -33,7 +33,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(userData) {
-    const secUser = new SecuredUser(userData.email, userData.password, 0);
+    const secUser = new SecuredUser(userData.email, userData.securedUser.password, 0);
     const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
     this.success = false;
     this.error = false;
