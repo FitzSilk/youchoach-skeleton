@@ -31,8 +31,8 @@ create table if not exists users(
 );
 
 --- insert some secured users for login
-insert into secured_users (username, password, role) values ('student','$2y$12$ZSWZWelm2qwDkpclH4/FR.EgTg4H297cvNFI0Li61//H4c7nT6Vva','coachee');
-insert into secured_users (username, password, role) values ('coach','$2y$12$LGjbl1dKNu2vLz5ZwrLOkO5nOg2VzXmvp0asq89isoZ6CChDuqXG6','coach');
+insert into secured_users values ('411fd4fc-c770-4cab-821b-85d2cb2c048e','student','$2y$12$ZSWZWelm2qwDkpclH4/FR.EgTg4H297cvNFI0Li61//H4c7nT6Vva','coachee');
+insert into secured_users values ('1045ae57-57f9-41f0-b1c9-c4018200f456','coach','$2y$12$LGjbl1dKNu2vLz5ZwrLOkO5nOg2VzXmvp0asq89isoZ6CChDuqXG6','coach');
 
 --- new requirements on 13/05
 insert into secured_users (username, password, role) values ('coachee1@school.org','YouC0ach', 'coachee');
