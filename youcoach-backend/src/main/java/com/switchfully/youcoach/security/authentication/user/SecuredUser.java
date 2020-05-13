@@ -6,15 +6,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="secured_users")
 public class SecuredUser {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="su_id")
-    private Long id;
+    private UUID id;
 
     @Column
     private String username;
@@ -23,10 +24,10 @@ public class SecuredUser {
     private String password;
 
     //private List<Role> roles;  // TO BE CLARIFIED
-    @Column(name="coach")
+    @Column(name="role")
     private Role roles;
 
-    public SecuredUser(Long id, String username, String password, Role roles) {
+    public SecuredUser(UUID id, String username, String password, Role roles) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -59,11 +60,11 @@ public class SecuredUser {
         this.password = password;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
