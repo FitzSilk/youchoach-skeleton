@@ -3,9 +3,9 @@ begin;
 -- UNCOMMENT THESE LINES TO RESET THIS DB
 -- **************************************
 
--- set schema 'youcoach';
--- drop table if exists secured_users, users cascade;
--- drop schema youcoach;
+set schema 'youcoach';
+drop table if exists secured_users, users cascade;
+drop schema youcoach;
 
 -- END UNCOMMENT
 -- ***************************************
@@ -15,7 +15,7 @@ create schema if not exists youcoach;
 set schema 'youcoach';
 
 create table if not exists secured_users(
-	su_id bigint primary key,
+	su_id uuid primary key DEFAULT uuid_generate_v4 (),
 	username varchar(50),
 	password varchar,
 	coach boolean
