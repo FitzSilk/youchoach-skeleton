@@ -12,7 +12,7 @@ import java.util.List;
 public class SecuredUser {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="su_id")
     private Long id;
 

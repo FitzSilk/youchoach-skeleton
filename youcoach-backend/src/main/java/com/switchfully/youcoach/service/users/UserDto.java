@@ -63,6 +63,8 @@ public class UserDto {
         this.securedUser = securedUser;
     }
 
+
+
     public static class UserDtoBuilder {
         private UUID id;
         private String firstName;
