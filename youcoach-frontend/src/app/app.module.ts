@@ -11,8 +11,8 @@ import {AuthenticationInterceptor} from './authentication/authentication.interce
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HomeComponent } from './home/home.component';
-import { RegistrationComponent } from './registration/registration.component';
+import {HomeComponent} from './home/home.component';
+import {RegistrationComponent} from './registration/registration.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

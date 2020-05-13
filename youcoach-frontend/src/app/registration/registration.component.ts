@@ -16,14 +16,15 @@ export class RegistrationComponent implements OnInit {
   registerForm;
   @Input()
   users: User[];
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       securedUser: this.formBuilder.group({
-        password: ['', Validators.required, Validators.minLength(8)],
+        password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', Validators.required]
       })
     });
@@ -33,6 +34,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(userData) {
+    this.submitted = true;
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+      return;
+    }
     const secUser = new SecuredUser(userData.email, userData.securedUser.password, 0);
     const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
     this.success = false;
@@ -50,5 +56,8 @@ export class RegistrationComponent implements OnInit {
       this.registerForm.get('securedUser.confirmPassword').setErrors({notSame: true});
     }
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.registerForm.controls; }
 
 }
