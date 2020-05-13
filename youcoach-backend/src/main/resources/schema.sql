@@ -20,5 +20,10 @@ create table if not exists users(
 	foreign key (secured_id) references secured_users(su_id)
 );
 
+--- insert some secured users for login
+insert into secured_users values (1,'student','$2y$12$ZSWZWelm2qwDkpclH4/FR.EgTg4H297cvNFI0Li61//H4c7nT6Vva',0);
+insert into secured_users values (2,'coach','$2y$12$LGjbl1dKNu2vLz5ZwrLOkO5nOg2VzXmvp0asq89isoZ6CChDuqXG6',2);
+
 ---rollback;
+
 commit;
