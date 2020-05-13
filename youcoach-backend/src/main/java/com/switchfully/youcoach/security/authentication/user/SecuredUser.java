@@ -23,7 +23,7 @@ public class SecuredUser {
     @Column
     private String password;
 
-    //private List<Role> roles;  // TO BE CLARIFIED
+
     @Column(name="role")
     private Role roles;
 
