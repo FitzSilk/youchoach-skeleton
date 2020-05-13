@@ -3,16 +3,12 @@ package com.switchfully.youcoach.service.users;
 import com.switchfully.youcoach.domain.users.UserRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
-import com.switchfully.youcoach.security.authorization.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
-import static com.switchfully.youcoach.service.users.UserDto.UserDtoBuilder.userDtoBuilder;
 import static java.lang.StrictMath.abs;
 
 @Service
@@ -29,11 +25,12 @@ public class UserService {
         this.securedUserRepository = securedUserRepository;
     }
 
-    public UserDto addUser(UserDto userDto) {
-        SecuredUser securedUser= new SecuredUser(abs(new Random().nextLong()),userDto.getSecuredUser().getUsername(),userDto.getSecuredUser().getPassword(),userDto.getSecuredUser().getRoles());
+    public UserDto addUser(UserDto userDto) throws IllegalArgumentException{
+        PasswordValidation.checkString(userDto.getSecuredUser().getPassword());
+        EmailValidation.validateEmail(userDto.getEmail());
+        SecuredUser securedUser= new SecuredUser(userDto.getSecuredUser().getUsername(),userDto.getSecuredUser().getPassword(),userDto.getSecuredUser().getRoles());
         securedUserRepository.save(securedUser);
         userDto.setSecuredUser(securedUser);
-
         return userMapper.toDto(userRepository.save(userMapper.createUser(userDto)));
 
     }

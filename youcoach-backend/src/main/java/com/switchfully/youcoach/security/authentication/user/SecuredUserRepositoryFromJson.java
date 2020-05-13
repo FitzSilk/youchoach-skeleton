@@ -3,6 +3,7 @@ package com.switchfully.youcoach.security.authentication.user;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.UUID;
 
 import static java.lang.Math.abs;
 
@@ -23,8 +24,8 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     }
 
 
-    public Long saveJson(SecuredUser securedUser) {
-        securedUser.setId(abs(new Random().nextLong()));
+    public UUID saveJson(SecuredUser securedUser) {
+        securedUser.setId(UUID.randomUUID());
         securedUsers.add(securedUser);
         return securedUser.getId();
     }
@@ -41,14 +42,15 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     }
 
     @Override
-    public Optional<SecuredUser> findById(Long aLong) {
+    public Optional<SecuredUser> findById(UUID uuid) {
         return Optional.empty();
     }
 
     @Override
-    public boolean existsById(Long aLong) {
+    public boolean existsById(UUID uuid) {
         return false;
     }
+
 
     @Override
     public Iterable<SecuredUser> findAll() {
@@ -56,7 +58,7 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     }
 
     @Override
-    public Iterable<SecuredUser> findAllById(Iterable<Long> longs) {
+    public Iterable<SecuredUser> findAllById(Iterable<UUID> iterable) {
         return null;
     }
 
@@ -66,22 +68,18 @@ public class SecuredUserRepositoryFromJson implements SecuredUserRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(UUID uuid) {
     }
 
     @Override
     public void delete(SecuredUser entity) {
-
     }
 
     @Override
     public void deleteAll(Iterable<? extends SecuredUser> entities) {
-
     }
 
     @Override
     public void deleteAll() {
-
     }
 }
