@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {UserService} from '../services/user.service';
 import {Router} from '@angular/router';
 import {User} from '../classes/user';
@@ -22,9 +22,10 @@ export class RegistrationComponent implements OnInit {
       firstName: '',
       lastName: '',
       email: '',
-      securedUser: this.formBuilder.group(({
-        password: ''
-      }))
+      securedUser: this.formBuilder.group({
+        password: ['', Validators.required],
+        confirmPassword: ['', Validators.required]
+      })
     });
   }
 
@@ -32,11 +33,22 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit(userData) {
-
+    const secUser = new SecuredUser(userData.email, userData.securedUser.password, 0);
+    const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
     this.success = false;
     this.error = false;
-    userData.securedUser.username = userData.email;
-    this.userService.saveUser(userData).subscribe(user => this.users.push(user));
+    this.userService.saveUser(newUser).subscribe(user => this.users.push(user));
     this.registerForm.reset();
   }
+
+  checkPasswordsMatch(): void {
+    const password = this.registerForm.get('securedUser.password');
+    console.log(password);
+    const confirmPassword = this.registerForm.get('securedUser.confirmPassword');
+    console.log(confirmPassword);
+    if (password.value !== confirmPassword.value) {
+      this.registerForm.get('securedUser.confirmPassword').setErrors({notSame: true});
+    }
+  }
+
 }
