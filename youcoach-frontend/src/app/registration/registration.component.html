@@ -27,14 +27,15 @@
             </div>
             <div class="row">
               <div class="input-field col s12" formGroupName="securedUser">
-                <input id="password" type="password" class="validate"  formControlName="password" >
+                <input id="password" type="password" class="validate"  formControlName="password" (input)="checkPasswordsMatch()">
                 <label for="password">Password</label>
               </div>
             </div>
             <div class="row">
-              <div class="input-field col s12">
-                <input id="passwordVerification" type="password" class="validate">
+              <div class="input-field col s12" formGroupName="securedUser">
+                <input id="passwordVerification" type="password" class="validate" formControlName="confirmPassword" (input)="checkPasswordsMatch()">
                 <label for="passwordVerification">Password (again)</label>
+                <p class="error" formControlName="passwordErrors" *ngIf="registerForm.get('securedUser.confirmPassword').hasError('notSame')"> It works </p>
               </div>
             </div>
 
