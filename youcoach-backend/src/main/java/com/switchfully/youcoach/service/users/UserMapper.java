@@ -20,6 +20,7 @@ public class UserMapper {
                 .withLastName(user.getLastName())
                 .withEmail(user.getEmail())
                 .withSecuredId(user.getSecuredUser())
+                .withPictureUrl(user.getPictureUrl())
                 .build();
     }
 
@@ -34,6 +35,7 @@ public class UserMapper {
                 .withLastName(userDto.getLastName())
                 .withEmail(userDto.getEmail())
                 .withSecuredUser(userDto.getSecuredUser())
+                .withPicture(userDto.getPictureUrl())
                 .build();
     }
 
@@ -44,6 +46,7 @@ public class UserMapper {
                 .withLastName(userDto.getLastName())
                 .withEmail(userDto.getEmail())
                 .withSecuredUser(userDto.getSecuredUser())
+                .withPicture(userDto.getPictureUrl())
                 .build();
     }
 }

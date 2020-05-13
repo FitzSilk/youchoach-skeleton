@@ -11,6 +11,7 @@ public class UserDto {
     private String lastName;
     private String email;
     private SecuredUser securedUser;
+    private String pictureUrl;
 
     public UserDto() {
     }
@@ -21,6 +22,7 @@ public class UserDto {
         this.lastName = userDtoBuilder.getLastName();
         this.email = userDtoBuilder.getEmail();
         this.securedUser = userDtoBuilder.getSecuredUser();
+        this.pictureUrl=userDtoBuilder.getPictureUrl();
     }
 
     public UUID getId() {
@@ -43,6 +45,8 @@ public class UserDto {
         return securedUser;
     }
 
+    public String getPictureUrl() { return pictureUrl; }
+
     public void setId(UUID id) {
         this.id = id;
     }
@@ -64,13 +68,13 @@ public class UserDto {
     }
 
 
-
     public static class UserDtoBuilder {
         private UUID id;
         private String firstName;
         private String lastName;
         private String email;
         private SecuredUser securedUser;
+        private String pictureUrl;
 
         protected UserDtoBuilder() {
         }
@@ -108,6 +112,11 @@ public class UserDto {
             return this;
         }
 
+        public UserDtoBuilder withPictureUrl(String pictureUrl) {
+            this.pictureUrl = pictureUrl;
+            return this;
+        }
+
         public UUID getId() {
             return id;
         }
@@ -127,5 +136,7 @@ public class UserDto {
         public SecuredUser getSecuredUser() {
             return securedUser;
         }
+
+        public String getPictureUrl() { return pictureUrl; }
     }
 }

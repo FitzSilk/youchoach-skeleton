@@ -40,6 +40,7 @@ public class User {
         this.lastName = userBuilder.getLastName();
         this.email = userBuilder.getEmail();
         this.securedUser = userBuilder.getSecuredUser();
+        this.pictureUrl=userBuilder.getPictureUrl();
     }
 
 
@@ -63,6 +64,10 @@ public class User {
         return securedUser;
     }
 
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
     public static class UserBuilder {
 
         private UUID id;
@@ -70,6 +75,7 @@ public class User {
         private String lastName;
         private String email;
         private SecuredUser securedUser;
+        private String pictureUrl;
 
         protected UserBuilder() {
         }
@@ -102,14 +108,18 @@ public class User {
             return this;
         }
 
-//        public UserBuilder withSecuredId(SecuredUser securedId) {
-//            this.securedId = securedId;
-//            return this;
-//        }
 
         public UserBuilder withSecuredUser(SecuredUser securedUser) {
             this.securedUser = securedUser;
             return this;
+        }
+        public UserBuilder withPicture(String pictureUrl) {
+            this.pictureUrl = pictureUrl;
+            return this;
+        }
+
+        public String getPictureUrl() {
+            return pictureUrl;
         }
 
         public UUID getId() {
