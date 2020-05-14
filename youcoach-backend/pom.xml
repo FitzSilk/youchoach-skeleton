@@ -57,13 +57,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--database-->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.2.12.jre6</version>
-        </dependency>
-        
+
         <!--util-->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -76,7 +70,6 @@
             <artifactId>commons-validator</artifactId>
             <version>1.6</version>
         </dependency>
-
 
 
         <!--testing-->
