@@ -13,6 +13,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
 import {RegistrationComponent} from './registration/registration.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -24,7 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     HelloWorldComponent,
     HomeComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    MyprofileComponent
   ],
   imports: [
     BrowserModule,

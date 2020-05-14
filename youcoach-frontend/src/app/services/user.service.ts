@@ -17,4 +17,9 @@ export class UserService {
   saveUser(user: User): Observable<User> {
     return this.http.post<User>(this.userUrl, user, this.httpOptions);
   }
+
+  getUserById(id: string): Observable<User> {
+    const url = `${this.userUrl}/${id}`;
+    return this.http.get<User>(url);
+  }
 }
