@@ -32,6 +32,7 @@
                 <input id="email" placeholder="(used to sign in)" type="email" class="validate" formControlName="email"
                        required [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <label for="email" translate>register.label.email</label>
+                <span *ngIf="emailExistsError" translate>This email already exists</span>
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                   <span *ngIf="f.email.errors.required">A mail address is required</span>
                 </div>
@@ -41,8 +42,10 @@
               <div class="input-field col s12" formGroupName="securedUser">
                 <input id="password" type="password" class="validate"
                        required formControlName="password" (input)="checkPasswordsMatch()"
-                       [ngClass]="{ 'is-invalid': submitted && registerForm.get('securedUser.password').errors }">
+                       [ngClass]="{ 'is-invalid': submitted && registerForm.get('securedUser.password').errors }"
+                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                 <label for="password" translate>register.label.password</label>
+                <span translate *ngIf="registerForm.get('securedUser.password').errors" class="helper-text" >register.message.password-policy</span>
                 <div *ngIf="submitted && registerForm.get('securedUser.password').errors" class="invalid-feedback">
                   <span *ngIf="registerForm.get('securedUser.password').errors.required">A password is required</span>
                 </div>
@@ -55,7 +58,7 @@
                        [ngClass]="{ 'is-invalid': submitted && registerForm.get('securedUser.confirmPassword').errors }">
                 <label for="passwordVerification" translate>register.label.password2</label>
                 <div *ngIf="submitted && registerForm.get('securedUser.confirmPassword').errors" class="invalid-feedback">
-                  <span *ngIf="registerForm.get('securedUser.confirmPassword').errors.required">A password is required</span>
+                  <span *ngIf="registerForm.get('securedUser.confirmPassword').errors.required" translate>register.message.password-match</span>
                 </div>
                 <span class="error" formControlName="passwordErrors"
                       *ngIf="registerForm.get('securedUser.confirmPassword').hasError('notSame')"

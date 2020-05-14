@@ -1,3 +1,6 @@
 .error {
   color: red;
 }
+.button-container {
+  text-align: right;
+}
