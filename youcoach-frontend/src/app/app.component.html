@@ -8,16 +8,13 @@
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/hello-world">Hello world</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" routerLink="/register" translate>register.title</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/user/{id}" translate>menu.link.my-profile</a>
       </li>
     </ul>
-    <div class="mr-2">
+    <div class="logged-container mr-2">
       <div class="nav-item" *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in
       </div>
       <div class="nav-item" *ngIf="!username" translate>menu.label.logged-out</div>
@@ -48,9 +45,9 @@
         <div class="col l3 s12">
           <h5 class="black-text">Navigation</h5>
           <ul>
-            <li><a class="grey-text text-darken-3" href="#"><i class="tiny material-icons">chevron_right</i>Home</a>
+            <li><a class="grey-text text-darken-3" routerLink="/home"><i class="tiny material-icons">chevron_right</i>Home</a>
             </li>
-            <li><a class="grey-text text-darken-3" href="#"><i class="tiny material-icons">chevron_right</i>Sign
+            <li><a class="grey-text text-darken-3" routerLink="/register"><i class="tiny material-icons">chevron_right</i>Sign
               in / Register</a></li>
             <li><a class="grey-text text-darken-3" href="#"><i class="tiny material-icons">chevron_right</i>Contact</a>
             </li>
