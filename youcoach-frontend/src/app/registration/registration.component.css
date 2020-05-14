@@ -3,3 +3,7 @@ span.error {
   font-style: italic;
   font-size: 0.8rem;
 }
+
+.button-container {
+  justify-content: flex-end;
+}
