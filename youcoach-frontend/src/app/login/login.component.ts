@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
         (_ => this.error = true)
       );
     this.loginForm.reset();
+    // TODO redirect to profile by getting the user with username
   }
 
   logout() {

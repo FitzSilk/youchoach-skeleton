@@ -22,4 +22,9 @@ export class UserService {
     const url = `${this.userUrl}/${id}`;
     return this.http.get<User>(url);
   }
+
+  getUserByUsername(userName: string): Observable<User> {
+    const url = `${this.userUrl}/${userName}`;
+    return this.http.get<User>(url);
+  }
 }
