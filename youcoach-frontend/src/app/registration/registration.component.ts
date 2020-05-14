@@ -17,6 +17,8 @@ export class RegistrationComponent implements OnInit {
   @Input()
   users: User[];
   submitted = false;
+  emailExistsError = false;
+  emailErrorMessage;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
     this.registerForm = this.formBuilder.group({
@@ -43,7 +45,12 @@ export class RegistrationComponent implements OnInit {
     const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
     this.success = false;
     this.error = false;
-    this.userService.saveUser(newUser).subscribe(user => this.router.navigate(['/home']));
+    this.userService.saveUser(newUser).subscribe(user => this.router.navigate(['/home']), err => {
+      if (err.error.message === ('Email already exists!')) {
+        this.emailExistsError = true;
+      }
+      this.emailErrorMessage = err.error.message;
+    });
     this.registerForm.reset();
   }
 

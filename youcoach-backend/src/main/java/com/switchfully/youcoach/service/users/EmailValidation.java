@@ -21,7 +21,7 @@ public class EmailValidation {
         }
 
         if (!userRepository.findAllByEmail(email).isEmpty()) {
-            throw new IllegalArgumentException("emailadres already exists");
+            throw new IllegalArgumentException("Email already exists!");
         }
 
     }
