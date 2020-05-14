@@ -2,6 +2,7 @@ package com.switchfully.youcoach.domain.users;
 
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 import java.util.UUID;
 
@@ -28,6 +29,7 @@ public class User {
     private SecuredUser securedUser;
 
     @Column (name="photo")
+    @Nullable
     private String pictureUrl;
 
 

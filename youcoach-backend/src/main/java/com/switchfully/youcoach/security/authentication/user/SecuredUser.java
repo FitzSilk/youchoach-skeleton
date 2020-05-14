@@ -23,8 +23,8 @@ public class SecuredUser {
     @Column
     private String password;
 
-
     @Column(name="role")
+    @Enumerated(EnumType.STRING)
     private Role roles;
 
     public SecuredUser(UUID id, String username, String password, Role roles) {

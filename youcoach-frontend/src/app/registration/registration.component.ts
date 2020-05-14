@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    const secUser = new SecuredUser(userData.email, userData.securedUser.password, 0);
+    const secUser = new SecuredUser(userData.email, userData.securedUser.password, 'COACHEE');
     const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
     this.success = false;
     this.error = false;

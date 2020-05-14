@@ -2,10 +2,10 @@ export class SecuredUser {
   id: string;
   username: string;
   password: string;
-  roles: number;
+  roles: string;
 
 
-  constructor(username: string, password: string, roles: number) {
+  constructor(username: string, password: string, roles: string) {
     this.username = username;
     this.password = password;
     this.roles = roles;
