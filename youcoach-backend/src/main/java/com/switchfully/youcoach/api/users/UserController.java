@@ -34,6 +34,12 @@ public class UserController {
         return userService.getUserById(id);
     }
 
+    @PostMapping(path = "/myprofile", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto getUserById(@RequestBody String mail) {
+        return userService.getUserByMail(mail);
+    }
+
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public List<UserDto> getAllUsers() {
