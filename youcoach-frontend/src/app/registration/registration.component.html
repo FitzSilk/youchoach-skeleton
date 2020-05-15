@@ -1,12 +1,8 @@
 <div class="container">
-
   <div class="row">
     <div class="col s12 m12">
-
-
       <h1 class="center teal-text lighten-3" translate>register.title</h1>
       <div class="content-container-with-padding z-depth-4">
-
         <div class="row">
           <form class="col s12" [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
             <div class="row">
@@ -29,7 +25,7 @@
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="email" placeholder="(used to sign in)" type="email" class="validate" formControlName="email"
+                <input id="email" type="email" class="validate" formControlName="email"
                        required [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <label for="email" translate>register.label.email</label>
                 <span *ngIf="emailExistsError" translate>This email already exists</span>
@@ -65,16 +61,13 @@
                       translate>register.message.password-match</span>
               </div>
             </div>
-
             <div class="row right-align button-container">
               <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
                 register.button.register<i class="material-icons right">send</i></button>
             </div>
           </form>
         </div>
-
       </div>
     </div>
   </div>
-
 </div>

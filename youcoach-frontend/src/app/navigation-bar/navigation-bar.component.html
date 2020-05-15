@@ -23,10 +23,8 @@
           </a>
         </li>
         <li>
-          <a class="waves-effect waves-light teal lighten-3 btn black-text">Register
-            <i
-              class="material-icons right">person_add
-            </i>
+          <a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register
+            <i class="material-icons right">person_add</i>
           </a>
         </li>
       </ul>
@@ -42,20 +40,16 @@
           <a href="#">Contact</a>
         </li>
         <li  *ngIf="username">
-          <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
+          <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
         </li>
         <li>
-          <a class="waves-effect waves-light yellow darken-2 btn black-text">Sign in
-            <i
-              class="material-icons right">person
-            </i>
+          <a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in
+            <i class="material-icons right">person</i>
           </a>
         </li>
         <li>
-          <a class="waves-effect waves-light teal lighten-3 btn black-text">Register
-            <i
-              class="material-icons right">person_add
-            </i>
+          <a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register
+            <i class="material-icons right">person_add</i>
           </a>
         </li>
       </ul>
