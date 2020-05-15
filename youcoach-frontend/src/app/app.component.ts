@@ -14,19 +14,12 @@ import {Observable} from 'rxjs';
 export class AppComponent implements OnInit {
   username;
   language = 'en';
-  user;
   id;
 
   constructor(private authenticationService: AuthenticationService, private translate: TranslateService, private userService: UserService) {
   }
 
   ngOnInit(): void {
-    this.id = this.authenticationService.getId();
-    this.username = this.authenticationService.getUsername();
-    this.authenticationService.userLoggedIn$.subscribe(_ => {
-      this.username = this.authenticationService.getUsername();
-      this.id = this.authenticationService.getId();
-    });
   }
 
   switchLanguage(language: string) {
