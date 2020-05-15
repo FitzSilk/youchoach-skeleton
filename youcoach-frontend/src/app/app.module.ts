@@ -8,12 +8,14 @@ import {LoginComponent} from './login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {AuthenticationInterceptor} from './authentication/authentication.interceptor';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HomeComponent} from './home/home.component';
 import {RegistrationComponent} from './registration/registration.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +28,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelloWorldComponent,
     HomeComponent,
     RegistrationComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    NavigationBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgbModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
@@ -42,7 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
