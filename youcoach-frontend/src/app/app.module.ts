@@ -14,6 +14,8 @@ import {HomeComponent} from './home/home.component';
 import {RegistrationComponent} from './registration/registration.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +28,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HelloWorldComponent,
     HomeComponent,
     RegistrationComponent,
-    MyprofileComponent
+    MyprofileComponent,
+    NavigationBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
