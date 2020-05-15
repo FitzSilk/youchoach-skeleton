@@ -32,10 +32,6 @@ export class LoginComponent implements OnInit {
         (_ => this.error = true)
       );
     this.loginForm.reset();
-    // TODO redirect to profile by getting the user with username
-    // const name=this.authenticationService.getUsername();
-    // const id=this.userService.getByUserName(username) => id
-    // this.router.navigate(['/user/{id}']);
   }
 
   logout() {
