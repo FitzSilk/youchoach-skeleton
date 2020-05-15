@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.service.users;
 
+import com.switchfully.youcoach.domain.users.User;
 import com.switchfully.youcoach.domain.users.UserRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
@@ -48,5 +49,12 @@ public class UserService {
         return userMapper.toDto(userRepository.findAll());
     }
 
+    public UserDto getUserByMail(String mail) {
+        if(userRepository.findAllByEmail(mail).isEmpty()){
+            throw new IllegalArgumentException("the e-mail address does not exist");
+        }
+        else{
+            return userMapper.toDto(userRepository.findAllByEmail(mail).get(0));}
+    }
 }
 
