@@ -5,6 +5,7 @@ import com.switchfully.youcoach.security.authentication.jwt.JwtAuthenticationFil
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthorizationFilter;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserService;
 import com.switchfully.youcoach.security.authorization.RoleToFeatureMapper;
+import com.switchfully.youcoach.service.users.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,12 +24,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private String jwtSecret;
     private RoleToFeatureMapper roleToFeatureMapper;
     private SecuredUserService securedUserService;
+    private UserService userService;
 
-    public SecurityConfig(SecuredUserService securedUserService, PasswordEncoder passwordEncoder, @Value("${jwt.secret}") String jwtSecret, RoleToFeatureMapper roleToFeatureMapper) {
+    public SecurityConfig(UserService userService, SecuredUserService securedUserService, PasswordEncoder passwordEncoder, @Value("${jwt.secret}") String jwtSecret, RoleToFeatureMapper roleToFeatureMapper) {
         this.securedUserService = securedUserService;
         this.passwordEncoder = passwordEncoder;
         this.jwtSecret = jwtSecret;
         this.roleToFeatureMapper = roleToFeatureMapper;
+        this.userService = userService;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(UserController.USER_RESOURCE_PATH+"/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtSecret))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtSecret, userService))
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtSecret, roleToFeatureMapper))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
