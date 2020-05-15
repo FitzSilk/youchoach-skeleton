@@ -1,9 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-body {
+html, body,app-root {
+  height: 100%;
+}
+body,app-root {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
 }
+
+/*body {*/
+/*  display: flex;*/
+/*  min-height: 100vh;*/
+/*  flex-direction: column;*/
+/*}*/
 
 main {
   flex: 1 0 auto;
@@ -79,4 +87,12 @@ p {
 }
 .icon-block .material-icons {
   font-size: inherit;
+}
+
+#content {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
 }
