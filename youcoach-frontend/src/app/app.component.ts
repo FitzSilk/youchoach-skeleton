@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from './authentication/authentication.service';
 import {TranslateService} from '@ngx-translate/core';
+import {UserService} from './services/user.service';
+import {User} from './classes/user';
+import {Observable} from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -10,8 +14,9 @@ import {TranslateService} from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   username;
   language = 'en';
+  user;
 
-  constructor(private authenticationService: AuthenticationService, private translate: TranslateService) {
+  constructor(private authenticationService: AuthenticationService, private translate: TranslateService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -25,7 +30,13 @@ export class AppComponent implements OnInit {
     this.translate.use(language);
     this.language = language;
   }
+
   currentLanguage() {
     return this.language;
+  }
+
+  submitData() {
+    this.userService.getUserByUsername(this.username).subscribe(user => this.user = user);
+    console.log(this.user);
   }
 }

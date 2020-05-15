@@ -2,12 +2,13 @@ import {Injectable} from '@angular/core';
 import {User} from '../classes/user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private userUrl = 'http://localhost:8080/user';
+  private userUrl = `${environment.backendUrl}/user`;
   users: User[];
   httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
@@ -24,7 +25,8 @@ export class UserService {
   }
 
   getUserByUsername(userName: string): Observable<User> {
-    const url = `${this.userUrl}/${userName}`;
-    return this.http.get<User>(url);
+
+    const url = `${this.userUrl}/myprofile/`;
+    return this.http.post<User>(url, userName, this.httpOptions);
   }
 }
