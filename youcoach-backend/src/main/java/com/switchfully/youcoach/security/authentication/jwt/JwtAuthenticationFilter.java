@@ -2,10 +2,10 @@ package com.switchfully.youcoach.security.authentication.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
+import com.switchfully.youcoach.service.users.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,10 +23,12 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
     private final String jwtSecret;
+    private final UserService userService;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, String jwtSecret) {
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, String jwtSecret, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtSecret = jwtSecret;
+        this.userService = userService;
 
         setFilterProcessesUrl("/login");
     }
@@ -57,6 +59,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setSubject(authentication.getName())
                 .setExpiration(new Date(new Date().getTime() + TOKEN_TIME_TO_LIVE))
                 .claim("roles", authentication.getAuthorities())
+                .setId(userService.getUserByMail(authentication.getName()).getId().toString())
                 .compact();
 
         response.addHeader("Authorization", "Bearer " + token);
