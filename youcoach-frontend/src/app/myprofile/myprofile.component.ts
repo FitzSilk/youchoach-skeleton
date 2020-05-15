@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {ActivatedRoute} from '@angular/router';
@@ -15,7 +15,7 @@ export class MyprofileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getById();
+   // this.getById();
   }
 
   getById(): void {

@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 export class AppComponent implements OnInit {
   username;
   language = 'en';
-  user;
+  user: User;
 
   constructor(private authenticationService: AuthenticationService, private translate: TranslateService, private userService: UserService) {
   }
