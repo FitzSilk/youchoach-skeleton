@@ -6,8 +6,11 @@ import {HomeComponent} from './home/home.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {MyprofileComponent} from './myprofile/myprofile.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {EditprofileComponent} from './editprofile/editprofile.component';
+
 
 const routes: Routes = [
+  {path: 'user/editprofile', component: EditprofileComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
@@ -16,7 +19,7 @@ const routes: Routes = [
   {path: 'user/myprofile/:id', component: MyprofileComponent},
   {path: 'user/:id', component: MyprofileComponent},
   {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'}
+   {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

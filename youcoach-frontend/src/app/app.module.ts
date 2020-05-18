@@ -17,6 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -32,7 +34,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyprofileComponent,
     NavigationBarComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    EditprofileComponent
   ],
   imports: [
     BrowserModule,
