@@ -63,6 +63,15 @@ public class UserController {
         return userDto1;
     }
 
+    @PutMapping(path = "/myprofile/{id}", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public void Updateuser(@PathVariable UUID id, @RequestBody UserDto userDto) {
+        myLogger.info("someone is trying to update user " + id);
+        userService.updateUserById(id, userDto);
+        myLogger.info("someone updated their userprofile with id:  " + id);
+    }
+
+
     @ExceptionHandler(IllegalArgumentException.class)
     private void userNotFoundException(IllegalArgumentException ex, HttpServletResponse response) throws IOException {
         response.sendError(HttpServletResponse.SC_NOT_FOUND, ex.getMessage());

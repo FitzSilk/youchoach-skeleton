@@ -43,7 +43,7 @@ public class UserService {
 
     }
 
-    public UserDto getUserById(UUID id) {
+    public UserDto getUserById(UUID id) throws IllegalArgumentException {
         return userMapper.toDto(userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("The id " + id + " is not a valid id in our system. Try again?")));
     }
@@ -52,14 +52,26 @@ public class UserService {
         return userMapper.toDto(userRepository.findAll());
     }
 
-    public UserDto getUserByMail(String mail) {
-        if(userRepository.findAllByEmail(mail).isEmpty()){
+    public UserDto getUserByMail(String mail) throws IllegalArgumentException {
+        if (userRepository.findAllByEmail(mail).isEmpty()) {
             throw new IllegalArgumentException("the e-mail address does not exist");
+        } else {
+            return userMapper.toDto(userRepository.findAllByEmail(mail).get(0));
         }
-        else{
-            return userMapper.toDto(userRepository.findAllByEmail(mail).get(0));}
     }
 
-
+    public void updateUserById(UUID id,UserDto userDto) throws IllegalArgumentException {
+        EmailValidation.validateEmail(userDto.getEmail());
+        User userToChange = userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("The id " + id + " is not a valid id in our system. Try again?"));
+        userToChange.getSecuredUser().setUsername(userDto.getEmail());
+        securedUserRepository.save(userToChange.getSecuredUser());
+        userToChange.setFirstName(userDto.getFirstName());
+        userToChange.setLastName(userDto.getLastName());
+        userToChange.setEmail(userDto.getEmail());
+        //TODO
+        //add classes/subjects
+        userRepository.save(userToChange);
+    }
 }
 

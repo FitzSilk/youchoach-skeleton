@@ -9,5 +9,4 @@ import java.util.UUID;
 @Repository
 public interface SecuredUserRepository extends CrudRepository<SecuredUser, UUID> {
     SecuredUser findByUsername(String username);
-
 }

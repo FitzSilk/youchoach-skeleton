@@ -70,6 +70,21 @@ public class User {
         return pictureUrl;
     }
 
+    public User setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public User setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public User setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public static class UserBuilder {
 
         private UUID id;
