@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from "../authentication/authentication.service";
+import {AuthenticationService} from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-myprofile',
@@ -11,18 +11,20 @@ import {AuthenticationService} from "../authentication/authentication.service";
 })
 export class MyprofileComponent implements OnInit {
   user: User;
+  roleAdmin = 'ADMIN';
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private authenticationService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
-   // this.getById();
+    this.getById();
   }
 
   getById(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id === this.authenticationService.getId()) {
+    console.log(this.authenticationService.getRole());
+    if (this.authenticationService.getRole() !== this.roleAdmin && id !== this.authenticationService.getId()) {
       this.router.navigate(['/404']);
     }
     this.userService.getUserById(id).subscribe(user => this.user = user);
