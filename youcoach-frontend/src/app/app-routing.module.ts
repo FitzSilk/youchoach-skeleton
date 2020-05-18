@@ -8,8 +8,8 @@ import {MyprofileComponent} from './myprofile/myprofile.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {EditprofileComponent} from './editprofile/editprofile.component';
 
-import {CoachApplyComponent} from "./coach-apply/coach-apply.component";
-import {MyprofileViewComponent} from "./myprofile-view/myprofile-view.component";
+import {CoachApplyComponent} from './coach-apply/coach-apply.component';
+import {MyprofileViewComponent} from './myprofile-view/myprofile-view.component';
 
 const routes: Routes = [
   {path: 'user/editprofile', component: EditprofileComponent},
