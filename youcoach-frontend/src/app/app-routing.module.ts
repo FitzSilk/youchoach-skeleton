@@ -5,6 +5,7 @@ import {HelloWorldComponent} from './hello-world/hello-world.component';
 import {HomeComponent} from './home/home.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {MyprofileComponent} from './myprofile/myprofile.component';
+import {NotFoundComponent} from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -13,6 +14,8 @@ const routes: Routes = [
   {path: 'hello-world', component: HelloWorldComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'user/myprofile/:id', component: MyprofileComponent},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
