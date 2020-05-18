@@ -6,6 +6,8 @@ import {HomeComponent} from './home/home.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {MyprofileComponent} from './myprofile/myprofile.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {CoachApplyComponent} from "./coach-apply/coach-apply.component";
+import {MyprofileViewComponent} from "./myprofile-view/myprofile-view.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'user/myprofile/:id', component: MyprofileComponent},
   {path: 'user/:id', component: MyprofileComponent},
+  {path: 'want_to_be_coach', component: CoachApplyComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];
