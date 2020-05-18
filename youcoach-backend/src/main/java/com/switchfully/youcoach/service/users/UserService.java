@@ -1,9 +1,12 @@
 package com.switchfully.youcoach.service.users;
 
+import com.switchfully.youcoach.api.users.UserController;
 import com.switchfully.youcoach.domain.users.User;
 import com.switchfully.youcoach.domain.users.UserRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,5 +59,7 @@ public class UserService {
         else{
             return userMapper.toDto(userRepository.findAllByEmail(mail).get(0));}
     }
+
+
 }
 
