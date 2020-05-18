@@ -14,18 +14,21 @@ export class AuthenticationService {
   private userLoggedInSource = new Subject<boolean>();
   userLoggedIn$ = this.userLoggedInSource.asObservable();
   private idKey = 'id';
+  private roleKey = 'roles';
 
   constructor(private loginService: AuthenticationHttpService) {
   }
 
 
   login(loginData: any) {
+
     return this.loginService.login(loginData)
       .pipe(tap(response => {
         const token = response.headers.get('Authorization').replace('Bearer', '').trim();
         sessionStorage.setItem(this.tokenKey, token);
         sessionStorage.setItem(this.usernameKey, loginData.username);
         sessionStorage.setItem(this.idKey, jwt_decode(token).jti);
+        sessionStorage.setItem(this.roleKey, jwt_decode(token).roles[0].authority);
         this.userLoggedInSource.next(true);
       }));
   }
@@ -41,6 +44,9 @@ export class AuthenticationService {
   getId() {
     return sessionStorage.getItem(this.idKey);
   }
+  getRole(){
+    return sessionStorage.getItem(this.roleKey);
+  }
 
   isLoggedIn() {
     return sessionStorage.getItem(this.tokenKey) !== null;
@@ -50,6 +56,7 @@ export class AuthenticationService {
     sessionStorage.removeItem(this.tokenKey);
     sessionStorage.removeItem(this.usernameKey);
     sessionStorage.removeItem(this.idKey);
+    sessionStorage.removeItem(this.roleKey);
     this.userLoggedInSource.next(false);
   }
 }
