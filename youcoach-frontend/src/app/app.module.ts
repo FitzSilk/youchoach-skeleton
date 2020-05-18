@@ -34,6 +34,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     RegistrationComponent,
     MyprofileComponent,
+    CoachApplyComponent,
+    MyprofileViewComponent,
+    EditprofileComponent,
     NavigationBarComponent,
     FooterComponent,
     NotFoundComponent

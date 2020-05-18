@@ -24,27 +24,27 @@
             <!--                 alt="Profile Picture">-->
           </div>
           <div class="col l10 m10 s12">
-            <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
-            <table *ngIf="user" class="highlight">
-              <tbody>
-              <tr>
-                <td><strong translate>coach-profile-information.label.first-name</strong></td>
-                <input value="{{user.firstName}}">
-              </tr>
-              <tr>
-                <td><strong translate>coach-profile-information.label.last-name</strong></td>
-                <input value="{{user.lastName}}">
-              </tr>
-              <tr>
-                <td><strong translate>coach-profile-information.label.email</strong></td>
-                <input value="{{user.email}}">
-                </tr>
-                </tbody>
-              </table>
-              <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
-                Submitting stuff
-              </button>
-            </form>
+<!--            <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">-->
+<!--            <table *ngIf="user" class="highlight">-->
+<!--              <tbody>-->
+<!--              <tr>-->
+<!--                <td><strong translate>coach-profile-information.label.first-name</strong></td>-->
+<!--                <input value="{{user.firstName}}">-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><strong translate>coach-profile-information.label.last-name</strong></td>-->
+<!--                <input value="{{user.lastName}}">-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td><strong translate>coach-profile-information.label.email</strong></td>-->
+<!--                <input value="{{user.email}}">-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--              </table>-->
+<!--              <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>-->
+<!--                Submitting stuff-->
+<!--              </button>-->
+<!--            </form>-->
           </div>
         </div>
       </section>
