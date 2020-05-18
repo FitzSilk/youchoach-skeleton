@@ -16,9 +16,13 @@
           <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
         </li>
         <li>
-          <a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">
-            <div *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in</div>
-            <div *ngIf="!username" translate>Sign-in</div>
+          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in</span>
+          <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">
+            <div *ngIf="!username" translate>menu.button.sign-in</div>
+            <i class="material-icons right">person</i>
+          </a>
+          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/home" (click)="logout()">
+            <div *ngIf="username" translate>menu.button.sign-out</div>
             <i class="material-icons right">person</i>
           </a>
         </li>

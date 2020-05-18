@@ -37,4 +37,7 @@ export class NavigationBarComponent implements OnInit {
     return this.language;
   }
 
+  logout() {
+    this.authenticationService.logout();
+  }
 }
