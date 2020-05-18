@@ -23,16 +23,15 @@ export class MyprofileComponent implements OnInit {
 
   getById(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(this.authenticationService.getRole());
     if (this.authenticationService.getRole() !== this.roleAdmin && id !== this.authenticationService.getId()) {
-      this.router.navigate(['/404']);
+      this.router.navigate(['/404']).then();
     }
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
-  getByName(): void {
+  /*getByName(): void {
     const userName = this.route.snapshot.paramMap.get('userName');
     this.userService.getUserByUsername(userName).subscribe(user => this.user = user);
-  }
+  }*/
 
 }
