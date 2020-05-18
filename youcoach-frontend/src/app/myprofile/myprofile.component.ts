@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthenticationService} from "../authentication/authentication.service";
 
 @Component({
   selector: 'app-myprofile',
@@ -11,7 +12,8 @@ import {ActivatedRoute} from '@angular/router';
 export class MyprofileComponent implements OnInit {
   user: User;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
+  constructor(private userService: UserService, private route: ActivatedRoute,
+              private authenticationService: AuthenticationService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -20,6 +22,10 @@ export class MyprofileComponent implements OnInit {
 
   getById(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    console.log(id, this.authenticationService.getId());
+    if (id !== this.authenticationService.getId()) {
+      this.router.navigate(['/404']);
+    }
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 

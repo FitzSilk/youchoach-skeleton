@@ -1,12 +1,12 @@
 package com.switchfully.youcoach.api.users;
 
-import com.switchfully.youcoach.service.users.CreateUserDto;
 import com.switchfully.youcoach.service.users.UserDto;
 import com.switchfully.youcoach.service.users.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +37,10 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
+    @PreAuthorize("hasAuthority('ADMIN_VIEW')")
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUserById(@PathVariable UUID id) {
+//        return userService.getUserById(id);
         myLogger.info("someone is trying to get user by id " + id);
         UserDto userDto1 = userService.getUserById(id);
         myLogger.info("someone accessed: username " + userDto1.getFirstName() + " " + userDto1.getLastName() + " and userid: " + userDto1.getId());
@@ -47,7 +49,7 @@ public class UserController {
 
     @PostMapping(path = "/myprofile", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserById(@RequestBody String mail) {
+    public UserDto getUserIdByMail(@RequestBody String mail) {
         myLogger.info("someone is trying to get userinfo by this e-mailadres: " + mail);
         UserDto userDto1 = userService.getUserByMail(mail);
         myLogger.info("someone accessed: username " + userDto1.getFirstName() + " " + userDto1.getLastName() + " and userid: " + userDto1.getId());
