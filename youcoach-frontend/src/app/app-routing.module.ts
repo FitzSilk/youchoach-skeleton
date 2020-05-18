@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'hello-world', component: HelloWorldComponent},
   {path: 'register', component: RegistrationComponent},
   {path: 'user/myprofile/:id', component: MyprofileComponent},
+  {path: 'user/:id', component: MyprofileComponent},
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'}
 ];

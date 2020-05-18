@@ -1,10 +1,10 @@
 package com.switchfully.youcoach.api.users;
 
-import com.switchfully.youcoach.service.users.CreateUserDto;
 import com.switchfully.youcoach.service.users.UserDto;
 import com.switchfully.youcoach.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,14 +29,16 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
+    @PreAuthorize("hasAuthority('ADMIN_VIEW')")
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUserById(@PathVariable UUID id) {
+        System.out.println("test with id: " + id);
         return userService.getUserById(id);
     }
 
     @PostMapping(path = "/myprofile", produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto getUserById(@RequestBody String mail) {
+    public UserDto getUserIdByMail(@RequestBody String mail) {
         return userService.getUserByMail(mail);
     }
 
@@ -45,6 +47,5 @@ public class UserController {
     public List<UserDto> getAllUsers() {
         return userService.getAllUsers();
     }
-
 
 }
