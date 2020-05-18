@@ -19,6 +19,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoachApplyComponent } from './coach-apply/coach-apply.component';
 import { MyprofileViewComponent } from './myprofile-view/myprofile-view.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -34,9 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyprofileComponent,
     NavigationBarComponent,
     FooterComponent,
-    NotFoundComponent,
-    CoachApplyComponent,
-    MyprofileViewComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
