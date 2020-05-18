@@ -22,8 +22,7 @@ export class MyprofileComponent implements OnInit {
 
   getById(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id, this.authenticationService.getId());
-    if (id !== this.authenticationService.getId()) {
+    if (id === this.authenticationService.getId()) {
       this.router.navigate(['/404']);
     }
     this.userService.getUserById(id).subscribe(user => this.user = user);

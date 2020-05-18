@@ -40,7 +40,6 @@ public class UserController {
     @PreAuthorize("hasAuthority('ADMIN_VIEW')")
     @ResponseStatus(HttpStatus.OK)
     public UserDto getUserById(@PathVariable UUID id) {
-//        return userService.getUserById(id);
         myLogger.info("someone is trying to get user by id " + id);
         UserDto userDto1 = userService.getUserById(id);
         myLogger.info("someone accessed: username " + userDto1.getFirstName() + " " + userDto1.getLastName() + " and userid: " + userDto1.getId());
