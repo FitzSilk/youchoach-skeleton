@@ -1,60 +1,17 @@
+<div class="content">
 <div class="row">
 
   <div class="col s12 m2">
     <div class="content-container">
       <h6>My Profile</h6>
       <div class="collection">
-        <a href="#!" class="collection-item black-text active yellow darken-2" translate>my-profile-menu.link.profile-information</a>
-        <a href="#!" class="collection-item grey-text text-darken-2" translate>my-profile-menu.link.coaching-sessions</a>
-        <a href="#!" class="collection-item grey-text text-darken-2" translate>my-profile-menu.link.apply-to-become-a-coach</a>
+        <a id="main" class="collection-item black-text active yellow darken-2" (click)="switchView('main')" translate>my-profile-menu.link.profile-information</a>
+        <a id="coaching-sessions" href="#!" class="collection-item grey-text text-darken-2" translate>my-profile-menu.link.coaching-sessions</a>
+        <a id="coach-apply" class="collection-item grey-text text-darken-2" (click)="switchView('coach-apply')" translate>my-profile-menu.link.apply-to-become-a-coach</a>
       </div>
     </div>
   </div>
-
-  <div class="col s12 m10">
-    <div class="content-container">
-
-      <section class="card-panel grey lighten-5">
-        <div class="right">
-          <a class="waves-effect waves-light btn-large btn-floating yellow darken-2" routerLink="/home"><i
-            class="material-icons left">edit</i>Edit</a>
-        </div>
-        <h5>Profile Information</h5>
-        <div class="divider"></div>
-        <div class="row">
-          <div class="col l2 m2 s12">
-<!--            <img src="img/dummy/profile-picture.jpg" class="responsive-img circle"-->
-<!--                 alt="Profile Picture">-->
-          </div>
-          <div class="col l10 m10 s12">
-            <table *ngIf="user" class="highlight">
-              <tbody>
-              <tr>
-                <td><strong translate>coach-profile-information.label.first-name</strong></td>
-                <td>{{user.firstName}}</td>
-              </tr>
-              <tr>
-                <td><strong translate>coach-profile-information.label.last-name</strong></td>
-                <td>{{user.lastName}}</td>
-              </tr>
-              <tr>
-                <td><strong translate>coach-profile-information.label.email</strong></td>
-                <td>{{user.email}}</td>
-              </tr>
-              <tr>
-                <td><strong>Class</strong></td>
-                <td>4 - Latin Science</td>
-              </tr>
-              <tr>
-                <td><strong>You-coach role</strong></td>
-                <td>{{user.securedUser.roles}}</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </div>
+  <app-myprofile-view [user]="user" *ngIf="activeview === 'main'"></app-myprofile-view>
+  <app-coach-apply [user]="user" *ngIf="activeview === 'coach-apply'" ></app-coach-apply>
+</div>
 </div>
