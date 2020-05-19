@@ -4,6 +4,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {UserService} from '../services/user.service';
 import {FormBuilder} from '@angular/forms';
 import {MyprofileComponent} from '../myprofile/myprofile.component';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,8 +20,8 @@ export class EditprofileComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
               private myprofileComponent: MyprofileComponent,
-              private formBuilder: FormBuilder) {
-
+              private formBuilder: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -37,7 +38,8 @@ export class EditprofileComponent implements OnInit {
     this.updateForm = this.formBuilder.group({
       firstName: this.user.firstName,
       lastName: this.user.lastName,
-      email: this.user.email
+      email: this.user.email,
+      pictureUrl: this.user.pictureUrl
     });
 
   }
@@ -45,7 +47,8 @@ export class EditprofileComponent implements OnInit {
   onSubmit(updateData) {
     console.log(updateData);
     this.userService.updateUser(updateData)
-      .subscribe();
+      .subscribe(user => this.myprofileComponent.user = user);
+    this.myprofileComponent.activeview = 'main';
   }
 
 }

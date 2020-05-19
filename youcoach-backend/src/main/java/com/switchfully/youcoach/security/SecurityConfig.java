@@ -6,7 +6,6 @@ import com.switchfully.youcoach.security.authentication.jwt.JwtAuthorizationFilt
 import com.switchfully.youcoach.security.authentication.user.SecuredUserService;
 import com.switchfully.youcoach.security.authorization.RoleToFeatureMapper;
 import com.switchfully.youcoach.service.users.UserService;
-import org.assertj.core.util.Arrays;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -54,17 +53,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        List<String> allowedOrigins = new ArrayList<>();
-        allowedOrigins.add("http://localhost:4200");
-
         config.setAllowCredentials(true);
-        // config.addAllowedOrigin("http://localhost:4200");
+        config.addAllowedOrigin("http://localhost:4200");
         config.addAllowedHeader("*");
-        config.addAllowedMethod("GET, POST, PUT, OPTIONS, DELETE");
-        config.setAllowedOrigins(allowedOrigins);
+        config.addAllowedMethod("*");
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", new CorsConfiguration().applyPermitDefaultValues());
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
         return source;
     }
 

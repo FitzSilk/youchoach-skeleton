@@ -7,10 +7,6 @@
         <h5>Edit Profile Information</h5>
         <div class="divider"></div>
         <div class="row">
-          <div class="col l2 m2 s12">
-            <!--            <img src="img/dummy/profile-picture.jpg" class="responsive-img circle"-->
-            <!--                 alt="Profile Picture">-->
-          </div>
           <div class="col l10 m10 s12">
             <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
             <table *ngIf="user" class="highlight">
@@ -27,6 +23,10 @@
                 <td><strong translate>coach-profile-information.label.email</strong></td>
                 <input  formControlName="email">
                 </tr>
+              <tr>
+                <td><strong translate>profile-information.label.profile-picture</strong></td>
+                <input  formControlName="pictureUrl">
+              </tr>
                 </tbody>
               </table>
               <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>

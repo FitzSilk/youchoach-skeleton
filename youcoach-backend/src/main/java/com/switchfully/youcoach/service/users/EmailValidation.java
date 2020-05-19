@@ -25,4 +25,11 @@ public class EmailValidation {
         }
 
     }
+
+    public static void validateEmailForUpdate(String email) {
+        EmailValidator emailValidator = EmailValidator.getInstance();
+        if (!emailValidator.isValid(email)) {
+            throw new IllegalArgumentException("Invalid email address format.");
+        }
+    }
 }
