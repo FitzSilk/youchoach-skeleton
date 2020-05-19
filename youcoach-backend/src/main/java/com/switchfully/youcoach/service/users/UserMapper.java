@@ -21,11 +21,16 @@ public class UserMapper {
                 .withEmail(user.getEmail())
                 .withSecuredId(user.getSecuredUser())
                 .withPictureUrl(user.getPictureUrl())
+                .withCoach(user.getCoach())
                 .build();
     }
 
     public List<UserDto> toDto(List<User> users) {
         return users.stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    public List<UserDto> toDtoWithoutMail(List<User> users) {
+        return users.stream().map(this::toDtoWithoutMail).collect(Collectors.toList());
     }
 
     public User createUser(UserDto userDto) {
@@ -47,6 +52,17 @@ public class UserMapper {
                 .withEmail(userDto.getEmail())
                 .withSecuredUser(userDto.getSecuredUser())
                 .withPicture(userDto.getPictureUrl())
+                .withCoach(userDto.getCoach())
+                .build();
+    }
+
+    public UserDto toDtoWithoutMail(User user) {
+        return userDtoBuilder()
+                .withId(user.getId())
+                .withFirstName(user.getFirstName())
+                .withLastName(user.getLastName())
+                .withPictureUrl(user.getPictureUrl())
+                .withCoach(user.getCoach())
                 .build();
     }
 }

@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.service.users;
 
+import com.switchfully.youcoach.domain.users.Coach;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 
 import java.util.UUID;
@@ -12,6 +13,7 @@ public class UserDto {
     private String email;
     private SecuredUser securedUser;
     private String pictureUrl;
+    private Coach coach;
 
     public UserDto() {
     }
@@ -22,7 +24,8 @@ public class UserDto {
         this.lastName = userDtoBuilder.getLastName();
         this.email = userDtoBuilder.getEmail();
         this.securedUser = userDtoBuilder.getSecuredUser();
-        this.pictureUrl=userDtoBuilder.getPictureUrl();
+        this.pictureUrl = userDtoBuilder.getPictureUrl();
+        this.coach = userDtoBuilder.getCoach();
     }
 
     public UUID getId() {
@@ -45,7 +48,13 @@ public class UserDto {
         return securedUser;
     }
 
-    public String getPictureUrl() { return pictureUrl; }
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public Coach getCoach() {
+        return coach;
+    }
 
     public void setId(UUID id) {
         this.id = id;
@@ -67,6 +76,13 @@ public class UserDto {
         this.securedUser = securedUser;
     }
 
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public void setCoach(Coach coach) {
+        this.coach = coach;
+    }
 
     public static class UserDtoBuilder {
         private UUID id;
@@ -75,6 +91,7 @@ public class UserDto {
         private String email;
         private SecuredUser securedUser;
         private String pictureUrl;
+        private Coach coach;
 
         protected UserDtoBuilder() {
         }
@@ -117,6 +134,11 @@ public class UserDto {
             return this;
         }
 
+        public UserDtoBuilder withCoach(Coach coach) {
+            this.coach = coach;
+            return this;
+        }
+
         public UUID getId() {
             return id;
         }
@@ -137,6 +159,12 @@ public class UserDto {
             return securedUser;
         }
 
-        public String getPictureUrl() { return pictureUrl; }
+        public String getPictureUrl() {
+            return pictureUrl;
+        }
+
+        public Coach getCoach() {
+            return coach;
+        }
     }
 }

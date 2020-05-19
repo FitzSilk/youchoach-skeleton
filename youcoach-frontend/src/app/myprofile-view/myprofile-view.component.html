@@ -3,15 +3,15 @@
 
     <section class="card-panel grey lighten-5">
       <div class="right">
-        <a class="waves-effect waves-light btn-large btn-floating yellow darken-2" routerLink="/home"><i
+        <a id="edit-profile" class="waves-effect waves-light btn-large btn-floating yellow darken-2" (click)="myprofileComponent.switchView('edit-profile')"><i
           class="material-icons left">edit</i>Edit</a>
       </div>
       <h5>Profile Information</h5>
       <div class="divider"></div>
       <div class="row">
-        <div class="col l2 m2 s12">
-          <!--            <img src="img/dummy/profile-picture.jpg" class="responsive-img circle"-->
-          <!--                 alt="Profile Picture">-->
+        <div *ngIf="user.pictureUrl!==null" class="col l2 m2 s12">
+                      <img src="{{user.pictureUrl}}" class="responsive-img circle"
+                           alt="Profile Picture">
         </div>
         <div class="col l10 m10 s12">
           <table *ngIf="user" class="highlight">
@@ -34,7 +34,7 @@
             </tr>
             <tr>
               <td><strong>You-coach role</strong></td>
-              <td>{{user.securedUser.roles}}</td>
+              <td>{{user.securedUser.roles | titlecase}}</td>
             </tr>
             </tbody>
           </table>

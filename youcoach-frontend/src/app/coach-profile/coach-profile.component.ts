@@ -5,14 +5,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
 
 @Component({
-  selector: 'app-myprofile',
-  templateUrl: './myprofile.component.html',
-  styleUrls: ['./myprofile.component.css']
+  selector: 'app-coach-profile',
+  templateUrl: './coach-profile.component.html',
+  styleUrls: ['./coach-profile.component.css']
 })
-export class MyprofileComponent implements OnInit {
+export class CoachProfileComponent implements OnInit {
   user: User;
   roleAdmin = 'ADMIN';
-  activeview = 'main';
+  value1: string[];
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private authenticationService: AuthenticationService, private router: Router) {
@@ -30,13 +30,9 @@ export class MyprofileComponent implements OnInit {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
-
-  switchView(view: string) {
-    this.activeview = view;
-    const currentElement = '#' + view;
-    $('.collection-item').removeClass(['black-text', 'active', 'yellow', 'darken-2'])
-      .addClass(['grey-text', 'text-darken-2']);
-    $(currentElement).removeClass(['grey-text', 'text-darken-2'])
-      .addClass(['black-text', 'active', 'yellow', 'darken-2']);
+  splitTest(): void {
+    this.value1 = this.user.coach.classesForFirstTopic.split(',');
+    console.log(this.value1);
   }
+
 }

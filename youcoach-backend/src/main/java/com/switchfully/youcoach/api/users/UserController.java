@@ -64,14 +64,24 @@ public class UserController {
         return userDto1;
     }
 
-    @PutMapping(path = "/myprofile/{id}", produces = "application/json")
+
+    @PutMapping(path = "/myprofile/{id}", produces = "application/json", consumes="application/json")
     @ResponseStatus(HttpStatus.OK)
-    public void Updateuser(@PathVariable UUID id, @RequestBody UserDto userDto) {
+    public UserDto Updateuser(@PathVariable UUID id, @RequestBody UserDto userDto) {
         myLogger.info("someone is trying to update user " + id);
-        userService.updateUserById(id, userDto);
+        UserDto userDto1 = userService.updateUserById(id, userDto);
         myLogger.info("someone updated their userprofile with id:  " + id);
+        return userDto1;
     }
 
+    @GetMapping(path = "/coach", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto> getAllCoaches() {
+        myLogger.info("someone is trying to get all coaches");
+        List<UserDto> userDto1 = userService.getAllCoaches();
+        myLogger.info("someone accessed the list of coaches");
+        return userDto1;
+    }
 
     @ExceptionHandler(IllegalArgumentException.class)
     private void userNotFoundException(IllegalArgumentException ex, HttpServletResponse response) throws IOException {

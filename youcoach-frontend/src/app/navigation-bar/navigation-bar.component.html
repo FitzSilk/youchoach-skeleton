@@ -1,8 +1,8 @@
 <header>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <img src="assets/img/east.png" alt="Eastern logo" id="eastern-logo" />
       <a id="logo-container" href="#" class="brand-logo">
+        <img src="assets/img/east.png" alt="Eastern logo" height="40" width="40" id="eastern-logo" />
         You-Coach
       </a>
       <ul class="right hide-on-med-and-down">
@@ -50,6 +50,23 @@
             <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
+        <!--<li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+            <span>{{language | uppercase}}</span>
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+          <ul>-->
+            <li>
+              <a (click)="switchLanguage('en')">EN</a>
+            </li>
+            <li>
+              <a (click)="switchLanguage('fr')">FR</a>
+            </li>
+            <li>
+              <a (click)="switchLanguage('nl')">NL</a>
+            </li>
+        <!--  </ul>
+        </li>-->
 
 <!--        END DROPDOWN  -->
 

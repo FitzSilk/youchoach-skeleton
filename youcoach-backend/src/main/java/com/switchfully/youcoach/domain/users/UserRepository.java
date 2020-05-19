@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.domain.users;
 
+import com.switchfully.youcoach.security.authorization.Role;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,7 @@ public interface UserRepository extends CrudRepository<User, UUID> {
     List<User> findAll();
 
     List<User> findAllByEmail(String email);
+
+    List<User> findAllBySecuredUser_Roles(Role role);
 
 }

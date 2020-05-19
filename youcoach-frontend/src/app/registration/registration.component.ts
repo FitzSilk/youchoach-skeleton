@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     const secUser = new SecuredUser(userData.email, userData.securedUser.password, 'COACHEE');
-    const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser);
+    const newUser = new User(userData.firstName, userData.lastName, userData.email, secUser, null, null);
     this.success = false;
     this.error = false;
     this.userService.saveUser(newUser).subscribe(user => this.router.navigate(['/home']), err => {

@@ -32,6 +32,11 @@ public class User {
     @Nullable
     private String pictureUrl;
 
+    @OneToOne
+    @Nullable
+    @JoinColumn(name = "coach_id")
+    private Coach coach;
+
 
     public User() {
     }
@@ -43,6 +48,7 @@ public class User {
         this.email = userBuilder.getEmail();
         this.securedUser = userBuilder.getSecuredUser();
         this.pictureUrl=userBuilder.getPictureUrl();
+        this.coach = userBuilder.getCoach();
     }
 
 
@@ -70,6 +76,11 @@ public class User {
         return pictureUrl;
     }
 
+    @Nullable
+    public Coach getCoach() {
+        return coach;
+    }
+
     public User setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
@@ -85,6 +96,11 @@ public class User {
         return this;
     }
 
+    public User setPictureUrl(@Nullable String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+        return this;
+    }
+
     public static class UserBuilder {
 
         private UUID id;
@@ -93,6 +109,7 @@ public class User {
         private String email;
         private SecuredUser securedUser;
         private String pictureUrl;
+        private Coach coach;
 
         protected UserBuilder() {
         }
@@ -130,8 +147,14 @@ public class User {
             this.securedUser = securedUser;
             return this;
         }
+
         public UserBuilder withPicture(String pictureUrl) {
             this.pictureUrl = pictureUrl;
+            return this;
+        }
+
+        public UserBuilder withCoach(Coach coach) {
+            this.coach = coach;
             return this;
         }
 
@@ -157,6 +180,10 @@ public class User {
 
         public SecuredUser getSecuredUser() {
             return securedUser;
+        }
+
+        public Coach getCoach() {
+            return coach;
         }
     }
 }
