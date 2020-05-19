@@ -21,6 +21,7 @@ public class UserMapper {
                 .withEmail(user.getEmail())
                 .withSecuredId(user.getSecuredUser())
                 .withPictureUrl(user.getPictureUrl())
+                .withCoach(user.getCoach())
                 .build();
     }
 
@@ -47,6 +48,7 @@ public class UserMapper {
                 .withEmail(userDto.getEmail())
                 .withSecuredUser(userDto.getSecuredUser())
                 .withPicture(userDto.getPictureUrl())
+                .withCoach(userDto.getCoach())
                 .build();
     }
 }

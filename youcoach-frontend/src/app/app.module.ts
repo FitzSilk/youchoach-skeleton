@@ -20,6 +20,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { CoachApplyComponent } from './coach-apply/coach-apply.component';
 import { MyprofileViewComponent } from './myprofile-view/myprofile-view.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { CoachProfileComponent } from './coach-profile/coach-profile.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EditprofileComponent,
     NavigationBarComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CoachProfileComponent
   ],
   imports: [
     BrowserModule,
