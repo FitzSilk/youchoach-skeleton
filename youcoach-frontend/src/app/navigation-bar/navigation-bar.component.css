@@ -1,6 +1,6 @@
-#eastern-logo {
-  margin-top: 10px;
-}
-#logo-container {
-  margin-top: -5px;
+.nav-wrapper img {
+  max-width: 50px;
+  height: auto;
+  margin-top: 6px;
+  margin-right: 12px;
 }

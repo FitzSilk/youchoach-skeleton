@@ -1,8 +1,8 @@
 <header>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
+      <img src="assets/img/east.png" alt="Eastern logo" id="eastern-logo" />
       <a id="logo-container" href="#" class="brand-logo">
-        <img src="assets/img/east.png" alt="Eastern logo" height="40" width="40" id="eastern-logo" />
         You-Coach
       </a>
       <ul class="right hide-on-med-and-down">
@@ -15,22 +15,43 @@
         <li>
           <a href="#">Contact</a>
         </li>
-        <li  *ngIf="username">
-          <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
-        </li>
+<!--        <li  *ngIf="username">-->
+<!--          <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>-->
+<!--        </li>-->
         <li>
-          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in</span>
-          <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">
-            <div *ngIf="!username" translate>menu.button.sign-in</div>
-            <i class="material-icons right">person</i>
+<!--          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">-->
+<!--            menu.label.logged-in-->
+<!--          </span>-->
+          <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login" translate>
+            menu.button.sign-in<i class="material-icons right">person</i>
           </a>
-          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/home" (click)="logout()">
-            <div *ngIf="username" translate>menu.button.sign-out</div>
-            <i class="material-icons right">person</i>
+<!--          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text"-->
+<!--                              routerLink="/home" (click)="logout()" translate>-->
+<!--            menu.button.sign-out <i class="material-icons right">person</i>-->
+
+<!--          </a>-->
+        </li>
+
+<!--        DROPDOWN-->
+        <ul id="user-dropdown" class="dropdown-content">
+          <li>
+            <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
+          </li>
+          <li id="user-dropdown-btn">
+            <a class="waves-effect waves-light yellow darken-2 btn black-text"
+                                routerLink="/home" (click)="logout()" translate>
+              menu.button.log-out<i class="material-icons right">person</i></a>
+          </li>
+        </ul>
+
+        <li *ngIf="username" >
+          <a href="#!" class="dropdown-trigger" data-target="user-dropdown"
+             translate [translateParams]="{username: username}">menu.label.logged-in
+            <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
 
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+<!--        END DROPDOWN  -->
 
         <li *ngIf = "!username">
           <a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register
@@ -52,13 +73,13 @@
         <li  *ngIf="username">
           <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
         </li>
-        <li>
-          <a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in
+        <li *ngIf="!username">
+          <a class="waves-effect waves-light yellow darken-2 btn black-text" href="/login">Sign in
             <i class="material-icons right">person</i>
           </a>
         </li>
         <li *ngIf = "!username">
-          <a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register
+          <a class="waves-effect waves-light teal lighten-3 btn black-text" href="/register">Register
             <i class="material-icons right">person_add</i>
           </a>
         </li>
