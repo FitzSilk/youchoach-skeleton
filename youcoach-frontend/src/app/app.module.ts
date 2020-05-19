@@ -17,6 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { CoachApplyComponent } from './coach-apply/coach-apply.component';
+import { MyprofileViewComponent } from './myprofile-view/myprofile-view.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,6 +34,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     RegistrationComponent,
     MyprofileComponent,
+    CoachApplyComponent,
+    MyprofileViewComponent,
+    EditprofileComponent,
     NavigationBarComponent,
     FooterComponent,
     NotFoundComponent

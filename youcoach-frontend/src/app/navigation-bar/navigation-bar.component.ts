@@ -25,10 +25,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
 
-  switchLanguage(language
-                   :
-                   string
-  ) {
+  switchLanguage(language: string) {
     this.translate.use(language);
     this.language = language;
   }

@@ -1,0 +1,46 @@
+<div class="col s12 m10">
+  <div class="content-container">
+
+    <section class="card-panel grey lighten-5">
+      <div class="right">
+        <a class="waves-effect waves-light btn-large btn-floating yellow darken-2" routerLink="/home"><i
+          class="material-icons left">edit</i>Edit</a>
+      </div>
+      <h5>Profile Information</h5>
+      <div class="divider"></div>
+      <div class="row">
+        <div class="col l2 m2 s12">
+          <!--            <img src="img/dummy/profile-picture.jpg" class="responsive-img circle"-->
+          <!--                 alt="Profile Picture">-->
+        </div>
+        <div class="col l10 m10 s12">
+          <table *ngIf="user" class="highlight">
+            <tbody>
+            <tr>
+              <td><strong translate>coach-profile-information.label.first-name</strong></td>
+              <td>{{user.firstName}}</td>
+            </tr>
+            <tr>
+              <td><strong translate>coach-profile-information.label.last-name</strong></td>
+              <td>{{user.lastName}}</td>
+            </tr>
+            <tr>
+              <td><strong translate>coach-profile-information.label.email</strong></td>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr>
+              <td><strong>Class</strong></td>
+              <td>4 - Latin Science</td>
+            </tr>
+            <tr>
+              <td><strong>You-coach role</strong></td>
+              <td>{{user.securedUser.roles}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
