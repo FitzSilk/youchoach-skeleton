@@ -12,12 +12,14 @@ export class MyprofileViewComponent implements OnInit {
   @Input()
   user: User;
 
-  constructor(private myprofileComponent: MyprofileComponent) {
+  constructor(public myprofileComponent: MyprofileComponent) {
 }
 
   ngOnInit(): void {
       this.user = this.myprofileComponent.user;
   }
+
+
 
 
 }

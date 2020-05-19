@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {User} from "../classes/user";
-import {AuthenticationService} from "../authentication/authentication.service";
-import {UserService} from "../services/user.service";
-import {FormBuilder} from "@angular/forms";
+import {Component, Input, OnInit} from '@angular/core';
+import {User} from '../classes/user';
+import {AuthenticationService} from '../authentication/authentication.service';
+import {UserService} from '../services/user.service';
+import {FormBuilder} from '@angular/forms';
+import {MyprofileComponent} from '../myprofile/myprofile.component';
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-editprofile',
@@ -10,20 +13,20 @@ import {FormBuilder} from "@angular/forms";
   styleUrls: ['./editprofile.component.css']
 })
 export class EditprofileComponent implements OnInit {
+  @Input()
   user: User;
   updateForm;
-  formBuilder: FormBuilder;
 
-  constructor(private authenticationService: AuthenticationService, private userService: UserService) {
-    this.updateForm = this.formBuilder.group({
-      firstName: '',
-      lastName: '',
-      email: ''
-    });
+  constructor(private authenticationService: AuthenticationService,
+              private userService: UserService,
+              private myprofileComponent: MyprofileComponent,
+              private formBuilder: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.getById();
+    this.user = this.myprofileComponent.user;
+    this.fillTheUser();
   }
 
   getById(): void {
@@ -31,9 +34,21 @@ export class EditprofileComponent implements OnInit {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
+  fillTheUser() {
+    this.updateForm = this.formBuilder.group({
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      pictureUrl: this.user.pictureUrl
+    });
+
+  }
+
   onSubmit(updateData) {
+    console.log(updateData);
     this.userService.updateUser(updateData)
-      .subscribe();
+      .subscribe(user => this.myprofileComponent.user = user);
+    this.myprofileComponent.activeview = 'main';
   }
 
 }

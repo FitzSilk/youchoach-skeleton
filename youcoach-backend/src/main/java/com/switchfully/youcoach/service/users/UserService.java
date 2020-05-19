@@ -60,8 +60,8 @@ public class UserService {
         }
     }
 
-    public void updateUserById(UUID id,UserDto userDto) throws IllegalArgumentException {
-        EmailValidation.validateEmail(userDto.getEmail());
+    public UserDto updateUserById(UUID id,UserDto userDto) throws IllegalArgumentException {
+        EmailValidation.validateEmailForUpdate(userDto.getEmail());
         User userToChange = userRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("The id " + id + " is not a valid id in our system. Try again?"));
         userToChange.getSecuredUser().setUsername(userDto.getEmail());
@@ -71,7 +71,7 @@ public class UserService {
         userToChange.setEmail(userDto.getEmail());
         //TODO
         //add classes/subjects
-        userRepository.save(userToChange);
+        return userMapper.toDto(userRepository.save(userToChange));
     }
 }
 
