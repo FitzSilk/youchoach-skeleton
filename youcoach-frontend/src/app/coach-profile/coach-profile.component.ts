@@ -12,6 +12,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
 export class CoachProfileComponent implements OnInit {
   user: User;
   roleAdmin = 'ADMIN';
+  value1: string[];
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private authenticationService: AuthenticationService, private router: Router) {
@@ -27,6 +28,11 @@ export class CoachProfileComponent implements OnInit {
       this.router.navigate(['/404']).then();
     }
     this.userService.getUserById(id).subscribe(user => this.user = user);
+  }
+
+  splitTest(): void {
+    this.value1 = this.user.coach.classesForFirstTopic.split(',');
+    console.log(this.value1);
   }
 
 }

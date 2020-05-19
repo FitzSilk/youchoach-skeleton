@@ -2,7 +2,7 @@
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#" class="brand-logo">
-        <img src="assets/img/east.png" alt="Eastern logo" height="40" width="40" id="eastern-logo" />
+        <img src="assets/img/east.png" alt="Eastern logo" height="40" width="40" id="eastern-logo"/>
         You-Coach
       </a>
       <ul class="right hide-on-med-and-down">
@@ -19,18 +19,40 @@
           <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
         </li>
         <li>
-          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">menu.label.logged-in</span>
+          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">
+            menu.label.logged-in
+          </span>
           <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">
             <div *ngIf="!username" translate>menu.button.sign-in</div>
             <i class="material-icons right">person</i>
           </a>
-          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/home" (click)="logout()">
+          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text"
+                              routerLink="/home" (click)="logout()">
             <div *ngIf="username" translate>menu.button.sign-out</div>
             <i class="material-icons right">person</i>
           </a>
         </li>
+        <!--<li>
+          <a class="dropdown-trigger" href="#!" data-target="dropdown1">
+            <span>{{language | uppercase}}</span>
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+          <ul>-->
+            <li>
+              <a (click)="switchLanguage('en')">EN</a>
+            </li>
+            <li>
+              <a (click)="switchLanguage('fr')">FR</a>
+            </li>
+            <li>
+              <a (click)="switchLanguage('nl')">NL</a>
+            </li>
+        <!--  </ul>
+        </li>-->
 
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+        <!--
+                <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+        -->
 
         <li *ngIf = "!username">
           <a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register
@@ -53,7 +75,7 @@
           <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
         </li>
         <li>
-          <a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">Sign in
+          <a class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login">menu.button.sign-in
             <i class="material-icons right">person</i>
           </a>
         </li>

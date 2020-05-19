@@ -18,13 +18,30 @@ public class Coach {
     @Column(name = "availability")
     private String availability;
 
+    @Column(name = "first_topic")
+    private String firstTopic;
+
+    @Column(name = "first_topic_classes")
+    private String classesForFirstTopic;
+
+    @Column(name = "second_topic")
+    private String secondTopic;
+
+    @Column(name = "second_topic_classes")
+    private String classesForSecondTopic;
+
     public Coach() {
     }
 
-    public Coach(UUID id, String informations, String availability) {
+    public Coach(UUID id, String informations, String availability, String firstTopic,
+                 String classesForFirstTopic, String secondTopic, String classesForSecondTopic) {
         this.id = id;
         this.informations = informations;
         this.availability = availability;
+        this.firstTopic = firstTopic;
+        this.classesForFirstTopic = classesForFirstTopic;
+        this.secondTopic = secondTopic;
+        this.classesForSecondTopic = classesForSecondTopic;
     }
 
     public UUID getCoach_id() {
@@ -37,5 +54,25 @@ public class Coach {
 
     public String getAvailability() {
         return availability;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getFirstTopic() {
+        return firstTopic;
+    }
+
+    public String getClassesForFirstTopic() {
+        return classesForFirstTopic;
+    }
+
+    public String getSecondTopic() {
+        return secondTopic;
+    }
+
+    public String getClassesForSecondTopic() {
+        return classesForSecondTopic;
     }
 }
