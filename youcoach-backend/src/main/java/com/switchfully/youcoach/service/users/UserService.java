@@ -69,6 +69,7 @@ public class UserService {
         userToChange.setFirstName(userDto.getFirstName());
         userToChange.setLastName(userDto.getLastName());
         userToChange.setEmail(userDto.getEmail());
+        userToChange.setPictureUrl(userDto.getPictureUrl());
         //TODO
         //add classes/subjects
         return userMapper.toDto(userRepository.save(userToChange));

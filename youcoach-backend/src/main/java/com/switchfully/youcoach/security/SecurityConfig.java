@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:4200");
+        config.addAllowedOrigin("https://eastern-youcoach.herokuapp.com");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
 
