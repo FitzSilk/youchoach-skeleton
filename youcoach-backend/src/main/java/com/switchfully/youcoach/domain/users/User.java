@@ -96,6 +96,11 @@ public class User {
         return this;
     }
 
+    public User setPictureUrl(@Nullable String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+        return this;
+    }
+
     public static class UserBuilder {
 
         private UUID id;

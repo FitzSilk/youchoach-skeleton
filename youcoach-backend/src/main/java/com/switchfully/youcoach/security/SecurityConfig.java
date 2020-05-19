@@ -18,9 +18,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final PasswordEncoder passwordEncoder;
@@ -55,6 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:4200");
+        config.addAllowedOrigin("https://eastern-youcoach.herokuapp.com");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
 

@@ -5,6 +5,7 @@ import com.switchfully.youcoach.domain.users.User;
 import com.switchfully.youcoach.domain.users.UserRepository;
 import com.switchfully.youcoach.security.authentication.user.SecuredUser;
 import com.switchfully.youcoach.security.authentication.user.SecuredUserRepository;
+import com.switchfully.youcoach.security.authorization.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +70,15 @@ public class UserService {
         userToChange.setFirstName(userDto.getFirstName());
         userToChange.setLastName(userDto.getLastName());
         userToChange.setEmail(userDto.getEmail());
+        userToChange.setPictureUrl(userDto.getPictureUrl());
         //TODO
         //add classes/subjects
         return userMapper.toDto(userRepository.save(userToChange));
+    }
+
+    public List<UserDto> getAllCoaches() {
+        return userMapper.toDtoWithoutMail(userRepository.findAllBySecuredUser_Roles(Role.COACH));
+
     }
 }
 
