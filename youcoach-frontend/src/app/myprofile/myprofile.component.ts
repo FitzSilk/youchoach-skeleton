@@ -30,10 +30,6 @@ export class MyprofileComponent implements OnInit {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
-  /*getByName(): void {
-    const userName = this.route.snapshot.paramMap.get('userName');
-    this.userService.getUserByUsername(userName).subscribe(user => this.user = user);
-  }*/
 
   switchView(view: string) {
     this.activeview = view;

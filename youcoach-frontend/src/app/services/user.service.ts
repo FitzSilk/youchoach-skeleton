@@ -3,7 +3,7 @@ import {User} from '../classes/user';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {environment} from '../../environments/environment';
-import {AuthenticationService} from "../authentication/authentication.service";
+import {AuthenticationService} from '../authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,14 @@ import {AuthenticationService} from "../authentication/authentication.service";
 export class UserService {
   private userUrl = `${environment.backendUrl}/user`;
   users: User[];
-  httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'})};
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  /*const headers= new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Access-Control-Allow-Origin', '*');*/
 
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
   }
@@ -22,7 +29,7 @@ export class UserService {
 
   updateUser(user: User): Observable<User> {
     const id = this.authenticationService.getId();
-    const url = 'user/myprofile/' + id;
+    const url = `${this.userUrl}/myprofile/` + id;
     return this.http.put<User>(url, user, this.httpOptions);
   }
 

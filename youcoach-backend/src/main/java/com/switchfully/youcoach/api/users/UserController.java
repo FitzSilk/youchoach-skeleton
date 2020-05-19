@@ -64,7 +64,8 @@ public class UserController {
         return userDto1;
     }
 
-    @PutMapping(path = "/myprofile/{id}", produces = "application/json")
+
+    @PutMapping(path = "/myprofile/{id}", produces = "application/json", consumes="application/json")
     @ResponseStatus(HttpStatus.OK)
     public void Updateuser(@PathVariable UUID id, @RequestBody UserDto userDto) {
         myLogger.info("someone is trying to update user " + id);

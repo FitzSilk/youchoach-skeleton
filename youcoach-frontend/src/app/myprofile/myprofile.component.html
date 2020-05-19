@@ -13,5 +13,6 @@
   </div>
   <app-myprofile-view [user]="user" *ngIf="activeview === 'main'"></app-myprofile-view>
   <app-coach-apply [user]="user" *ngIf="activeview === 'coach-apply'" ></app-coach-apply>
+  <app-editprofile [user]="user" *ngIf="activeview === 'edit-profile'"></app-editprofile>
 </div>
 </div>
