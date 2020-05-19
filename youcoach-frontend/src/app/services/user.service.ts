@@ -37,7 +37,7 @@ export class UserService {
     const url = `${this.userUrl}/${id}`;
     return this.http.get<User>(url);
   }
-
+// commit test
   getUserByUsername(userName: string): Observable<User> {
 
     const url = `${this.userUrl}/myprofile/`;
