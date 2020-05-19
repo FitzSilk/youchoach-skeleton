@@ -1,14 +1,13 @@
 <header>
   <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <img src="assets/img/east.png" alt="Eastern logo"/>
+    <div class="nav-wrapper">
+      <img src="assets/img/east.png" alt="Eastern logo" class="hide-on-small-only"/>
       <a id="logo-container" href="#" class="brand-logo">
-
         You-Coach
       </a>
       <ul class="right hide-on-med-and-down">
         <li>
-          <a href="#">Home</a>
+          <a routerLink="/home">Home</a>
         </li>
         <li>
           <a href="#">About us</a>
@@ -16,71 +15,90 @@
         <li>
           <a href="#">Contact</a>
         </li>
-<!--        <li  *ngIf="username">-->
-<!--          <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>-->
-<!--        </li>-->
+        <!--        <li  *ngIf="username">-->
+        <!--          <a  routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>-->
+        <!--        </li>-->
         <li>
-<!--          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">-->
-<!--            menu.label.logged-in-->
-<!--          </span>-->
-          <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login" translate>
-            menu.button.sign-in<i class="material-icons right">person</i>
+          <!--          <span class="black-text" *ngIf="username" translate [translateParams]="{username: username}">-->
+          <!--            menu.label.logged-in-->
+          <!--          </span>-->
+          <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login"
+                               translate>
+            menu.button.sign-in
+            <i class="material-icons right">person</i>
           </a>
-<!--          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text"-->
-<!--                              routerLink="/home" (click)="logout()" translate>-->
-<!--            menu.button.sign-out <i class="material-icons right">person</i>-->
+          <!--          <a *ngIf="username" class="waves-effect waves-light yellow darken-2 btn black-text"-->
+          <!--                              routerLink="/home" (click)="logout()" translate>-->
+          <!--            menu.button.sign-out <i class="material-icons right">person</i>-->
 
-<!--          </a>-->
+          <!--          </a>-->
         </li>
 
-<!--        DROPDOWN-->
+        <!--        DROPDOWN-->
         <ul id="user-dropdown" class="dropdown-content">
           <li>
             <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
           </li>
+          <li *ngIf="role==='COACH'">
+            <a routerLink="/coach/{{id}}" translate>menu.link.my-coach-profile</a>
+          </li>
           <li id="user-dropdown-btn">
             <a class="waves-effect waves-light yellow darken-2 btn black-text"
-                                routerLink="/home" (click)="logout()" translate>
-              menu.button.log-out<i class="material-icons right">person</i></a>
+               routerLink="/home" (click)="logout()" translate>
+              menu.button.log-out
+              <i class="material-icons right">person</i>
+            </a>
           </li>
         </ul>
 
-        <li *ngIf="username" >
-          <a href="#!" class="dropdown-trigger" data-target="user-dropdown"
+        <li [ngClass]="username?'':'hide'">
+          <a class="dropdown-trigger" data-target="user-dropdown"
              translate [translateParams]="{username: username}">menu.label.logged-in
             <i class="material-icons right">arrow_drop_down</i>
           </a>
         </li>
-        <!--<li>
-          <a class="dropdown-trigger" href="#!" data-target="dropdown1">
-            <span>{{language | uppercase}}</span>
-            <i class="material-icons right">arrow_drop_down</i>
-          </a>
-          <ul>-->
-            <li>
-              <a (click)="switchLanguage('en')">EN</a>
-            </li>
-            <li>
-              <a (click)="switchLanguage('fr')">FR</a>
-            </li>
-            <li>
-              <a (click)="switchLanguage('nl')">NL</a>
-            </li>
-        <!--  </ul>
-        </li>-->
 
-<!--        END DROPDOWN  -->
+        <!--        END DROPDOWN  -->
 
         <li *ngIf = "!username">
           <a class="waves-effect waves-light teal lighten-3 btn black-text" routerLink="/register">Register
             <i class="material-icons right">person_add</i>
           </a>
         </li>
+        <!--        LANGUAGE -->
+
+
+
+
+        <ul id="language-dropdown" class="dropdown-content">
+        <li>
+          <a (click)="switchLanguage('en')">EN</a>
+        </li>
+        <li>
+          <a (click)="switchLanguage('fr')">FR</a>
+        </li>
+        <li>
+          <a (click)="switchLanguage('nl')">NL</a>
+        </li>
+        </ul>
+
+        <li>
+          <a class="dropdown-trigger" data-target="language-dropdown">
+            <i class="material-icons right">language</i>
+          </a>
+        </li>
+
+
+
+
+
+        <!--        END LANGUAGE-->
+
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
         <li>
-          <a href="#">Home</a>
+          <a routerLink="/home">Home</a>
         </li>
         <li>
           <a href="#">About us</a>
@@ -90,6 +108,9 @@
         </li>
         <li  *ngIf="username">
           <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
+        </li>
+        <li *ngIf="role==='COACH'">
+          <a routerLink="/coach/{{id}}" translate>menu.link.my-coach-profile</a>
         </li>
         <li *ngIf="!username">
           <a class="waves-effect waves-light yellow darken-2 btn black-text" href="/login">Sign in

@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
     this.error = false;
     this.authenticationService.login(loginData)
       .subscribe(
-        (_ => this.success = true),
+        (_ => {
+          this.success = true;
+          this.router.navigate(['home']);
+        }),
         (_ => this.error = true)
       );
     this.loginForm.reset();
