@@ -13,6 +13,7 @@ import {Coach} from '../classes/coach';
 export class CoachProfileComponent implements OnInit, OnDestroy {
   user: User;
   coach: Coach;
+  activeView = 'main';
   roleAdmin = 'ADMIN';
 
   constructor(private userService: UserService, private route: ActivatedRoute,
@@ -37,4 +38,12 @@ export class CoachProfileComponent implements OnInit, OnDestroy {
     this.userService.getUserById(id).subscribe(user => this.user = user);
   }
 
+  switchView(view: string) {
+    this.activeView = view;
+    const currentElement = '#' + view;
+    $('.collection-item').removeClass(['black-text', 'active', 'teal', 'lighten-3'])
+      .addClass(['grey-text', 'text-darken-2']);
+    $(currentElement).removeClass(['grey-text', 'text-darken-2'])
+      .addClass(['black-text', 'active', 'teal', 'lighten-3']);
+  }
 }

@@ -6,14 +6,13 @@
       <div class="content-container">
         <h6 translate>my-coach-profile-menu.title</h6>
         <div class="collection">
-          <a href="#!" class="collection-item black-text active teal lighten-3" translate>my-coach-profile-menu.link.profile-information</a>
-          <a href="#!" class="collection-item grey-text text-darken-2" translate>my-coach-profile-menu.link.coaching-sessions</a>
-          <a href="#!" class="collection-item grey-text text-darken-2" translate>my-coach-profile-menu.link.request-profile-change</a>
+          <a id="main" class="collection-item black-text active teal lighten-3" (click)="switchView('main')" translate>my-coach-profile-menu.link.profile-information</a>
+          <a id="edit" class="collection-item grey-text text-darken-2" (click)="switchView('edit')" translate>my-coach-profile-menu.link.request-profile-change</a>
         </div>
       </div>
     </div>
 
-    <app-coach-profile-view [user]="user" [coach]="user.coach"></app-coach-profile-view>
-
+    <app-coach-profile-view *ngIf="activeView === 'main'" [user]="user" [coach]="user.coach"></app-coach-profile-view>
+    <app-coach-topic-update *ngIf="activeView === 'edit'" [user]="user"></app-coach-topic-update>
   </div>
 </main>
