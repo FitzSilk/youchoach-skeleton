@@ -19,7 +19,7 @@ export class EditprofileComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
-              private myprofileComponent: MyprofileComponent,
+              public myprofileComponent: MyprofileComponent,
               private formBuilder: FormBuilder,
               private router: Router) {
   }
@@ -50,5 +50,6 @@ export class EditprofileComponent implements OnInit {
       .subscribe(user => this.myprofileComponent.user = user);
     this.myprofileComponent.activeview = 'main';
   }
+
 
 }
