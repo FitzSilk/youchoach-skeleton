@@ -43,7 +43,7 @@
             <h5 class="header">{{user.firstName}}</h5>
             <div class="card horizontal">
               <div class="card-image">
-                <img src="img/dummy/profile-picture-coach.jpg">
+                <img src={{user.pictureUrl}}>
 
               </div>
               <div class="card-stacked">
@@ -51,12 +51,12 @@
                   <table class="highlight responsive-table">
                     <tbody>
                     <tr>
-                      <td><strong>Mathematics</strong></td>
-                      <td>1,2,3</td>
+                      <td><strong>{{user.coach.firstTopic}}</strong></td>
+                      <td>{{user.coach.classesForFirstTopic}}</td>
                     </tr>
                     <tr>
-                      <td><strong>Biology</strong></td>
-                      <td>1,2</td>
+                      <td><strong>{{user.coach.secondTopic}}</strong></td>
+                      <td>{{user.coach.classesForSecondTopic}}</td>
                     </tr>
                     </tbody>
                   </table>

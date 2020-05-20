@@ -22,7 +22,6 @@ export class CoachesOverviewComponent implements OnInit {
 
   getCoaches(): void {
     this.userService.getCoaches().subscribe(user => this.users = user);
-    console.log(this.users);
   }
 
 }

@@ -1,0 +1,7 @@
+.card-content{
+  min-height: 170px;
+}
+.card-image{
+  align-items: center;
+  display: flex;
+}
