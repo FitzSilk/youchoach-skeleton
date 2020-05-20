@@ -44,7 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     NotFoundComponent,
     CoachProfileComponent,
-    CoachesOverviewComponent
+    CoachesOverviewComponent,
     CoachProfileComponent,
     CoachProfileViewComponent
   ],
