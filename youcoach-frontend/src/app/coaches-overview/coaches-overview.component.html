@@ -42,19 +42,19 @@
           <div *ngFor="let user of users" class="col l3 m4 s12">
             <h5 class="header">{{user.firstName}}</h5>
             <div class="card horizontal">
-              <div class="card-image">
+              <div class="card-image col s5">
                 <img src={{user.pictureUrl}}>
 
               </div>
-              <div class="card-stacked">
+              <div class="card-stacked col s7">
                 <div class="card-content">
                   <table class="highlight responsive-table">
                     <tbody>
-                    <tr>
+                    <tr class="col s12">
                       <td><strong>{{user.coach.firstTopic}}</strong></td>
                       <td>{{user.coach.classesForFirstTopic}}</td>
                     </tr>
-                    <tr>
+                    <tr class="col s12">
                       <td><strong>{{user.coach.secondTopic}}</strong></td>
                       <td>{{user.coach.classesForSecondTopic}}</td>
                     </tr>

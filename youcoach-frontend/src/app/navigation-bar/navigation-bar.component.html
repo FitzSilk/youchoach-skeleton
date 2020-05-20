@@ -12,7 +12,7 @@
         <li>
           <a href="#" translate>menu.link.about-us</a>
         </li>
-        <li>
+        <li *ngIf="username">
           <a routerLink="/coaches" translate>menu.link.find-a-coach</a>
         </li>
         <li>
@@ -124,6 +124,7 @@
             menu.link.my-coach-profile
           </a>
         </li>
+        <li class="divider"></li>
         <li *ngIf="!username">
           <a class="waves-effect waves-light yellow darken-2 btn black-text" href="/login">Sign in
             <i class="material-icons right">person</i>
@@ -140,6 +141,7 @@
             <i class="material-icons right">person_add</i>
           </a>
         </li>
+        <li class="divider"></li>
         <li class="no-padding">
           <ul class="collapsible collapsible-accordion">
             <li>
