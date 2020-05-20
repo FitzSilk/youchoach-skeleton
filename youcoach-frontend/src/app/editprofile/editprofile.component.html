@@ -9,32 +9,35 @@
         <div class="row">
           <div class="col l10 m10 s12">
             <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
-            <table *ngIf="user" class="highlight">
-              <tbody>
-              <tr>
-                <td><strong translate>coach-profile-information.label.first-name</strong></td>
-                <input  formControlName="firstName">
-              </tr>
-              <tr>
-                <td><strong translate>coach-profile-information.label.last-name</strong></td>
-                <input  formControlName="lastName" >
-              </tr>
-              <tr>
-                <td><strong translate>coach-profile-information.label.email</strong></td>
-                <input  formControlName="email">
+              <table *ngIf="user" class="highlight">
+                <tbody>
+                <tr>
+                  <td><strong translate>coach-profile-information.label.first-name</strong></td>
+                  <input formControlName="firstName">
                 </tr>
-              <tr>
-                <td><strong translate>profile-information.label.profile-picture</strong></td>
-                <input  formControlName="pictureUrl">
-              </tr>
+                <tr>
+                  <td><strong translate>coach-profile-information.label.last-name</strong></td>
+                  <input formControlName="lastName">
+                </tr>
+                <tr>
+                  <td><strong translate>coach-profile-information.label.email</strong></td>
+                  <input formControlName="email">
+                </tr>
+                <tr>
+                  <td><strong translate>profile-information.label.profile-picture</strong></td>
+                  <input formControlName="pictureUrl">
+                </tr>
                 </tbody>
               </table>
-              <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
-                Submit
-              </button>
-              <button class="waves-effect waves-light yellow darken-2 btn-large black-text"  (click)="myprofileComponent.switchView('main')" translate>
-                Cancel
-              </button>
+              <div id="button-container">
+                <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
+                  Submit
+                </button>
+                <button class="right grey lighten-3 btn-large black-text"
+                        (click)="myprofileComponent.switchView('main')" translate>
+                  Cancel
+                </button>
+              </div>
             </form>
           </div>
         </div>
