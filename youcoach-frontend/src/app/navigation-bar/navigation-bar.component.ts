@@ -8,7 +8,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
-  username;
+  username: string;
+  role: string;
   language = 'en';
   id;
 
@@ -21,6 +22,7 @@ export class NavigationBarComponent implements OnInit {
     this.authenticationService.userLoggedIn$.subscribe(_ => {
       this.username = this.authenticationService.getUsername();
       this.id = this.authenticationService.getId();
+      this.role = this.authenticationService.getRole();
     });
   }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -9,7 +9,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
   templateUrl: './coach-profile.component.html',
   styleUrls: ['./coach-profile.component.css']
 })
-export class CoachProfileComponent implements OnInit {
+export class CoachProfileComponent implements OnInit, OnDestroy {
   user: User;
   roleAdmin = 'ADMIN';
   value1: string[];
@@ -20,6 +20,11 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getById();
+    $('footer').removeClass(['yellow', 'darken-2']).addClass(['teal', 'lighten-3']);
+  }
+
+  ngOnDestroy(): void{
+    $('footer').removeClass(['teal', 'lighten-3']).addClass(['yellow', 'darken-2']);
   }
 
   getById(): void {
@@ -31,6 +36,7 @@ export class CoachProfileComponent implements OnInit {
   }
 
   splitTest(): void {
+
     this.value1 = this.user.coach.classesForFirstTopic.split(',');
     console.log(this.value1);
   }
