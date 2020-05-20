@@ -10,12 +10,12 @@ import {AuthenticationService} from '../authentication/authentication.service';
 })
 export class UserService {
   private userUrl = `${environment.backendUrl}/user`;
-  users: User[];
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
+
   /*const headers= new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');*/
@@ -37,10 +37,16 @@ export class UserService {
     const url = `${this.userUrl}/${id}`;
     return this.http.get<User>(url);
   }
-// commit test
+
+
   getUserByUsername(userName: string): Observable<User> {
 
     const url = `${this.userUrl}/myprofile/`;
     return this.http.post<User>(url, userName, this.httpOptions);
+  }
+
+  getCoaches(): Observable<User[]> {
+    const url = `${this.userUrl}/coach`;
+    return this.http.get<User[]>(url);
   }
 }

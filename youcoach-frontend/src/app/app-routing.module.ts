@@ -9,14 +9,16 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {EditprofileComponent} from './editprofile/editprofile.component';
 import {CoachApplyComponent} from './coach-apply/coach-apply.component';
 import {CoachProfileComponent} from './coach-profile/coach-profile.component';
+import {CoachesOverviewComponent} from './coaches-overview/coaches-overview.component';
 
 const routes: Routes = [
-  {path: 'user/editprofile', component: EditprofileComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'hello-world', component: HelloWorldComponent},
   {path: 'register', component: RegistrationComponent},
+  {path: 'coaches', component: CoachesOverviewComponent},
+  {path: 'user/editprofile', component: EditprofileComponent},
   {path: 'user/myprofile/:id', component: MyprofileComponent},
   {path: 'user/:id', component: MyprofileComponent},
   {path: 'want_to_be_coach', component: CoachApplyComponent},
