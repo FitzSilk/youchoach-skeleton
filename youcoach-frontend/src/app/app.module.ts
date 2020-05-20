@@ -21,6 +21,7 @@ import { CoachApplyComponent } from './coach-apply/coach-apply.component';
 import { MyprofileViewComponent } from './myprofile-view/myprofile-view.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { CoachProfileComponent } from './coach-profile/coach-profile.component';
+import { CoachProfileViewComponent } from './coach-profile-view/coach-profile-view.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -41,7 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavigationBarComponent,
     FooterComponent,
     NotFoundComponent,
-    CoachProfileComponent
+    CoachProfileComponent,
+    CoachProfileViewComponent
   ],
   imports: [
     BrowserModule,

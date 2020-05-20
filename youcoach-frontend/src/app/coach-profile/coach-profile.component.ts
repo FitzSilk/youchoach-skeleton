@@ -3,6 +3,7 @@ import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthenticationService} from '../authentication/authentication.service';
+import {Coach} from '../classes/coach';
 
 @Component({
   selector: 'app-coach-profile',
@@ -11,8 +12,8 @@ import {AuthenticationService} from '../authentication/authentication.service';
 })
 export class CoachProfileComponent implements OnInit, OnDestroy {
   user: User;
+  coach: Coach;
   roleAdmin = 'ADMIN';
-  value1: string[];
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private authenticationService: AuthenticationService, private router: Router) {
@@ -20,10 +21,11 @@ export class CoachProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getById();
+
     $('footer').removeClass(['yellow', 'darken-2']).addClass(['teal', 'lighten-3']);
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     $('footer').removeClass(['teal', 'lighten-3']).addClass(['yellow', 'darken-2']);
   }
 
@@ -33,12 +35,6 @@ export class CoachProfileComponent implements OnInit, OnDestroy {
       this.router.navigate(['/404']).then();
     }
     this.userService.getUserById(id).subscribe(user => this.user = user);
-  }
-
-  splitTest(): void {
-
-    this.value1 = this.user.coach.classesForFirstTopic.split(',');
-    console.log(this.value1);
   }
 
 }
