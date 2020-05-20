@@ -6,26 +6,26 @@
         <a id="edit-profile" class="waves-effect waves-light btn-large btn-floating yellow darken-2" (click)="myprofileComponent.switchView('edit-profile')"><i
           class="material-icons left">edit</i>Edit</a>
       </div>
-      <h5>Profile Information</h5>
+      <h5 translate>profile-information.title</h5>
       <div class="divider"></div>
       <div class="row">
         <div *ngIf="user.pictureUrl!==null" class="col l2 m2 s12">
-                      <img src="{{user.pictureUrl}}" class="responsive-img circle"
-                           alt="Profile Picture">
+                      <img src="{{user.pictureUrl}}" class="responsive-img circle" translate
+                           alt="profile-information.label.profile-picture">
         </div>
         <div class="col l10 m10 s12">
           <table *ngIf="user" class="highlight">
             <tbody>
             <tr>
-              <td><strong translate>coach-profile-information.label.first-name</strong></td>
+              <td><strong translate>profile-information.label.first-name</strong></td>
               <td>{{user.firstName}}</td>
             </tr>
             <tr>
-              <td><strong translate>coach-profile-information.label.last-name</strong></td>
+              <td><strong translate>profile-information.label.last-name</strong></td>
               <td>{{user.lastName}}</td>
             </tr>
             <tr>
-              <td><strong translate>coach-profile-information.label.email</strong></td>
+              <td><strong translate>profile-information.label.email</strong></td>
               <td>{{user.email}}</td>
             </tr>
             <tr>
@@ -33,7 +33,7 @@
               <td>4 - Latin Science</td>
             </tr>
             <tr>
-              <td><strong>You-coach role</strong></td>
+              <td translate><strong>profile-information.label.role</strong></td>
               <td>{{user.securedUser.roles | titlecase}}</td>
             </tr>
             </tbody>

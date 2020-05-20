@@ -4,11 +4,11 @@
 
     <div class="col s12 m2">
       <div class="content-container">
-        <h6>My Coach Profile</h6>
+        <h6 translate>my-coach-profile-menu.title</h6>
         <div class="collection">
-          <a href="#!" class="collection-item black-text active teal lighten-3">Profile Information</a>
-          <a href="#!" class="collection-item grey-text text-darken-2">Coaching sessions</a>
-          <a href="#!" class="collection-item grey-text text-darken-2">Request profile change</a>
+          <a href="#!" class="collection-item black-text active teal lighten-3" translate>my-coach-profile-menu.link.profile-information</a>
+          <a href="#!" class="collection-item grey-text text-darken-2" translate>my-coach-profile-menu.link.coaching-sessions</a>
+          <a href="#!" class="collection-item grey-text text-darken-2" translate>my-coach-profile-menu.link.request-profile-change</a>
         </div>
       </div>
     </div>
@@ -17,26 +17,26 @@
       <div class="content-container">
 
         <section class="card-panel grey lighten-5">
-          <h5>Profile Information</h5>
+          <h5 translate>coach-profile-information.title</h5>
           <div class="divider"></div>
           <div class="row">
             <div class="col l2 m2 s12">
-              <img src="{{user.pictureUrl}}" class="responsive-img circle"
-                   alt="Profile Picture">
+              <img src="{{user.pictureUrl}}" class="responsive-img circle" translate
+                   alt="coach-profile-information.label.profile-picture">
             </div>
             <div class="col l10 m10 s12">
               <table class="highlight">
                 <tbody>
                 <tr>
-                  <td><strong>First name</strong></td>
+                  <td translate><strong>coach-profile-information.label.first-name</strong></td>
                   <td>{{user.firstName}}</td>
                 </tr>
                 <tr>
-                  <td><strong>Last name</strong></td>
+                  <td translate><strong>coach-profile-information.label.last-name</strong></td>
                   <td>{{user.lastName}}</td>
                 </tr>
                 <tr>
-                  <td><strong>Email</strong></td>
+                  <td translate><strong>coach-profile-information.label.email</strong></td>
                   <td>{{user.email}}</td>
                 </tr>
                 <tr>
@@ -56,7 +56,7 @@
             <a class="waves-effect waves-light btn-large btn-floating teal lighten-3"><i
               class="material-icons left">edit</i>Edit</a>
           </div>
-          <h5>Coach Information</h5>
+          <h5 translate>coach-information.title</h5>
           <div class="divider"></div>
           <div class="row">
             <div class="col l12 m12 s12">
@@ -64,11 +64,11 @@
                 <tbody>
                 <!-- TODO: add the coachXP -->
                 <tr>
-                  <td><strong>Introduction</strong></td>
+                  <td translate><strong>coach-information.label.introduction</strong></td>
                   <td>{{user.coach.informations}}</td>
                 </tr>
                 <tr>
-                  <td><strong>Availability</strong></td>
+                  <td translate><strong>coach-information.label.availability</strong></td>
                   <td>{{user.coach.availability}}</td>
                 </tr>
                 </tbody>
@@ -84,7 +84,7 @@
             <a class="waves-effect waves-light btn-large btn-floating teal lighten-3"><i
               class="material-icons left">edit</i>Edit</a>
           </div>
-          <h5 (click)="splitTest()">Coaching topics</h5>
+          <h5 (click)="splitTest()" translate>coaching-topics.title</h5>
           <div class="divider"></div>
           <div class="row">
             <div class="col s12">

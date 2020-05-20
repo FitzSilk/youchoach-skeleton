@@ -10,16 +10,18 @@
                 <input id="first_name" formControlName="firstName" class="validate" type="text" required
                        [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
                 <label for="first_name" translate>register.label.first-name</label>
+
                 <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                  <span *ngIf="f.firstName.errors.required">First Name is required</span>
+                  <span *ngIf="f.firstName.errors.required" translate>register.message.first-name-required</span>
                 </div>
               </div>
               <div class="input-field col s6">
                 <input id="last_name" type="text" class="validate" formControlName="lastName" required
                        [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
                 <label for="last_name" translate>register.label.last-name</label>
+
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                  <span *ngIf="f.lastName.errors.required">Last Name is required</span>
+                  <span *ngIf="f.lastName.errors.required" translate>register.message.last-name-required</span>
                 </div>
               </div>
             </div>
@@ -28,9 +30,9 @@
                 <input id="email" type="email" class="validate" formControlName="email"
                        required [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <label for="email" translate>register.label.email</label>
-                <span *ngIf="emailExistsError" translate>This email already exists</span>
+                <span *ngIf="emailExistsError" translate>register.message.email-in-use</span>
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <span *ngIf="f.email.errors.required">A mail address is required</span>
+                  <span *ngIf="f.email.errors.required" translate>register.message.email-required</span>
                 </div>
               </div>
             </div>
@@ -43,7 +45,7 @@
                 <label for="password" translate>register.label.password</label>
                 <span translate *ngIf="registerForm.get('securedUser.password').errors" class="helper-text" >register.message.password-policy</span>
                 <div *ngIf="submitted && registerForm.get('securedUser.password').errors" class="invalid-feedback">
-                  <span *ngIf="registerForm.get('securedUser.password').errors.required">A password is required</span>
+                  <span *ngIf="registerForm.get('securedUser.password').errors.required" translate>register.message.password-required</span>
                 </div>
               </div>
             </div>
