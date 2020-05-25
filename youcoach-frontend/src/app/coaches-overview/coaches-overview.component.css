@@ -1,7 +1,31 @@
 .card-content{
   min-height: 170px;
+  padding: 0;
 }
 .card-image{
   align-items: center;
   display: flex;
+}
+
+.card-image img {
+  border-radius: 50% !important;
+}
+
+.responsive-table tr {
+  padding-left: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-card {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mobile-card .card-image {
+    margin: 10px auto;
+  }
+
+  .responsive-table tr td:first-child{
+    background-color: rgba(199, 199, 199, 0.3);
+  }
 }

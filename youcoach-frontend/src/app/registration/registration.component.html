@@ -29,7 +29,7 @@
               <div class="input-field col s12">
                 <input id="email" type="email" class="validate" formControlName="email"
                        required [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                <label for="email" translate>register.label.email</label>
+                <label for="email" translate>register.label.email<span translate> register.label.email-placeholder</span></label>
                 <span *ngIf="emailExistsError" translate>register.message.email-in-use</span>
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                   <span *ngIf="f.email.errors.required" translate>register.message.email-required</span>

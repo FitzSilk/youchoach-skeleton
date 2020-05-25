@@ -2,9 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserService} from '../services/user.service';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {MyprofileComponent} from '../myprofile/myprofile.component';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -45,10 +45,18 @@ export class EditprofileComponent implements OnInit {
   }
 
   onSubmit(updateData) {
+    if (updateData.firstName === '') {
+      updateData.firstName = this.user.firstName;
+    }
+    if (updateData.lastName === '') {
+      updateData.lastName = this.user.lastName;
+    }
+    if (updateData.email === '') {
+      updateData.email = this.user.email;
+    }
     this.userService.updateUser(updateData)
       .subscribe(user => this.myprofileComponent.user = user);
     this.myprofileComponent.activeview = 'main';
   }
-
 
 }
