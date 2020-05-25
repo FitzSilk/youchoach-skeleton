@@ -35,8 +35,12 @@ export class CoachProfileUpdateComponent implements OnInit {
 
   onSubmit(updateData) {
     console.log(updateData);
-    this.user.coach = updateData;
-    this.userService.updateCoach(this.user);
+
+    this.user.coach.availability = updateData.availability;
+    this.user.coach.informations = updateData.introduction;
+
+    this.userService.updateCoach(this.user).subscribe();
+    // this.router.navigate(['/home']).then();
   }
 
   loadUser() {

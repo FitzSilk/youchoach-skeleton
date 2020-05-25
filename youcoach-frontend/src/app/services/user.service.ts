@@ -53,8 +53,8 @@ export class UserService {
   updateCoach(user: User): Observable<User> {
     console.log(user);
     const id = this.authenticationService.getId();
-    const url = `${this.userUrl}/coach/update/` + id;
-    console.log(url);
+    const url = `${this.userUrl}/coach/update/${id}`;
+    console.log(user);
     return this.http.put<User>(url, user, this.httpOptions);
   }
 }

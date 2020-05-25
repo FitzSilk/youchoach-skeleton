@@ -64,6 +64,15 @@ public class UserController {
         return userDto1;
     }
 
+    @PutMapping(path="/coach/update/{id}", produces = "application/json", consumes="application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto updateCoach(@PathVariable UUID id, @RequestBody UserDto userDto){
+        myLogger.info("someone is trying to update coach information " + id);
+        UserDto updatedUserDto = userService.updateCoach(id, userDto);
+        myLogger.info("someone updated their coach profile with id:  " + id);
+        return updatedUserDto;
+    }
+
 
     @PutMapping(path = "/myprofile/{id}", produces = "application/json", consumes="application/json")
     @ResponseStatus(HttpStatus.OK)
@@ -81,15 +90,6 @@ public class UserController {
         List<UserDto> userDto1 = userService.getAllCoaches();
         myLogger.info("someone accessed the list of coaches");
         return userDto1;
-    }
-
-    @PutMapping(path="/coach/update/{id}", produces = "application/json", consumes="application/json")
-    @ResponseStatus(HttpStatus.OK)
-    public UserDto updateCoach(@PathVariable UUID id, @RequestBody UserDto userDto){
-        myLogger.info("someone is trying to update coach information " + id);
-        UserDto updatedUserDto = userService.updateCoach(id, userDto);
-        myLogger.info("someone updated their coach profile with id:  " + id);
-        return updatedUserDto;
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
