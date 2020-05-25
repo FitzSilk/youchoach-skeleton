@@ -45,7 +45,6 @@ export class EditprofileComponent implements OnInit {
   }
 
   onSubmit(updateData) {
-    console.log(updateData);
     this.userService.updateUser(updateData)
       .subscribe(user => this.myprofileComponent.user = user);
     this.myprofileComponent.activeview = 'main';

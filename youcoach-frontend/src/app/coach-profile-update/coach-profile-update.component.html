@@ -1,0 +1,68 @@
+<div class="col s12 m10">
+  <div class="content-container">
+
+    <section class="card-panel grey lighten-5">
+      <h5 translate>coach-profile-information.title</h5>
+      <div class="divider"></div>
+      <div class="row" *ngIf="user">
+        <div class="col l2 m2 s12">
+          <img src="{{user.pictureUrl}}" class="responsive-img circle" translate
+               alt="coach-profile-information.label.profile-picture">
+        </div>
+        <div class="col l10 m10 s12">
+          <table class="highlight">
+            <tbody>
+            <tr>
+              <td><strong translate>coach-profile-information.label.first-name</strong></td>
+              <td>{{user.firstName}}</td>
+            </tr>
+            <tr>
+              <td><strong translate>coach-profile-information.label.last-name</strong></td>
+              <td>{{user.lastName}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="card-panel grey lighten-5">
+      <!--<div class="right">
+        <a class="waves-effect waves-light btn-large btn-floating teal lighten-3"><i
+          class="material-icons left">edit</i>Edit</a>
+      </div>-->
+      <h5 translate>coach-information.title</h5>
+      <div class="divider"></div>
+      <div class="row" *ngIf="updateForm">
+        <div class="col l12 m12 s12">
+          <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
+          <table class="highlight">
+            <tbody>
+            <tr>
+              <td><strong translate>coach-information.label.introduction</strong></td>
+              <td><input formControlName="introduction" ></td>
+            </tr>
+            <tr>
+              <td><strong translate>coach-information.label.availability</strong></td>
+              <td><input formControlName="availability" ></td>
+            </tr>
+            </tbody>
+          </table>
+            <div id="button-container">
+              <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
+                Submit
+              </button>
+              <button class="right grey lighten-3 btn-large black-text"
+                       translate>
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+

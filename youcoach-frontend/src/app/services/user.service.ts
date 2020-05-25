@@ -49,4 +49,12 @@ export class UserService {
     const url = `${this.userUrl}/coach`;
     return this.http.get<User[]>(url);
   }
+
+  updateCoach(user: User): Observable<User> {
+    console.log(user);
+    const id = this.authenticationService.getId();
+    const url = `${this.userUrl}/coach/update/` + id;
+    console.log(url);
+    return this.http.put<User>(url, user, this.httpOptions);
+  }
 }

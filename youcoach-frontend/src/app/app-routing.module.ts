@@ -10,6 +10,7 @@ import {EditprofileComponent} from './editprofile/editprofile.component';
 import {CoachApplyComponent} from './coach-apply/coach-apply.component';
 import {CoachProfileComponent} from './coach-profile/coach-profile.component';
 import {CoachesOverviewComponent} from './coaches-overview/coaches-overview.component';
+import {CoachProfileUpdateComponent} from './coach-profile-update/coach-profile-update.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'coaches', component: CoachesOverviewComponent},
   {path: 'user/editprofile', component: EditprofileComponent},
+  {path: 'coach/editcoachprofile', component: CoachProfileUpdateComponent},
   {path: 'user/myprofile/:id', component: MyprofileComponent},
   {path: 'user/:id', component: MyprofileComponent},
   {path: 'want_to_be_coach', component: CoachApplyComponent},

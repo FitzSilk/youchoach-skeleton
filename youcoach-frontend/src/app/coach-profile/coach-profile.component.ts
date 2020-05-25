@@ -22,7 +22,7 @@ export class CoachProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getById();
-
+    console.log(this.getById());
     $('footer').removeClass(['yellow', 'darken-2']).addClass(['teal', 'lighten-3']);
   }
 

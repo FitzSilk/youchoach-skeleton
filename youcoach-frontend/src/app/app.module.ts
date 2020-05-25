@@ -24,6 +24,7 @@ import { CoachProfileComponent } from './coach-profile/coach-profile.component';
 import { CoachesOverviewComponent } from './coaches-overview/coaches-overview.component';
 import { CoachProfileViewComponent } from './coach-profile-view/coach-profile-view.component';
 import { CoachTopicUpdateComponent } from './coach-topic-update/coach-topic-update.component';
+import { CoachProfileUpdateComponent } from './coach-profile-update/coach-profile-update.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachesOverviewComponent,
     CoachProfileComponent,
     CoachProfileViewComponent,
-    CoachTopicUpdateComponent
+    CoachTopicUpdateComponent,
+    CoachProfileUpdateComponent
   ],
   imports: [
     BrowserModule,
