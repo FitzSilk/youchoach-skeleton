@@ -7,7 +7,7 @@
       <div class="collection">
         <a id="main" class="collection-item black-text active yellow darken-2" (click)="switchView('main')" translate>my-profile-menu.link.profile-information</a>
           <a id="coaching-sessions" href="#!" class="collection-item grey-text text-darken-2" routerLink="/coaches" translate>my-profile-menu.link.coaching-sessions</a>
-        <a id="coach-apply" class="collection-item grey-text text-darken-2" (click)="switchView('coach-apply')" translate>my-profile-menu.link.apply-to-become-a-coach</a>
+        <a id="coach-apply" class="collection-item grey-text text-darken-2" *ngIf="user.securedUser.roles !== 'COACH'" (click)="switchView('coach-apply')" translate>my-profile-menu.link.apply-to-become-a-coach</a>
       </div>
     </div>
   </div>
