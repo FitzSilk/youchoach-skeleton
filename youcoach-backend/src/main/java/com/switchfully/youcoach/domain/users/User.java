@@ -101,6 +101,11 @@ public class User {
         return this;
     }
 
+    public User setCoach(Coach coach) {
+        this.coach = coach;
+        return this;
+    }
+
     public static class UserBuilder {
 
         private UUID id;

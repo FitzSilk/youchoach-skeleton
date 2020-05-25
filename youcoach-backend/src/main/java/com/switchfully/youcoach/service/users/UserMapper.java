@@ -44,14 +44,9 @@ public class UserMapper {
                 .build();
     }
 
-    public User toUser(UserDto userDto) {
+    public User updateCoach(UserDto userDto) {
         return userBuilder()
                 .withId(userDto.getId())
-                .withFirstName(userDto.getFirstName())
-                .withLastName(userDto.getLastName())
-                .withEmail(userDto.getEmail())
-                .withSecuredUser(userDto.getSecuredUser())
-                .withPicture(userDto.getPictureUrl())
                 .withCoach(userDto.getCoach())
                 .build();
     }

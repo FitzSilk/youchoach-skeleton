@@ -67,7 +67,7 @@ public class UserController {
 
     @PutMapping(path = "/myprofile/{id}", produces = "application/json", consumes="application/json")
     @ResponseStatus(HttpStatus.OK)
-    public UserDto Updateuser(@PathVariable UUID id, @RequestBody UserDto userDto) {
+    public UserDto updateUser(@PathVariable UUID id, @RequestBody UserDto userDto) {
         myLogger.info("someone is trying to update user " + id);
         UserDto userDto1 = userService.updateUserById(id, userDto);
         myLogger.info("someone updated their userprofile with id:  " + id);
@@ -83,10 +83,20 @@ public class UserController {
         return userDto1;
     }
 
+    @PutMapping(path="/coach/update/{id}", produces = "application/json", consumes="application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto updateCoach(@PathVariable UUID id, @RequestBody UserDto userDto){
+        myLogger.info("someone is trying to update coach information " + id);
+        UserDto updatedUserDto = userService.updateCoach(id, userDto);
+        myLogger.info("someone updated their coach profile with id:  " + id);
+        return updatedUserDto;
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     private void userNotFoundException(IllegalArgumentException ex, HttpServletResponse response) throws IOException {
         response.sendError(HttpServletResponse.SC_NOT_FOUND, ex.getMessage());
         myLogger.error("user not found.", ex);
 
     }
+
 }

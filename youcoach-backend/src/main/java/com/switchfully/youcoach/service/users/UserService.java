@@ -71,9 +71,15 @@ public class UserService {
         userToChange.setLastName(userDto.getLastName());
         userToChange.setEmail(userDto.getEmail());
         userToChange.setPictureUrl(userDto.getPictureUrl());
-        //TODO
-        //add classes/subjects
         return userMapper.toDto(userRepository.save(userToChange));
+    }
+
+    public UserDto updateCoach(UUID id,UserDto userDto){
+        User coachToChange = userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("The id " + id + " is not a valid id in our system. Try again?"));
+        coachToChange.getCoach().setAvailability(userDto.getCoach().getAvailability());
+        coachToChange.getCoach().setInformations(userDto.getCoach().getInformations());
+        return userMapper.toDto(userRepository.save(coachToChange));
     }
 
     public List<UserDto> getAllCoaches() {

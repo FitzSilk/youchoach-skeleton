@@ -75,4 +75,12 @@ public class Coach {
     public String getClassesForSecondTopic() {
         return classesForSecondTopic;
     }
+
+    public void setInformations(String informations) {
+        this.informations = informations;
+    }
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
 }

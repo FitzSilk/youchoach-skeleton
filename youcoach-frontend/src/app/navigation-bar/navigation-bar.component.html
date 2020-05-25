@@ -38,22 +38,23 @@
         </li>
 
         <!--        DROPDOWN-->
-        <ul id="user-dropdown" class="dropdown-content">
-          <li>
-            <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
-          </li>
-          <li *ngIf="role==='COACH'">
-            <a routerLink="/coach/{{id}}" translate>menu.link.my-coach-profile</a>
-          </li>
-          <li id="user-dropdown-btn">
-            <a class="waves-effect waves-light yellow darken-2 btn black-text"
-               routerLink="/home" (click)="logout()" translate>
-              menu.button.log-out
-              <i class="material-icons right">person</i>
-            </a>
-          </li>
-        </ul>
-
+        <li>
+          <ul id="user-dropdown" class="dropdown-content">
+            <li>
+              <a routerLink="/user/myprofile/{{id}}" translate>menu.link.my-profile</a>
+            </li>
+            <li *ngIf="role==='COACH'">
+              <a routerLink="/coach/{{id}}" translate>menu.link.my-coach-profile</a>
+            </li>
+            <li id="user-dropdown-btn">
+              <a class="waves-effect waves-light yellow darken-2 btn black-text"
+                 routerLink="/home" (click)="logout()" translate>
+                menu.button.log-out
+                <i class="material-icons right">person</i>
+              </a>
+            </li>
+          </ul>
+        </li>
         <li [ngClass]="username?'':'hide'">
           <a class="dropdown-trigger" data-target="user-dropdown"
              translate [translateParams]="{username: username}">menu.label.logged-in
@@ -137,7 +138,7 @@
           </a>
         </li>
         <li *ngIf = "!username">
-          <a class="waves-effect waves-light teal lighten-3 btn black-text" href="/register" translate>menu.button.register
+          <a class="waves-effect waves-light teal lighten-3 btn black-text" href="/register">menu.button.register
             <i class="material-icons right">person_add</i>
           </a>
         </li>
