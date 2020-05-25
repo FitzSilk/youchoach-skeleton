@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../classes/user";
-import {UserService} from "../services/user.service";
+import {User} from '../classes/user';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-coaches-overview',
@@ -16,9 +16,7 @@ export class CoachesOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCoaches();
-
   }
-
 
   getCoaches(): void {
     this.userService.getCoaches().subscribe(user => this.users = user);
