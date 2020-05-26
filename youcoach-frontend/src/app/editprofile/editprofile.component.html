@@ -13,29 +13,29 @@
                 <tbody>
                 <tr>
                   <td><strong translate>coach-profile-information.label.first-name</strong></td>
-                  <input formControlName="firstName">
+                  <td><input formControlName="firstName"></td>
                 </tr>
                 <tr>
                   <td><strong translate>coach-profile-information.label.last-name</strong></td>
-                  <input formControlName="lastName">
+                  <td><input formControlName="lastName"></td>
                 </tr>
                 <tr>
                   <td><strong translate>coach-profile-information.label.email</strong></td>
-                  <input formControlName="email" type="email">
+                  <td><input formControlName="email" type="email"></td>
                 </tr>
                 <tr>
                   <td><strong translate>profile-information.label.profile-picture</strong></td>
-                  <input formControlName="pictureUrl">
+                  <td><input formControlName="pictureUrl"></td>
                 </tr>
                 </tbody>
               </table>
               <div id="button-container">
                 <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
-                  Submit
+                  profile-information.button.save
                 </button>
                 <button class="right grey lighten-3 btn-large black-text"
                         (click)="myprofileComponent.switchView('main')" translate>
-                  Cancel
+                  profile-information.button.cancel
                 </button>
               </div>
             </form>

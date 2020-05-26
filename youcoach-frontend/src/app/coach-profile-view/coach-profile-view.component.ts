@@ -22,7 +22,6 @@ export class CoachProfileViewComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.coachProfileComponent.user;
     this.coach = this.coachProfileComponent.user.coach;
-
     this.setTopicValues();
   }
 

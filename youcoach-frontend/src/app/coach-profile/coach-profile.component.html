@@ -14,5 +14,6 @@
 
     <app-coach-profile-view *ngIf="activeView === 'main'" [user]="user" [coach]="user.coach"></app-coach-profile-view>
     <app-coach-topic-update *ngIf="activeView === 'edit'" [user]="user"></app-coach-topic-update>
+    <app-coach-profile-update *ngIf="activeView === 'edit-profile'"></app-coach-profile-update>
   </div>
 </main>
