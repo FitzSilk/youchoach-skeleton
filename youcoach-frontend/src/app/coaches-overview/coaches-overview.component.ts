@@ -21,9 +21,10 @@ export class CoachesOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.enableSelect();
     this.loadUser();
     this.getCoaches();
-    console.log(this.allTheCoaches);
+
   }
 
   loadUser(): void {
@@ -46,7 +47,12 @@ export class CoachesOverviewComponent implements OnInit {
       this.users = this.allTheCoaches;
     } else {
       this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === topic || user.coach.secondTopic === topic);
-      console.log(this.users);
     }
+  }
+
+  enableSelect() {
+    const elems = document.querySelectorAll('select');
+    const instance = M.FormSelect.init(elems, {});
+
   }
 }
