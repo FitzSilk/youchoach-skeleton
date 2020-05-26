@@ -4,6 +4,7 @@ import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {filter, map} from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-coaches-overview',
   templateUrl: './coaches-overview.component.html',
@@ -14,8 +15,8 @@ export class CoachesOverviewComponent implements OnInit {
   users: User[];
   allTheCoaches: User[];
   user: User;
+  optionTopic: string;
   option: string;
-  optionYear: string;
   topics = ['French', 'Mathematics', 'HTML 5', 'Economic Science', 'Dutch', 'German'];
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) {
@@ -53,20 +54,28 @@ export class CoachesOverviewComponent implements OnInit {
         return selectedLabels;
       }, []);*/
 
-      /*for (const topic of topics) {
-
-      }*/
-
       this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === topics || user.coach.secondTopic === topics);
     }
   }
 
-  filterByYear(year: string): void {
-    console.log(year);
+  filterByYear(year): void {
+    year = year.toString();
     if (year === '') {
       this.users = this.allTheCoaches;
     } else {
-      this.users = this.allTheCoaches.filter(user => user.coach.classesForFirstTopic === year || user.coach.classesForSecondTopic === year);
+      this.users = this.allTheCoaches.filter(user => {
+        let doesExist = false;
+        if (user.coach.classesForFirstTopic.includes(year)) {
+          doesExist = true;
+        }
+        if (user.coach.classesForSecondTopic) {
+          if (user.coach.classesForSecondTopic.includes(year)) {
+            doesExist = true;
+          }
+        }
+        return doesExist;
+      });
+
     }
   }
 

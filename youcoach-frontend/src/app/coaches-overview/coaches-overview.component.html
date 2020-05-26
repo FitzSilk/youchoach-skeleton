@@ -8,7 +8,7 @@
         <header>
           <div class="row">
             <div class="input-field col l3 m6 s12">
-              <select [(ngModel)]="option" (change)="filterCoaches(option)">
+              <select [(ngModel)]="optionTopic" (change)="filterCoaches(optionTopic)">
                 <option value="" selected>All</option>
                 <option *ngFor="let topic of topics" value="{{topic}}">{{topic}} </option>
 
@@ -17,7 +17,7 @@
             </div>
 
             <div class="input-field col l3 m6 s12">
-              <select [ngModel]="optionYear" (change)="filterByYear(optionYear)">
+              <select multiple [(ngModel)]="option" (change)="filterByYear(option)">
                 <option value="" selected>All</option>
                 <option value="1">year 1</option>
                 <option value="2">year 2</option>
