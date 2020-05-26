@@ -1,0 +1,69 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col s12 m12">
+
+      <h1 class="center teal-text lighten-3" translate>request-session.title</h1>
+      <div class="content-container-with-padding z-depth-4">
+
+        <div class="row">
+          <form class="col s12" [formGroup]="createSession" (ngSubmit)="onSubmit(createSession.value)">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="topic" class="materialize-textarea" formControlName="subject"
+                          required
+                          [ngClass]="{ 'is-invalid': submitted && createSession.controls.subject.errors }"></textarea>
+                <label for="topic" translate>request-session.label.subject</label>
+                <div *ngIf="submitted && createSession.controls.subject.errors" class="invalid-feedback">
+                  <span *ngIf="createSession.controls.subject.errors.required"
+                        translate>register.message.email-required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row" formGroupName="date">
+              <div class="input-field col s6">
+                <input id="date" type="date" class="datepicker" formControlName="calendar"
+                       required [ngClass]="{ 'is-invalid': submitted && createSession.get('date.calendar').errors}">
+                <label for="date" translate>request-session.label.date</label>
+                <div *ngIf="submitted && createSession.get('date.calendar').errors" class="invalid-feedback">
+                  <span *ngIf="createSession.get('date.calendar').errors.required" translate>register.message.email-required</span>
+                </div>
+              </div>
+              <div class="input-field col s6">
+                <input id="timepicker" type="time" class="timepicker" formControlName="time"
+                       required [ngClass]="{ 'is-invalid': submitted && createSession.get('date.time').errors }">
+                <label for="timepicker" translate>request-session.label.time</label>
+                <div *ngIf="submitted && createSession.get('date.time').errors" class="invalid-feedback">
+                  <span *ngIf="createSession.get('date.time').errors.required"
+                        translate>register.message.email-required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="location" type="text" class="autocomplete" formControlName="location"
+                       required [ngClass]="{ 'is-invalid': submitted && createSession.controls.location.errors }">
+                <label for="location" translate>request-session.label.location</label>
+                <div *ngIf="submitted && createSession.controls.location.errors" class="invalid-feedback">
+                  <span *ngIf="createSession.controls.location.errors.required" translate>register.message.email-required</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="remarks" class="materialize-textarea" formControlName="description"></textarea>
+                <label for="remarks" translate>request-session.label.remarks</label>
+              </div>
+            </div>
+            <div class="row right-align">
+              <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
+                request-session.button.request-session<i class="material-icons right">send</i></button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
