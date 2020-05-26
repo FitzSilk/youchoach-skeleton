@@ -58,24 +58,62 @@ export class CoachesOverviewComponent implements OnInit {
     }
   }
 
-  filterByYear(year): void {
-    year = year.toString();
+  /*filterByYear(year): void {
     if (year === '') {
       this.users = this.allTheCoaches;
     } else {
       this.users = this.allTheCoaches.filter(user => {
-        let doesExist = false;
-        if (user.coach.classesForFirstTopic.includes(year)) {
-          doesExist = true;
-        }
-        if (user.coach.classesForSecondTopic) {
-          if (user.coach.classesForSecondTopic.includes(year)) {
+          let doesExist: boolean;
+          doesExist = false;
+          if (user.coach.classesForFirstTopic.includes(year)) {
             doesExist = true;
           }
+          if (user.coach.classesForSecondTopic) {
+            if (user.coach.classesForSecondTopic.includes(year)) {
+              doesExist = true;
+            }
+          }
+          return doesExist;
         }
-        return doesExist;
-      });
+      );
+    }
 
+
+  }*/
+
+  filterByYear(year): void {
+    let userContainer;
+    let userPlaceholder;
+    if (year === '') {
+      this.users = this.allTheCoaches;
+    } else {
+      year.map(grade => {
+          userPlaceholder = this.allTheCoaches.filter(user => {
+              let doesExist: boolean;
+              doesExist = false;
+              if (user.coach.classesForFirstTopic.includes(grade)) {
+                doesExist = true;
+              }
+              if (user.coach.classesForSecondTopic) {
+                if (user.coach.classesForSecondTopic.includes(grade)) {
+                  doesExist = true;
+                }
+              }
+              if (userContainer != null && userContainer.includes(user)) {
+                doesExist = false;
+              }
+              return doesExist;
+            }
+          );
+          if (userContainer != null) {
+            userContainer = userContainer.concat(userPlaceholder);
+          } else {
+            userContainer = userPlaceholder;
+          }
+          console.log(userContainer);
+        }
+      );
+      this.users = userContainer;
     }
   }
 
