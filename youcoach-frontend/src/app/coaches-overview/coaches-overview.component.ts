@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
-import {filter, map} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class CoachesOverviewComponent implements OnInit {
   optionTopic: string;
   option: string;
   topics = ['French', 'Mathematics', 'HTML 5', 'Economic Science', 'Dutch', 'German'];
+  private searchTerms = new Subject<string>();
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) {
   }
@@ -58,29 +60,6 @@ export class CoachesOverviewComponent implements OnInit {
     }
   }
 
-  /*filterByYear(year): void {
-    if (year === '') {
-      this.users = this.allTheCoaches;
-    } else {
-      this.users = this.allTheCoaches.filter(user => {
-          let doesExist: boolean;
-          doesExist = false;
-          if (user.coach.classesForFirstTopic.includes(year)) {
-            doesExist = true;
-          }
-          if (user.coach.classesForSecondTopic) {
-            if (user.coach.classesForSecondTopic.includes(year)) {
-              doesExist = true;
-            }
-          }
-          return doesExist;
-        }
-      );
-    }
-
-
-  }*/
-
   filterByYear(year): void {
     let userContainer;
     let userPlaceholder;
@@ -115,6 +94,12 @@ export class CoachesOverviewComponent implements OnInit {
       );
       this.users = userContainer;
     }
+  }
+
+  search(term: string): void {
+    this.searchTerms.next(term);
+    this.searchTerms.subscribe((data) => this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data) || user.lastName.toLowerCase().includes(data)));
+    // this.users = this.allTheCoaches.filter(user => user.firstName.includes(this.searchTerms.));
   }
 
   enableSelect() {
