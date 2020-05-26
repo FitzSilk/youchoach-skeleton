@@ -16,12 +16,11 @@ export class SessionService {
     })
   };
 
-  constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
+  constructor(private http: HttpClient) {
   }
 
 
   createSession(session: Session): Observable<Session> {
-    const url = this.sessionUrl + '/create';
-    return this.http.post<Session>(url, session, this.httpOptions);
+    return this.http.post<Session>(this.sessionUrl, session, this.httpOptions);
   }
 }

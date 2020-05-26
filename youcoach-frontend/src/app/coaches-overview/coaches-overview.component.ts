@@ -30,7 +30,7 @@ export class CoachesOverviewComponent implements OnInit {
   getCoaches(): void {
     this.userService.getCoaches().pipe(
       map(userList => userList.filter(user => user.id !== this.authenticationService.getId()))
-    ).subscribe(user => this.users = user);
+    ).subscribe(users => this.users = users);
   }
 
 }

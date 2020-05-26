@@ -5,11 +5,11 @@ export class Session {
   subject: string;
   remarks: string;
   location: string;
-  date: Date;
+  date: string;
   coachee: User;
   coach: User;
 
-  constructor(subject: string, remarks: string, location: string, date: Date, coachee: User, coach: User) {
+  constructor(subject: string, remarks: string, location: string, date: string, coachee: User, coach: User) {
     this.subject = subject;
     this.remarks = remarks;
     this.location = location;

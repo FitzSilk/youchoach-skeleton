@@ -4,7 +4,7 @@ import {SessionService} from '../services/session.service';
 import {UserService} from '../services/user.service';
 import {User} from '../classes/user';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Session} from '../classes/session';
 
 @Component({
@@ -24,27 +24,32 @@ export class CreateSessionComponent implements OnInit {
               private sessionService: SessionService,
               private userService: UserService,
               private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
     this.createSession = this.formBuilder.group({
       subject: ['', Validators.required],
       description: '',
       location: ['', [Validators.required]],
       date: this.formBuilder.group({
         calendar: ['', Validators.required],
-        time: ['', Validators.required]
-      }),
-      coachee: this.user,
-      coach: this.coach
+        time: ''
+      })
     });
   }
 
   ngOnInit(): void {
     this.loadUser();
+    this.loadCoach();
   }
 
   loadUser(): void {
     const id: string = this.authenticationService.getId();
     this.userService.getUserById(id).subscribe(user => this.user = user);
+  }
+
+  loadCoach(): void {
+    const coachId: string = this.route.snapshot.paramMap.get('id');
+    this.userService.getUserById(coachId).subscribe(user => this.coach = user);
   }
 
   onSubmit(sessionData) {
@@ -55,10 +60,10 @@ export class CreateSessionComponent implements OnInit {
     }
     this.success = false;
     this.error = false;
-    const date = sessionData.date.calendar + sessionData.date.time;
-    console.log(date);
-    const session = new Session(sessionData.subject, sessionData.description, sessionData.location, sessionData.date, this.user, this.coach);
-    this.sessionService.createSession(sessionData).subscribe(user => this.router.navigate(['/home']));
+    const timing = sessionData.date.calendar + 'T' + sessionData.date.time + ':00.000Z';
+    console.log(this.coach);
+    const session = new Session(sessionData.subject, sessionData.description, sessionData.location, timing, this.user, this.coach);
+    this.sessionService.createSession(session).subscribe(user => this.router.navigate(['/user/myprofile/' + this.user.id]));
     this.createSession.reset();
   }
 

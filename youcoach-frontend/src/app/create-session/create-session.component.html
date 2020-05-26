@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="input-field col s6">
-                <input id="timepicker" type="time" class="timepicker" formGroupName="time"
+                <input id="timepicker" type="time" class="timepicker" formControlName="time"
                        required [ngClass]="{ 'is-invalid': submitted && createSession.get('date.time').errors }">
                 <label for="timepicker" translate>request-session.label.time</label>
                 <div *ngIf="submitted && createSession.get('date.time').errors" class="invalid-feedback">
@@ -56,8 +56,8 @@
               </div>
             </div>
             <div class="row right-align">
-              <a class="waves-effect waves-light yellow darken-2 btn-large black-text" translate>request-session.button.request-session<i
-                class="material-icons right">send</i></a>
+              <button class="waves-effect waves-light yellow darken-2 btn-large black-text" type="submit" translate>
+                request-session.button.request-session<i class="material-icons right">send</i></button>
             </div>
           </form>
         </div>
