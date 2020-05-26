@@ -25,6 +25,7 @@ import { CoachesOverviewComponent } from './coaches-overview/coaches-overview.co
 import { CoachProfileViewComponent } from './coach-profile-view/coach-profile-view.component';
 import { CoachTopicUpdateComponent } from './coach-topic-update/coach-topic-update.component';
 import { CoachProfileUpdateComponent } from './coach-profile-update/coach-profile-update.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -66,7 +67,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSelectModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}

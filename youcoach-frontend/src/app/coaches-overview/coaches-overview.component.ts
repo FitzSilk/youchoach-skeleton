@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
-import {filter, map} from "rxjs/operators";
+import {filter, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-coaches-overview',
@@ -12,7 +12,9 @@ import {filter, map} from "rxjs/operators";
 export class CoachesOverviewComponent implements OnInit {
 
   users: User[];
+  filteredCoach: User[];
   user: User;
+  option: string;
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) {
   }
@@ -33,4 +35,8 @@ export class CoachesOverviewComponent implements OnInit {
     ).subscribe(user => this.users = user);
   }
 
+  filterCoaches(topic: string): void {
+    this.filteredCoach = this.users.filter(user => user.coach.firstTopic === topic || user.coach.secondTopic === topic);
+    console.log(this.filteredCoach);
+  }
 }
