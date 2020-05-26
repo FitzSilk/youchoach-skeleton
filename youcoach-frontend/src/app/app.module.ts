@@ -15,16 +15,17 @@ import {RegistrationComponent} from './registration/registration.component';
 import {MyprofileComponent} from './myprofile/myprofile.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavigationBarComponent} from './navigation-bar/navigation-bar.component';
-import { FooterComponent } from './footer/footer.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { CoachApplyComponent } from './coach-apply/coach-apply.component';
-import { MyprofileViewComponent } from './myprofile-view/myprofile-view.component';
-import { EditprofileComponent } from './editprofile/editprofile.component';
-import { CoachProfileComponent } from './coach-profile/coach-profile.component';
-import { CoachesOverviewComponent } from './coaches-overview/coaches-overview.component';
-import { CoachProfileViewComponent } from './coach-profile-view/coach-profile-view.component';
-import { CoachTopicUpdateComponent } from './coach-topic-update/coach-topic-update.component';
-import { CoachProfileUpdateComponent } from './coach-profile-update/coach-profile-update.component';
+import {FooterComponent} from './footer/footer.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {CoachApplyComponent} from './coach-apply/coach-apply.component';
+import {MyprofileViewComponent} from './myprofile-view/myprofile-view.component';
+import {EditprofileComponent} from './editprofile/editprofile.component';
+import {CoachProfileComponent} from './coach-profile/coach-profile.component';
+import {CoachesOverviewComponent} from './coaches-overview/coaches-overview.component';
+import {CoachProfileViewComponent} from './coach-profile-view/coach-profile-view.component';
+import {CoachTopicUpdateComponent} from './coach-topic-update/coach-topic-update.component';
+import {CoachProfileUpdateComponent} from './coach-profile-update/coach-profile-update.component';
+import {CreateSessionComponent} from './create-session/create-session.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -50,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachProfileComponent,
     CoachProfileViewComponent,
     CoachTopicUpdateComponent,
-    CoachProfileUpdateComponent
+    CoachProfileUpdateComponent,
+    CreateSessionComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true}
