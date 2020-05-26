@@ -4,7 +4,7 @@ begin;
 -- **************************************
 
 -- set schema 'youcoach';
--- drop table if exists secured_users, users, coaches cascade;
+-- drop table if exists secured_users, users, coaches, sessions cascade;
 -- drop schema youcoach;
 
 -- END UNCOMMENT
@@ -34,7 +34,7 @@ create table if not exists users
     foreign key (secured_id) references secured_users (su_id)
 );
 
-CREATE TABLE coaches
+CREATE TABLE if not exists coaches
 (
     c_id uuid primary key ,
     informations varchar,
@@ -45,14 +45,20 @@ CREATE TABLE coaches
     second_topic_classes varchar (20) DEFAULT NULL
 );
 
--- no more used 14/05
--- create table if not exists profiles
--- (
---     p_id    uuid primary key,
---     user_id uuid,
---     photo   varchar,
---     foreign key (user_id) references users (u_id)
--- );
+CREATE TABLE if not exists sessions
+(
+    session_id uuid NOT NULL primary key,
+    subject varchar NOT NULL,
+    date timestamp NOT NULL,
+    remarks varchar,
+    location varchar NOT NULL,
+    coachee_id uuid NOT NULL,
+    coach_id uuid NOT NULL,
+    FOREIGN KEY (coach_id)
+        REFERENCES users (u_id),
+    FOREIGN KEY (coachee_id)
+        REFERENCES users (u_id)
+);
 
 --- insert some secured users for login
 insert into secured_users
@@ -61,7 +67,7 @@ values ('411fd4fc-c770-4cab-821b-85d2cb2c048e', 'student',
 insert into secured_users
 values ('1045ae57-57f9-41f0-b1c9-c4018200f456', 'coach', '$2y$12$LGjbl1dKNu2vLz5ZwrLOkO5nOg2VzXmvp0asq89isoZ6CChDuqXG6',
         'COACH');
---- new requirements on 13/05
+--- new requirements on 13/05 - some default secured users used by the client for live testing - DO NOT REMOVE
 insert into secured_users        -- password : YouC0ach
 values ('09a30794-747e-4fb3-ba14-e8be3b40b122','coachee1@school.org', '$2a$10$zM3YP185kIzV/jOMUNFy8ec5q2/Q42Rp1wCvoo.GIY1oG.gD.rldG', 'COACHEE');
 insert into secured_users
