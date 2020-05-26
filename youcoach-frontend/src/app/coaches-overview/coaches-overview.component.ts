@@ -12,9 +12,10 @@ import {filter, map} from 'rxjs/operators';
 export class CoachesOverviewComponent implements OnInit {
 
   users: User[];
-  filteredCoach: User[];
+  allTheCoaches: User[];
   user: User;
   option: string;
+  topics = ['French', 'Mathematics', 'HTML 5', 'Economic Science', 'Dutch', 'German'];
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) {
   }
@@ -22,6 +23,7 @@ export class CoachesOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.loadUser();
     this.getCoaches();
+    console.log(this.allTheCoaches);
   }
 
   loadUser(): void {
@@ -32,11 +34,19 @@ export class CoachesOverviewComponent implements OnInit {
   getCoaches(): void {
     this.userService.getCoaches().pipe(
       map(userList => userList.filter(user => user.id !== this.authenticationService.getId()))
-    ).subscribe(user => this.users = user);
+    ).subscribe(user => {
+      this.users = user;
+      this.allTheCoaches = user;
+    });
+
   }
 
   filterCoaches(topic: string): void {
-    this.filteredCoach = this.users.filter(user => user.coach.firstTopic === topic || user.coach.secondTopic === topic);
-    console.log(this.filteredCoach);
+    if (topic === '') {
+      this.users = this.allTheCoaches;
+    } else {
+      this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === topic || user.coach.secondTopic === topic);
+      console.log(this.users);
+    }
   }
 }
