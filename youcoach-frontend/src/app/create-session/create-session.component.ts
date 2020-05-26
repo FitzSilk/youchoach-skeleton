@@ -32,7 +32,7 @@ export class CreateSessionComponent implements OnInit {
       location: ['', [Validators.required]],
       date: this.formBuilder.group({
         calendar: ['', Validators.required],
-        time: ''
+        time: ['', Validators.required]
       })
     });
   }
@@ -61,7 +61,6 @@ export class CreateSessionComponent implements OnInit {
     this.success = false;
     this.error = false;
     const timing = sessionData.date.calendar + 'T' + sessionData.date.time + ':00.000Z';
-    console.log(this.coach);
     const session = new Session(sessionData.subject, sessionData.description, sessionData.location, timing, this.user, this.coach);
     this.sessionService.createSession(session).subscribe(user => this.router.navigate(['/user/myprofile/' + this.user.id]));
     this.createSession.reset();
