@@ -1,6 +1,6 @@
 export class Topic {
 
-  private topic: string;
+   topic: string;
 
   constructor(topic: string) {
     this.topic = topic;
