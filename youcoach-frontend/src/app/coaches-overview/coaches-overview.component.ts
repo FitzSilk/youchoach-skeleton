@@ -58,8 +58,9 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
     let userContainer;
     let userPlaceholder;
     if (this.selectedYear === undefined || this.selectedYear[0] === '' || this.selectedYear.length === 0) {
+      console.log(this.selectedTopic);
       this.users = this.allTheCoaches;
-      if (this.selectedTopic === '') {
+      if (this.selectedTopic === '' || this.selectedTopic === undefined) {
         this.users = this.allTheCoaches;
       } else {
         this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === this.selectedTopic
