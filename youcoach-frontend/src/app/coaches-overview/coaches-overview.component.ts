@@ -2,10 +2,11 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
-import {debounceTime, distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import * as M from 'materialize-css';
-import {dashCaseToCamelCase} from '@angular/compiler/src/util';
+import {SessionService} from '../services/session.service';
+import {Topic} from '../classes/topic';
 
 
 @Component({
@@ -20,15 +21,18 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
   user: User;
   optionTopic: string;
   option: string;
-  topics = ['French', 'Mathematics', 'HTML 5', 'Economic science', 'Dutch', 'German'];
+  topics: Topic[] = [];
   private searchTerms = new Subject<string>();
   private selectedTopic;
   private selectedYear: string[];
 
-  constructor(private userService: UserService, private authenticationService: AuthenticationService) {
+  constructor(private userService: UserService,
+              private authenticationService: AuthenticationService,
+              private sessionService: SessionService) {
   }
 
   ngOnInit(): void {
+    this.getTopics();
     this.enableSelect();
     this.loadUser();
     this.getCoaches();
@@ -50,6 +54,14 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
       this.users = users;
       this.allTheCoaches = users;
     });
+  }
+
+  getTopics(): void {
+    this.sessionService.getTopics().subscribe(topic => topic.map(name => {
+      this.topics.push(new Topic(name));
+      console.log(name);
+    }));
+    console.log(this.topics);
   }
 
 
