@@ -118,8 +118,8 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
   search(term: string): void {
     this.searchTerms.next(term);
     this.searchTerms.subscribe((data) =>
-      this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data)
-        || user.lastName.toLowerCase().includes(data)));
+      this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data.toLowerCase())
+        || user.lastName.toLowerCase().includes(data.toLowerCase())));
     // this.users = this.allTheCoaches.filter(user => user.firstName.includes(this.searchTerms.));
     if (term === '') {
       this.filterByYearAndTopic();
