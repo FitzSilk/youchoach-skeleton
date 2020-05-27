@@ -26,6 +26,7 @@ import {CoachTopicUpdateComponent} from './coach-topic-update/coach-topic-update
 import {CoachProfileUpdateComponent} from './coach-profile-update/coach-profile-update.component';
 import {CreateSessionComponent} from './create-session/create-session.component';
 import {MatSelectModule} from '@angular/material/select';
+import { CoachProfilePublicViewComponent } from './coach-profile-public-view/coach-profile-public-view.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CoachTopicUpdateComponent,
     CoachProfileUpdateComponent,
     CreateSessionComponent,
+    CoachProfilePublicViewComponent,
   ],
   imports: [
     BrowserModule,
