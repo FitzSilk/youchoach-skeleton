@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.security;
 
+import com.switchfully.youcoach.api.topics.TopicController;
 import com.switchfully.youcoach.api.users.UserController;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthenticationFilter;
 import com.switchfully.youcoach.security.authentication.jwt.JwtAuthorizationFilter;
@@ -38,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(UserController.USER_RESOURCE_PATH + "/**").permitAll()
+                .antMatchers(TopicController.TOPIC_RESOURCE_PATH + "/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), jwtSecret, userService))
