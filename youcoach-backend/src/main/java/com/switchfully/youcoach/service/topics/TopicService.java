@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TopicService {
@@ -16,8 +17,11 @@ public class TopicService {
         this.topicRepository = topicRepository;
     }
 
-    public List<Topic> getAllTopics() {
-        return topicRepository.findAll();
+    public List<String> getAllTopics() {
+        return topicRepository.findAll()
+                .stream()
+                .map(topic -> topic.getTopic())
+                .collect(Collectors.toList());
     }
 
 }

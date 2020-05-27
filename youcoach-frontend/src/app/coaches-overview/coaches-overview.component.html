@@ -7,11 +7,10 @@
 
         <header>
           <div class="row">
-            <div class="input-field col l3 m6 s12">
+            <div class="input-field col l3 m6 s12" >
               <select id="filter-by-topic" [(ngModel)]="optionTopic" (change)="topicSelected(optionTopic)">
                 <option value="" selected>All</option>
                 <option *ngFor="let topic of topics" value="{{topic}}">{{topic}} </option>
-
               </select>
               <label for="filter-by-topic" translate>coach-overview.label.filter-topic</label>
             </div>

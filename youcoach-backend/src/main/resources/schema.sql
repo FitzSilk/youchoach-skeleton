@@ -60,6 +60,11 @@ CREATE TABLE if not exists sessions
         REFERENCES users (u_id)
 );
 
+CREATE TABLE if not exists topics
+(
+    id int primary key
+)
+
 --- insert some secured users for login
 insert into secured_users
 values ('411fd4fc-c770-4cab-821b-85d2cb2c048e', 'student',
@@ -103,6 +108,13 @@ insert into coaches
 values('88410633-a172-4d1a-4fd4-ea48606e3e7b', 'Former circus performer, I now fight against crime.',
        'Available at any time, justice does not wait.', 'Chemistry', '4,5', 'Physics', '5,6,7');
 
+-- insert some topics
+insert into topics (topic) values ('Mathematics');
+insert into topics (topic) values ('French');
+insert into topics (topic) values ('HTML 5');
+insert into topics (topic) values ('Economic science');
+insert into topics (topic) values ('Dutch');
+insert into topics (topic) values ('German');
 
 --rollback;
 

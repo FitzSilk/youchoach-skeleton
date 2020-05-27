@@ -9,6 +9,7 @@ import {Session} from '../classes/session';
 })
 export class SessionService {
   private sessionUrl = `${environment.backendUrl}/session`;
+  private topicUrl = `${environment.backendUrl}/topic`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -21,5 +22,9 @@ export class SessionService {
 
   createSession(session: Session): Observable<Session> {
     return this.http.post<Session>(this.sessionUrl, session, this.httpOptions);
+  }
+
+  getTopics(): Observable<string[]> {
+    return this.http.get<string[]>(this.topicUrl);
   }
 }
