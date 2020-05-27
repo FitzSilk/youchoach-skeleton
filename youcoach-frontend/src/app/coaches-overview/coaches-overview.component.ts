@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {UserService} from '../services/user.service';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {debounceTime, distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import * as M from 'materialize-css';
 
 
 @Component({
@@ -11,15 +12,17 @@ import {Subject} from 'rxjs';
   templateUrl: './coaches-overview.component.html',
   styleUrls: ['./coaches-overview.component.css']
 })
-export class CoachesOverviewComponent implements OnInit {
+export class CoachesOverviewComponent implements OnInit, AfterViewInit {
 
   users: User[];
   allTheCoaches: User[];
   user: User;
   optionTopic: string;
   option: string;
-  topics = ['French', 'Mathematics', 'HTML 5', 'Economic Science', 'Dutch', 'German'];
+  topics = ['French', 'Mathematics', 'HTML 5', 'Economic science', 'Dutch', 'German'];
   private searchTerms = new Subject<string>();
+  private selectedTopic;
+  private selectedYear: string[];
 
   constructor(private userService: UserService, private authenticationService: AuthenticationService) {
   }
@@ -29,6 +32,9 @@ export class CoachesOverviewComponent implements OnInit {
     this.loadUser();
     this.getCoaches();
 
+  }
+  ngAfterViewInit() {
+    M.AutoInit();
   }
 
   loadUser(): void {
@@ -46,36 +52,40 @@ export class CoachesOverviewComponent implements OnInit {
 
   }
 
-  filterCoaches(topics): void {
-    console.log(topics);
-    if (topics === '') {
-      this.users = this.allTheCoaches;
-    } else {
-      /*const collectItems = options => options.reduce((selectedLabels, { selected, label }) => {
-        if (selected) selectedLabels.push(label)
-        return selectedLabels;
-      }, []);*/
 
-      this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === topics || user.coach.secondTopic === topics);
-    }
-  }
-
-  filterByYear(year): void {
+  filterByYearAndTopic(): void {
+    console.log(this.selectedTopic);
     let userContainer;
     let userPlaceholder;
-    if (year === '') {
+    if (this.selectedYear === undefined || this.selectedYear[0] === '' || this.selectedYear.length === 0) {
       this.users = this.allTheCoaches;
+      if (this.selectedTopic === '') {
+        this.users = this.allTheCoaches;
+      } else {
+        /*const collectItems = options => options.reduce((selectedLabels, { selected, label }) => {
+          if (selected) selectedLabels.push(label)
+          return selectedLabels;
+        }, []);*/
+
+        this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === this.selectedTopic
+          ||
+          user.coach.secondTopic === this.selectedTopic);
+      }
     } else {
-      year.map(grade => {
+      this.selectedYear.map(grade => {
           userPlaceholder = this.allTheCoaches.filter(user => {
               let doesExist: boolean;
               doesExist = false;
               if (user.coach.classesForFirstTopic.includes(grade)) {
-                doesExist = true;
+                if (user.coach.firstTopic === this.selectedTopic || this.selectedTopic === '') {
+                  doesExist = true;
+                }
               }
               if (user.coach.classesForSecondTopic) {
                 if (user.coach.classesForSecondTopic.includes(grade)) {
-                  doesExist = true;
+                  if (user.coach.secondTopic === this.selectedTopic || this.selectedTopic === '') {
+                    doesExist = true;
+                  }
                 }
               }
               if (userContainer != null && userContainer.includes(user)) {
@@ -89,17 +99,31 @@ export class CoachesOverviewComponent implements OnInit {
           } else {
             userContainer = userPlaceholder;
           }
-          console.log(userContainer);
         }
       );
       this.users = userContainer;
     }
   }
 
+  topicSelected(topic) {
+    this.selectedTopic = topic;
+    this.filterByYearAndTopic();
+  }
+
+  yearSelected(year) {
+    this.selectedYear = year;
+    this.filterByYearAndTopic();
+  }
+
   search(term: string): void {
     this.searchTerms.next(term);
-    this.searchTerms.subscribe((data) => this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data) || user.lastName.toLowerCase().includes(data)));
+    this.searchTerms.subscribe((data) =>
+      this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data)
+        || user.lastName.toLowerCase().includes(data)));
     // this.users = this.allTheCoaches.filter(user => user.firstName.includes(this.searchTerms.));
+    if (term === '') {
+      this.filterByYearAndTopic();
+    }
   }
 
   enableSelect() {
