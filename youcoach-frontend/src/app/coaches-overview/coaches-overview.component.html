@@ -13,12 +13,12 @@
                 <option *ngFor="let topic of topics" value="{{topic}}">{{topic}} </option>
 
               </select>
-              <label for="filter-by-topic">Filter by Topic</label>
+              <label for="filter-by-topic" translate>coach-overview.label.filter-topic</label>
             </div>
 
             <div class="input-field col l3 m6 s12">
-              <select id="filter-by-year" multiple [(ngModel)]="option" (change)="yearSelected(option)">
-                <option value="" selected>All</option>
+              <select id="filter-by-year" multiple [(ngModel)]="option" (change)="yearSelected(option)" >
+                <option value="">All</option>
                 <option value="1">year 1</option>
                 <option value="2">year 2</option>
                 <option value="3">year 3</option>
@@ -27,12 +27,12 @@
                 <option value="6">year 6</option>
                 <option value="7">year 7</option>
               </select>
-              <label for="filter-by-year">Filter by Year</label>
+              <label for="filter-by-year" translate>coach-overview.label.filter-year</label>
             </div>
             <div class="input-field col l6 m12 s12">
               <i class="material-icons prefix">search</i>
               <input #searchBox id="icon_prefix" type="text" class="validate" (input)="search(searchBox.value)"/>
-              <label for="icon_prefix">First name or last name </label>
+              <label for="icon_prefix" translate>coach-overview.label.search-placeholder</label>
             </div>
           </div>
         </header>

@@ -5,6 +5,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {debounceTime, distinctUntilChanged, filter, map, switchMap} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import * as M from 'materialize-css';
+import {dashCaseToCamelCase} from '@angular/compiler/src/util';
 
 
 @Component({
@@ -31,8 +32,8 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
     this.enableSelect();
     this.loadUser();
     this.getCoaches();
-
   }
+
   ngAfterViewInit() {
     M.AutoInit();
   }
@@ -49,7 +50,6 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
       this.users = users;
       this.allTheCoaches = users;
     });
-
   }
 
 
@@ -62,11 +62,6 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
       if (this.selectedTopic === '') {
         this.users = this.allTheCoaches;
       } else {
-        /*const collectItems = options => options.reduce((selectedLabels, { selected, label }) => {
-          if (selected) selectedLabels.push(label)
-          return selectedLabels;
-        }, []);*/
-
         this.users = this.allTheCoaches.filter(user => user.coach.firstTopic === this.selectedTopic
           ||
           user.coach.secondTopic === this.selectedTopic);
@@ -77,13 +72,13 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
               let doesExist: boolean;
               doesExist = false;
               if (user.coach.classesForFirstTopic.includes(grade)) {
-                if (user.coach.firstTopic === this.selectedTopic || this.selectedTopic === '') {
+                if (user.coach.firstTopic === this.selectedTopic || this.selectedTopic === '' || this.selectedTopic === undefined) {
                   doesExist = true;
                 }
               }
               if (user.coach.classesForSecondTopic) {
                 if (user.coach.classesForSecondTopic.includes(grade)) {
-                  if (user.coach.secondTopic === this.selectedTopic || this.selectedTopic === '') {
+                  if (user.coach.secondTopic === this.selectedTopic || this.selectedTopic === '' || this.selectedTopic === undefined) {
                     doesExist = true;
                   }
                 }
@@ -117,18 +112,19 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
 
   search(term: string): void {
     this.searchTerms.next(term);
-    this.searchTerms.subscribe((data) =>
-      this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data.toLowerCase())
-        || user.lastName.toLowerCase().includes(data.toLowerCase())));
-    // this.users = this.allTheCoaches.filter(user => user.firstName.includes(this.searchTerms.));
-    if (term === '') {
-      this.filterByYearAndTopic();
-    }
+    this.searchTerms.subscribe(data => console.log(data));
+    this.searchTerms.subscribe((data) => {
+      if (data.length >= 3) {
+        this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data.toLowerCase())
+          || user.lastName.toLowerCase().includes(data.toLowerCase()));
+      } else {
+        this.filterByYearAndTopic();
+      }
+    });
   }
 
   enableSelect() {
     const elems = document.querySelectorAll('select');
     const instance = M.FormSelect.init(elems, {});
-
   }
 }
