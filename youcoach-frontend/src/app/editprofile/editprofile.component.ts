@@ -56,7 +56,7 @@ export class EditprofileComponent implements OnInit {
     }
     this.userService.updateUser(updateData)
       .subscribe(user => this.myprofileComponent.user = user);
-    this.myprofileComponent.activeview = 'main';
+    this.myprofileComponent.activeView = 'main';
   }
 
 }

@@ -12,7 +12,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
 export class MyprofileComponent implements OnInit {
   user: User;
   roleAdmin = 'ADMIN';
-  activeview = 'main';
+  activeView = 'main';
 
   constructor(private userService: UserService, private route: ActivatedRoute,
               private authenticationService: AuthenticationService, private router: Router) {
@@ -32,7 +32,7 @@ export class MyprofileComponent implements OnInit {
 
 
   switchView(view: string) {
-    this.activeview = view;
+    this.activeView = view;
     const currentElement = '#' + view;
     $('.collection-item').removeClass(['black-text', 'active', 'yellow', 'darken-2'])
       .addClass(['grey-text', 'text-darken-2']);
