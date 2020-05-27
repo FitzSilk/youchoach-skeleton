@@ -83,7 +83,9 @@ export class CoachesOverviewComponent implements OnInit {
 
   search(term: string): void {
     this.searchTerms.next(term);
-    this.searchTerms.subscribe((data) => this.users = this.allTheCoaches.filter(user => user.firstName.toLowerCase().includes(data) || user.lastName.toLowerCase().includes(data)));
+    this.searchTerms.subscribe((data) =>
+      this.users = this.allTheCoaches
+        .filter(user => user.firstName.toLowerCase().includes(data) || user.lastName.toLowerCase().includes(data)));
     // this.users = this.allTheCoaches.filter(user => user.firstName.includes(this.searchTerms.));
   }
 
