@@ -16,10 +16,6 @@ export class UserService {
     })
   };
 
-  /*const headers= new HttpHeaders()
-    .set('content-type', 'application/json')
-    .set('Access-Control-Allow-Origin', '*');*/
-
   constructor(private http: HttpClient, private authenticationService: AuthenticationService) {
   }
 

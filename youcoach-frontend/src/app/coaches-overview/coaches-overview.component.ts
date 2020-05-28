@@ -59,14 +59,12 @@ export class CoachesOverviewComponent implements OnInit, AfterViewInit {
   getTopics(): void {
     this.sessionService.getTopics().subscribe(topic => topic.map(name => {
       this.topics.push(new Topic(name));
-      console.log(name);
     }));
-    console.log(this.topics);
+
   }
 
 
   filterByYearAndTopic(): void {
-    console.log(this.selectedTopic);
     let userContainer;
     let userPlaceholder;
     if (this.selectedYear === undefined || this.selectedYear[0] === '' || this.selectedYear.length === 0) {

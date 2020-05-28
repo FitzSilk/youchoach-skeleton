@@ -9,15 +9,11 @@
         <li>
           <a routerLink="/home" translate>menu.link.home</a>
         </li>
-<!--        <li>-->
-<!--          <a href="#" translate>menu.link.about-us</a>-->
-<!--        </li>-->
+
         <li *ngIf="username">
           <a routerLink="/coaches" translate>menu.link.find-a-coach</a>
         </li>
-<!--        <li>-->
-<!--          <a href="#" translate>menu.link.contact</a>-->
-<!--        </li>-->
+
 
         <li>
           <a *ngIf="!username" class="waves-effect waves-light yellow darken-2 btn black-text" routerLink="/login"
@@ -86,18 +82,12 @@
           <a routerLink="/home" translate><i class="material-icons">home</i>menu.link.home
           </a>
         </li>
-<!--        <li>-->
-<!--          <a href="#" translate><i class="material-icons">people_outline</i>menu.link.about-us-->
-<!--          </a>-->
-<!--        </li>-->
+
         <li>
           <a *ngIf = "username" routerLink="/coaches" translate><i class="material-icons" >wc</i>menu.link.find-a-coach
           </a>
         </li>
-<!--        <li>-->
-<!--          <a href="#" translate><i class="material-icons">textsms</i>menu.link.contact-->
-<!--          </a>-->
-<!--        </li>-->
+
         <li class="divider"></li>
         <li  *ngIf="username">
           <a routerLink="/user/myprofile/{{id}}" translate><i class="material-icons">person_outline</i>

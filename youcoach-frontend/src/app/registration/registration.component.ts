@@ -56,9 +56,7 @@ export class RegistrationComponent implements OnInit {
 
   checkPasswordsMatch(): void {
     const password = this.registerForm.get('securedUser.password');
-    console.log(password);
     const confirmPassword = this.registerForm.get('securedUser.confirmPassword');
-    console.log(confirmPassword);
     if (password.value !== confirmPassword.value) {
       this.registerForm.get('securedUser.confirmPassword').setErrors({notSame: true});
     }

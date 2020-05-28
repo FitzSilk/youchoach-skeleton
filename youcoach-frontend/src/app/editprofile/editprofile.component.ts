@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserService} from '../services/user.service';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {MyprofileComponent} from '../myprofile/myprofile.component';
 import {Router} from '@angular/router';
 

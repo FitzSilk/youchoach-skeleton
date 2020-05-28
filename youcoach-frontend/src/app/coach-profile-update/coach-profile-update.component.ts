@@ -1,11 +1,10 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from '../classes/user';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserService} from '../services/user.service';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CoachProfileComponent} from '../coach-profile/coach-profile.component';
-import {CoachProfileViewComponent} from '../coach-profile-view/coach-profile-view.component';
 
 @Component({
   selector: 'app-coach-profile-update',
