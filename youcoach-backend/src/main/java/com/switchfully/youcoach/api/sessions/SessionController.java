@@ -49,7 +49,7 @@ public class SessionController {
     }
 
     @GetMapping(produces = "application/json", path = "/view/coachee/{id}")
-    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    @ResponseStatus(HttpStatus.OK)
     public List<SessionDto> getCoacheeSessionsById(@PathVariable UUID id) {
         myLogger.info("The coachee with the ID " + id + " is trying to get all the sessions");
         List<SessionDto> sessionList = sessionService.findAllByCoacheeId(id);
@@ -58,7 +58,7 @@ public class SessionController {
     }
 
     @GetMapping(produces = "application/json", path = "/view/coach/{id}")
-    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    @ResponseStatus(HttpStatus.OK)
     public List<SessionDto> getCoachSessionsById(@PathVariable UUID id) {
         myLogger.info("The coach with the ID " + id + " is trying to get all the sessions");
         List<SessionDto> sessionList = sessionService.findAllByCoachId(id);
