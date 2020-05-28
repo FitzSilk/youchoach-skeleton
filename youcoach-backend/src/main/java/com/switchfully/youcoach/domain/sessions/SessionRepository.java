@@ -10,4 +10,8 @@ import java.util.UUID;
 public interface SessionRepository extends CrudRepository<Session, UUID> {
 
     List<Session> findAll();
+
+    List<Session> findAllByCoachee_Id(UUID id);
+
+    List<Session> findAllByCoach_Id(UUID id);
 }

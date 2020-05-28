@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = SessionController.SESSION_RESOURCE_PATH)
@@ -32,7 +33,7 @@ public class SessionController {
         return sessionDto1;
     }
 
-    @PutMapping(consumes="application/json", produces= "application/json")
+    @PutMapping(consumes = "application/json", produces = "application/json")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public SessionDto updateSessionStatus(@RequestBody SessionDto sessionDto) {
         myLogger.info(sessionDto.getCoachee().getEmail() + " is trying to update the status of a coaching session with " + sessionDto.getSession_id() + " - " + sessionDto.getStatus());
@@ -45,6 +46,24 @@ public class SessionController {
     @ResponseStatus(HttpStatus.OK)
     public List<SessionDto> findAllSessions() {
         return sessionService.findAll();
+    }
+
+    @GetMapping(produces = "application/json", path = "/view/coachee/{id}")
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public List<SessionDto> getCoacheeSessionsById(@PathVariable UUID id) {
+        myLogger.info("The coachee with the ID " + id + " is trying to get all the sessions");
+        List<SessionDto> sessionList = sessionService.findAllByCoacheeId(id);
+        myLogger.info("The coachee with the ID " + id + " got all the sessions finally");
+        return sessionList;
+    }
+
+    @GetMapping(produces = "application/json", path = "/view/coach/{id}")
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
+    public List<SessionDto> getCoachSessionsById(@PathVariable UUID id) {
+        myLogger.info("The coach with the ID " + id + " is trying to get all the sessions");
+        List<SessionDto> sessionList = sessionService.findAllByCoachId(id);
+        myLogger.info("The coach with the ID " + id + " got all the sessions finally");
+        return sessionList;
     }
 
 }
