@@ -32,52 +32,15 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: difference between prokaryotic and eukaryotic cells</td>
-                <td>16/05/2020</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Requested</td>
+              <tr *ngFor="let session of upcomingSessions">
+                <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date.substring(0,10)}}</td>
+                <td>{{session.date.substring(11,16)}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status | titlecase}}</td>
                 <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Cancel<i
                   class="material-icons right">cancel</i></a></td>
-              </tr>
-              <tr>
-                <td>Sofie Dumoulin</td>
-                <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                <td>17/05/2020</td>
-                <td>12:00</td>
-                <td>Coaching room</td>
-                <td>Accepted</td>
-                <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Cancel<i
-                  class="material-icons right">cancel</i></a></td>
-              </tr>
-              <tr>
-                <td>Sofie Dumoulin</td>
-                <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                <td>17/05/2020</td>
-                <td>12:00</td>
-                <td>Coaching room</td>
-                <td>Declined</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Sofie Dumoulin</td>
-                <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                <td>17/05/2020</td>
-                <td>12:00</td>
-                <td>Coaching room</td>
-                <td>Cancelled<br />(by coach)</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Sofie Dumoulin</td>
-                <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                <td>17/05/2020</td>
-                <td>12:00</td>
-                <td>Coaching room</td>
-                <td>Cancelled<br />(by you)</td>
-                <td></td>
               </tr>
               </tbody>
             </table>
@@ -104,25 +67,17 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: difference between prokaryotic and eukaryotic cells</td>
-                <td>16/05/2019</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Done</td>
+              <tr *ngFor="let session of waitingForFeedbackSessions">
+                <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date.substring(0,10)}}</td>
+                <td>{{session.date.substring(11,16)}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status | titlecase}}</td>
                 <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Give feedback<i
                   class="material-icons right">feedback</i></a></td>
               </tr>
-              <tr>
-                <td>Sofie Dumoulin</td>
-                <td>I have a hard time grasping derived functions and I have an upcoming exam</td>
-                <td>17/05/2019</td>
-                <td>12:00</td>
-                <td>Coaching room</td>
-                <td>Done</td>
-                <td></td>
-              </tr>
+
               </tbody>
             </table>
           </div>
@@ -148,51 +103,15 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: introduction</td>
-                <td>16/05/2020</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Feedback provided</td>
-                <td></td>
+              <tr *ngFor="let session of archivedSessions">
+                <td>{{session.coach.firstName}} {{session.coach.lastName}}</td>
+                <td>{{session.subject}}</td>
+                <td>{{session.date.substring(0,10)}}</td>
+                <td>{{session.date.substring(11,16)}}</td>
+                <td>{{session.location}}</td>
+                <td>{{session.status | titlecase}}</td>
               </tr>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: introduction</td>
-                <td>16/05/2020</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Automatically closed</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: introduction</td>
-                <td>16/05/2020</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Declined</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: introduction</td>
-                <td>16/05/2020</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Cancelled<br />(by you)</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Antoine Leroy</td>
-                <td>Biology of the cell: introduction</td>
-                <td>16/05/2020</td>
-                <td>16:00</td>
-                <td>Coaching room</td>
-                <td>Cancelled<br />(by coach)</td>
-                <td></td>
-              </tr>
+
               </tbody>
             </table>
           </div>
