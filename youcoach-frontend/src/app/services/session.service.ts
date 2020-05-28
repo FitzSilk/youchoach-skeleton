@@ -27,4 +27,16 @@ export class SessionService {
   getTopics(): Observable<string[]> {
     return this.http.get<string[]>(this.topicUrl);
   }
+
+  getCoachSessionByID(id: string): Observable<Session[]> {
+    return this.http.get<Session[]>(this.sessionUrl + '/view/coach/' + id);
+  }
+
+  getCoacheeSessionByID(id: string): Observable<Session[]> {
+    return this.http.get<Session[]>(this.sessionUrl + '/view/coachee/' + id);
+  }
+
+  updateSessionStatus(session: Session) {
+    return this.http.put<Session>(this.sessionUrl, status, this.httpOptions);
+  }
 }

@@ -1,5 +1,7 @@
 import {User} from './user';
 
+
+
 export class Session {
   id: string;
   subject: string;

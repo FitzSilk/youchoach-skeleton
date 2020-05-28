@@ -61,7 +61,13 @@ export class CreateSessionComponent implements OnInit {
     this.success = false;
     this.error = false;
     const timing = sessionData.date.calendar + 'T' + sessionData.date.time + ':00.000Z';
-    const session = new Session(sessionData.subject, sessionData.description, sessionData.location, timing, this.user, this.coach, 'PENDING');
+    const session = new Session(sessionData.subject,
+      sessionData.description,
+      sessionData.location,
+      timing,
+      this.user,
+      this.coach,
+      'PENDING');
     this.sessionService.createSession(session).subscribe(user => this.router.navigate(['/user/myprofile/' + this.user.id]));
     this.createSession.reset();
   }
