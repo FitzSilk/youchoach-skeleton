@@ -45,7 +45,8 @@
             <h5 class="header">{{user.firstName}} {{user.lastName}}</h5>
             <div class="card mobile-card horizontal">
               <div class="card-image col s12 l6">
-                <img src="{{user.pictureUrl}}" class="circle responsive-img" alt="profile picture" />
+                <img routerLink="/coach/viewprofile/{{user.id}}"
+                     src="{{user.pictureUrl}}" class="circle responsive-img" alt="profile picture" />
               </div>
               <div class="card-stacked col s12 l6">
                 <div class="card-content">
