@@ -32,9 +32,19 @@ public class SessionController {
         return sessionDto1;
     }
 
+    @PutMapping(consumes="application/json", produces= "application/json")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public SessionDto updateSessionStatus(@RequestBody SessionDto sessionDto) {
+        myLogger.info(sessionDto.getCoachee().getEmail() + " is trying to update the status of a coaching session with " + sessionDto.getSession_id() + " - " + sessionDto.getStatus());
+        SessionDto sessionDto1 = sessionService.update(sessionDto);
+        myLogger.info(sessionDto.getCoachee().getEmail() + " has updated the status of a coaching session with " + sessionDto.getSession_id() + " - " + sessionDto.getStatus());
+        return sessionDto1;
+    }
+
     @GetMapping(produces = "application/json")
     @ResponseStatus(HttpStatus.OK)
     public List<SessionDto> findAllSessions() {
         return sessionService.findAll();
     }
+
 }
