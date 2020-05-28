@@ -9,6 +9,7 @@
 
 .card-image img {
   border-radius: 50% !important;
+  cursor: pointer;
 }
 
 .responsive-table tr {

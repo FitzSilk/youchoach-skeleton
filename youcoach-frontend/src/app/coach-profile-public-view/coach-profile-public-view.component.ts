@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../authentication/authentication.service';
 import {UserService} from '../services/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {User} from '../classes/user';
+import {Coach} from '../classes/coach';
 import * as M from 'materialize-css';
-import {Coach} from "../classes/coach";
 
 @Component({
   selector: 'app-coach-profile-public-view',
@@ -23,17 +23,18 @@ export class CoachProfilePublicViewComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getCoachById();
-    this.coach = this.publicCoach.coach;
-    this.setTopicValues();
   }
 
- ngAfterViewInit(): void {
- M.AutoInit();
+  ngAfterViewInit(): void {
+    M.AutoInit();
   }
 
   getCoachById(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.userService.getUserById(id).subscribe(user => this.publicCoach = user);
+    this.userService.getUserById(id).subscribe(user => {
+      this.publicCoach = user;
+      this.setTopicValues();
+    });
   }
 
   setTopicValues(): void {

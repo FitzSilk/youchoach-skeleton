@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'user/myprofile/:id', component: MyprofileComponent},
   {path: 'user/:id', component: MyprofileComponent},
   {path: 'want_to_be_coach', component: CoachApplyComponent},
-  {path: 'coach/viewprofile/:id', component: CoachProfilePublicViewComponent},
+  {path: 'coach-detail/:id', component: CoachProfilePublicViewComponent},
   {path: 'coach/:id', component: CoachProfileComponent},
   {path: 'session/create/:id', component: CreateSessionComponent},
   {path: '404', component: NotFoundComponent},
