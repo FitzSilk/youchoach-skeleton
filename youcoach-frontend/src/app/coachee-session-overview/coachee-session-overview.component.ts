@@ -34,4 +34,16 @@ export class CoacheeSessionOverviewComponent implements OnInit {
       });
     });
   }
+
+  updateStatus(session: Session, status: string) {
+    session.status = status;
+    this.sessionService.updateSessionStatus(session).subscribe(() => {
+        this.upcomingSessions = [];
+        this.waitingForFeedbackSessions = [];
+        this.archivedSessions = [];
+        this.getSessions();
+      }
+    );
+
+  }
 }

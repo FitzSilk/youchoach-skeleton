@@ -37,6 +37,6 @@ export class SessionService {
   }
 
   updateSessionStatus(session: Session) {
-    return this.http.put<Session>(this.sessionUrl, status, this.httpOptions);
+    return this.http.put<Session>(this.sessionUrl, session, this.httpOptions);
   }
 }
