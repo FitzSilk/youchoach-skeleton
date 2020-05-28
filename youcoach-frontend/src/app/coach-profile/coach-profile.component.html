@@ -7,6 +7,7 @@
         <h6 translate>my-coach-profile-menu.title</h6>
         <div class="collection">
           <a id="main" class="collection-item black-text active teal lighten-3" (click)="switchView('main')" translate>my-coach-profile-menu.link.profile-information</a>
+          <a id="sessions"  class="collection-item grey-text text-darken-2" (click)="switchView('sessions')" translate>my-profile-menu.link.coaching-sessions</a>
           <a id="edit" class="collection-item grey-text text-darken-2" (click)="switchView('edit')" translate>my-coach-profile-menu.link.request-profile-change</a>
         </div>
       </div>
@@ -14,6 +15,7 @@
 
     <app-coach-profile-view *ngIf="activeView === 'main'" [user]="user" [coach]="user.coach"></app-coach-profile-view>
     <app-coach-topic-update *ngIf="activeView === 'edit'" [user]="user"></app-coach-topic-update>
+    <app-coach-session-overview *ngIf="activeView === 'sessions'"></app-coach-session-overview>
     <app-coach-profile-update *ngIf="activeView === 'edit-profile'"></app-coach-profile-update>
   </div>
 </main>

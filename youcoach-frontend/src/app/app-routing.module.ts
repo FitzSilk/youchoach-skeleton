@@ -12,8 +12,7 @@ import {CoachesOverviewComponent} from './coaches-overview/coaches-overview.comp
 import {CoachProfileUpdateComponent} from './coach-profile-update/coach-profile-update.component';
 import {CreateSessionComponent} from './create-session/create-session.component';
 import {CoachProfilePublicViewComponent} from './coach-profile-public-view/coach-profile-public-view.component';
-import {CoachSessionOverviewComponent} from './coach-session-overview/coach-session-overview.component';
-import {CoacheeSessionOverviewComponent} from './coachee-session-overview/coachee-session-overview.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -27,8 +26,6 @@ const routes: Routes = [
   {path: 'user/:id', component: MyprofileComponent},
   {path: 'want_to_be_coach', component: CoachApplyComponent},
   {path: 'coach-detail/:id', component: CoachProfilePublicViewComponent},
-  {path: 'coach/sessionoverview/:id', component: CoachSessionOverviewComponent},
-  {path: 'user/sessionoverview/:id', component: CoacheeSessionOverviewComponent},
   {path: 'coach/:id', component: CoachProfileComponent},
   {path: 'session/create/:id', component: CreateSessionComponent},
   {path: '404', component: NotFoundComponent},
