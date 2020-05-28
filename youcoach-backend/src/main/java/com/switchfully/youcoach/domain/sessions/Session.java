@@ -36,10 +36,14 @@ public class Session {
     @JoinColumn(name = "coach_id")
     private User coach;
 
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     public Session() {
     }
 
-    public Session(UUID session_id, String subject, @Nullable String remarks, String location, Date date, User coachee, User coach) {
+    public Session(UUID session_id, String subject, @Nullable String remarks, String location, Date date, User coachee, User coach, Status status) {
         this.session_id = session_id;
         this.subject = subject;
         this.remarks = remarks;
@@ -47,6 +51,7 @@ public class Session {
         this.date = date;
         this.coachee = coachee;
         this.coach = coach;
+        this.status = status;
     }
 
     public UUID getSession_id() {
@@ -76,5 +81,9 @@ public class Session {
 
     public User getCoach() {
         return coach;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 }

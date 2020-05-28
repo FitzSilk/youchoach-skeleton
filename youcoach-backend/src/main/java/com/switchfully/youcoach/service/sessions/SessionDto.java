@@ -1,5 +1,6 @@
 package com.switchfully.youcoach.service.sessions;
 
+import com.switchfully.youcoach.domain.sessions.Status;
 import com.switchfully.youcoach.domain.users.User;
 
 import java.util.Date;
@@ -14,8 +15,9 @@ public class SessionDto {
     private Date date;
     private User coachee;
     private User coach;
+    private Status status;
 
-    public SessionDto(UUID session_id, String subject, String remarks, String location, Date date, User coachee, User coach) {
+    public SessionDto(UUID session_id, String subject, String remarks, String location, Date date, User coachee, User coach, Status status) {
         this.session_id = session_id;
         this.subject = subject;
         this.remarks = remarks;
@@ -23,6 +25,7 @@ public class SessionDto {
         this.date = date;
         this.coachee = coachee;
         this.coach = coach;
+        this.status = status;
     }
 
     public SessionDto() {
@@ -54,5 +57,9 @@ public class SessionDto {
 
     public User getCoach() {
         return coach;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 }

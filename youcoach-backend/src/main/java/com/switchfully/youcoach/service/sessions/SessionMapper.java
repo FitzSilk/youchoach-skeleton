@@ -17,7 +17,8 @@ public class SessionMapper {
                 session.getLocation(),
                 session.getDate(),
                 session.getCoachee(),
-                session.getCoach()
+                session.getCoach(),
+                session.getStatus()
         );
     }
 
@@ -27,13 +28,14 @@ public class SessionMapper {
 
     public Session toSession(SessionDto sessionDto) {
         return new Session(
-               sessionDto.getSession_id(),
-               sessionDto.getSubject(),
-               sessionDto.getRemarks(),
-               sessionDto.getLocation(),
-               sessionDto.getDate(),
-               sessionDto.getCoachee(),
-               sessionDto.getCoach()
+                sessionDto.getSession_id(),
+                sessionDto.getSubject(),
+                sessionDto.getRemarks(),
+                sessionDto.getLocation(),
+                sessionDto.getDate(),
+                sessionDto.getCoachee(),
+                sessionDto.getCoach(),
+                sessionDto.getStatus()
         );
     }
 }
