@@ -4,20 +4,20 @@
       <div class="content-container">
 
         <section class="card-panel grey lighten-5">
-          <h5>My upcoming sessions</h5>
+          <h5 translate>coaching-sessions.title.upcoming</h5>
           <div class="divider"></div>
           <div class="row">
             <div class="col l12 s12">
               <table class="highlight responsive-table">
                 <thead>
                 <tr>
-                  <th>Coachee</th>
-                  <th>Subject</th>
+                  <th translate>coaching-sessions.label.coachee</th>
+                  <th translate>coaching-sessions.label.topic</th>
                   <th>Date</th>
                   <th>Time</th>
                   <th>Location</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th translate>coaching-sessions.label.status</th>
+                  <th translate> coaching-sessions.label.action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,8 +28,8 @@
                   <td>{{session.date.substring(11,16)}}</td>
                   <td>{{session.location}}</td>
                   <td>{{session.status | titlecase}}</td>
-                  <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Accept<i
-                    class="material-icons right">assignment_turned_in</i></a><a class="waves-effect waves-light  grey lighten-2 btn black-text">Decline<i
+                  <td><a *ngIf="session.status!=='ACCEPTED'" class="waves-effect waves-light  grey lighten-2 btn black-text" (click)="updateStatus(session,'ACCEPTED')">Accept<i
+                    class="material-icons right">assignment_turned_in</i></a><a class="waves-effect waves-light  grey lighten-2 btn black-text" (click)="updateStatus(session,'DECLINED')" >Decline<i
                     class="material-icons right">cancel</i></a></td>
                 </tr>
                 </tbody>
@@ -47,13 +47,13 @@
               <table class="highlight responsive-table">
                 <thead>
                 <tr>
-                  <th>Coachee</th>
-                  <th>Subject</th>
+                  <th translate>coaching-sessions.label.coachee</th>
+                  <th translate>coaching-sessions.label.topic</th>
                   <th>Date</th>
                   <th>Time</th>
                   <th>Location</th>
-                  <th>Status</th>
-                  <th>Actions</th>
+                  <th translate>coaching-sessions.label.status</th>
+                  <th translate> coaching-sessions.label.action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -83,12 +83,12 @@
               <table class="highlight responsive-table">
                 <thead>
                 <tr>
-                  <th>Coach</th>
-                  <th>Subject</th>
+                  <th translate>coaching-sessions.label.coachee</th>
+                  <th translate>coaching-sessions.label.topic</th>
                   <th>Date</th>
                   <th>Time</th>
                   <th>Location</th>
-                  <th>Status</th>
+                  <th translate>coaching-sessions.label.status</th>
                 </tr>
                 </thead>
                 <tbody>
