@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class SessionService {
@@ -32,5 +33,13 @@ public class SessionService {
                 sessionDto.getSession_id()).orElseThrow(() -> new IllegalArgumentException("No session with that id."));
         session1.setStatus(sessionDto.getStatus());
         return sessionMapper.toDto(sessionRepository.save(session1));
+    }
+
+    public List<SessionDto> findAllByCoacheeId(UUID id) {
+        return sessionMapper.toDto(sessionRepository.findAllByCoachee_Id(id));
+    }
+
+    public List<SessionDto> findAllByCoachId(UUID id) {
+        return sessionMapper.toDto(sessionRepository.findAllByCoach_Id(id));
     }
 }
