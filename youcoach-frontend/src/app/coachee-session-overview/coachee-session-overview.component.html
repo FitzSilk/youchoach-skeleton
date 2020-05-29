@@ -26,7 +26,7 @@
                 <td>{{session.date.substring(11,16)}}</td>
                 <td>{{session.location}}</td>
                 <td>{{session.status | titlecase}}</td>
-                <td><a class="waves-effect waves-light  grey lighten-2 btn black-text" (click)="updateStatus(session,'DECLINED')">Cancel<i
+                <td><a class="waves-effect waves-light  grey lighten-2 btn black-text" (click)="updateStatus(session,'DECLINED')" translate>coaching-sessions.button.decline<i
                   class="material-icons right" >cancel</i></a></td>
               </tr>
               </tbody>
@@ -61,8 +61,7 @@
                 <td>{{session.date.substring(11,16)}}</td>
                 <td>{{session.location}}</td>
                 <td>{{session.status | titlecase}}</td>
-                <td><a class="waves-effect waves-light  grey lighten-2 btn black-text">Give feedback<i
-                  class="material-icons right">feedback</i></a></td>
+                <td><a class="waves-effect waves-light  grey lighten-2 btn black-text" translate>coaching-sessions.button.feedback</a></td>
               </tr>
 
               </tbody>
